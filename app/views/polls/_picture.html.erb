@@ -1,0 +1,5 @@
+<%= simple_form for @poll do |f| %>
+  <% f.error.notification %>
+  <%= f.input :photo, as: :attachinary %>
+  <%= f.button :submit, class: "btn btn-primarypo" %>
+<% end %>

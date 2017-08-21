@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20170821131157) do
   create_table "polls", force: :cascade do |t|
     t.string "context"
     t.date "ends_at"
-    t.boolean "anonym"
+    t.boolean "anonym", default: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
