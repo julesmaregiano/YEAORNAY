@@ -6,4 +6,7 @@ class User < ApplicationRecord
   has_many :polls
   has_many :belongings
   has_many :answers
+  validates :first_name, :last_name, presence: true
+  has_attachment :photo
+
 end
