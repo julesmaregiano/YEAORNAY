@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170821142823) do
+ActiveRecord::Schema.define(version: 20170821145145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,8 +58,13 @@ ActiveRecord::Schema.define(version: 20170821142823) do
 
   create_table "polls", force: :cascade do |t|
     t.string "context"
+<<<<<<< HEAD
     t.date "ends_at"
     t.boolean "anonym", default: false
+=======
+    t.datetime "ends_at"
+    t.boolean "anonym"
+>>>>>>> master
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
