@@ -5,6 +5,7 @@ class PollsController < ApplicationController
 
   def create
     @poll = current_user.polls.build(poll_params)
+    return render :new unless params[:extraparam] == 0
     if @poll.save
       redirect_to "answers/new"
     else
@@ -20,6 +21,6 @@ class PollsController < ApplicationController
   private
 
   def poll_params
-    params.require(:poll).permit(:context, :ends_at, :anonym, :photo)
+    params.require(:poll).permit(:context, :ends_at, :anonym, :photo, :extraparam)
   end
 end

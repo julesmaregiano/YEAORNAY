@@ -1,6 +1,6 @@
 <%= simple_form_for @poll do |f| %>
   <%= f.input :photo, as: :attachinary %>
-  <%= f.input :context_y, as: :hidden %>
+  <%= hidden_field_tag :extraparam, 0 %>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
 
