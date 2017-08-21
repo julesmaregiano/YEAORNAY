@@ -1,6 +1,7 @@
 <div class="poll">
   <%= cl_image_tag @poll.photo.path, class: 'photo_poll'  %>
   <%= form_for @poll do |f| %>
+  <%= f.input :context_y, as: :hidden %>
   <div class="poll-text">
     <%= f.text_field :context %>
   </div>
