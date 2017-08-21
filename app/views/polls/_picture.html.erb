@@ -1,5 +1,9 @@
-<%= simple_form for @poll do |f| %>
-  <% f.error.notification %>
+<%= simple_form_for @poll do |f| %>
   <%= f.input :photo, as: :attachinary %>
-  <%= f.button :submit, class: "btn btn-primarypo" %>
+  <%= f.input :context_y, as: :hidden %>
+  <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
+
+<!--
+$x("//*[@id='new_poll']/div[1]/div/input")["0"].defaultValue
+ -->

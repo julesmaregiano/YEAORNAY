@@ -1,0 +1,31 @@
+<div class="poll">
+  <%= cl_image_tag @poll.photo.path, class: 'photo_poll'  %>
+  <%= form_for @poll do |f| %>
+  <div class="poll-text">
+    <%= f.text_field :context %>
+  </div>
+
+  <div class="poll-button">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>
+</div>
+
+
+<% content_for(:after_js) do %>
+  <script>
+    $(function(){
+      var $pollText = $(".poll-text");
+
+      $(document).on('touchstart', function(event){
+        var positionY = event.originalEvent.changedTouches["0"].clientY
+        $pollText.css({ top: positionY });
+      });
+
+      $(document).on('touchmove', function(event){
+        var positionY = event.originalEvent.changedTouches["0"].clientY
+        $pollText.css({ top: positionY });
+      });
+    });
+  </script>
+<% end %>

@@ -1,0 +1,7 @@
+<% content_for(:body_class, "full-page") %>
+
+<% if @poll.photo.nil? %>
+  <%= render 'picture' %>
+<% else %>
+  <%= render 'context' %>
+<% end %>
