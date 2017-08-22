@@ -1,4 +1,21 @@
+<div class="container">
+  <div class="row">
+    <% @polls.each do |poll| %>
+    <div class="col-xs-12">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+              url('<%= cl_image_path poll.photo.path, height: 300, width: 400, crop: :fill; %>')">
+        <p> <%= poll.context %> </p>
+      </div>
+    </div>
+    <% end %>
+  </div>
 
 
-<div class="btn btn-primary"><a href="0">YAY!</a></div>
-<div class="btn btn-danger"><a href="0">NAY!</a></div>
+
+/*Aller chercher dans le controlleur une dizaine de polls auquel je peiux répondonre
+qui ne sont pas terminés,
+dont jen e suis pas le créateur
+*/
+
+  <div class="btn btn-primary"><a href="0">YAY!</a></div>
+  <div class="btn btn-danger"><a href="0">NAY!</a></div>

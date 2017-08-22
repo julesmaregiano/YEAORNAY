@@ -38,15 +38,20 @@ photos = ["http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/bijou_2
          "http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/voiture_3_480_v6sykx.jpg",
          "http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/voiture_2_720_mqzabf.jpg",
          "http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/voiture_1_720_hqe0e2.jpg"]
-for i in (0..8) do
-  Poll.create(context: context[i], ends_at: Time.now+7200 , anonym: rand(0..1).to_i, user_id: rand(0..3).to_i, photo_url: photos[i])
-puts "Poll #{i+1} créé"
+9.times do |i|
+  Poll.create!(context: context[i], ends_at: Time.now+7200 , anonym: rand(0..1).to_i, user: User.order('RANDOM()').first, photo_url: photos[i])
+  puts "Poll #{i+1} créé"
 end
 
-
-for i in (0..99 ) do
-  Answer.create(value: rand(0..1).to_i, poll_id: rand(0..9).to_i, user_id: rand(0..3).to_i)
-  puts "Réponse #{i+1} créée"
+byebug
+User.all.each do |user|
+  Poll.all.each do |poll|
+    if [true, false].sample
+      value = [0, 1].sample
+      poll.answers.create!(value: value, user: user)
+      puts "User  #{user.first_name} a répondu #{value} à #{poll.context}"
+    end
+  end
 end
 
 

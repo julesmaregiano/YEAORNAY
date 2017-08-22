@@ -1,14 +1,10 @@
 class PollsController < ApplicationController
   def index
-    @polls = Poll.all
+    @polls = Poll.answerable(current_user)
   end
 
   def create
     @polls = Poll.all
   end
-
-  def destroy
-  end
-
 
 end
