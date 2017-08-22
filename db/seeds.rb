@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts "Suppression des datas existantes"
+puts 'Suppression des datas existantes'
 Answer.destroy_all
 Poll.destroy_all
 User.destroy_all
@@ -24,10 +24,8 @@ for i in (0..3) do
 end
 puts 'Done.'
 
-#Bijoux, voitures, chaussures
-
 puts 'Génération des Polls'
-context = ["Vous en pensez quoi ?", "Si je met ça à un mariage, yay ou nay?", "Je le prend ? Vite j'ai 10min!! merci!!", "J'hésite à les prendre les filles, yay ou nay?", "85€, je prend?", "Je rencontre mes beaux-parents demain, YoN ?? :))", "Pour aller à la plage", "Moche?", ""]
+context = ['Vous en pensez quoi ?', 'Si je met ça à un mariage, yay ou nay?', "Je le prend ? Vite j'ai 10min!! merci!!", "J'hésite à les prendre les filles, yay ou nay?", '85€, je prend?', 'Je rencontre mes beaux-parents demain, YoN ?? :))', 'Pour aller à la plage', 'Moche?', '']
 user_id = rand(0..3).to_i
 photos = ["http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/bijou_2_480_tpr3ef.jpg",
          "http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/bijou_1_360_vyq3el.jpg",
@@ -43,7 +41,6 @@ photos = ["http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/bijou_2
   puts "Poll #{i+1} créé"
 end
 
-byebug
 User.all.each do |user|
   Poll.all.each do |poll|
     if [true, false].sample
@@ -53,7 +50,6 @@ User.all.each do |user|
     end
   end
 end
-
 
 puts 'Done.'
 puts 'Fin du Seed'

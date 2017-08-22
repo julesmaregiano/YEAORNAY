@@ -3,8 +3,27 @@ class PollsController < ApplicationController
     @polls = Poll.answerable(current_user)
   end
 
-  def create
-    @polls = Poll.all
+  def new
+    @poll = Poll.new
   end
 
+  def create
+    @poll = current_user.polls.build(poll_params)
+    if @poll.save
+      redirect_to "polls_path"
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    @poll.destroy
+    redirect_to "users/show" # mettre un ajax
+  end
+
+  private
+
+  def poll_params
+    params.require(:poll).permit(:context, :ends_at, :anonym, :photo)
+  end
 end

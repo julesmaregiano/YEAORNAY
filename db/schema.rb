@@ -59,10 +59,11 @@ ActiveRecord::Schema.define(version: 20170821145145) do
   create_table "polls", force: :cascade do |t|
     t.string "context"
     t.datetime "ends_at"
-    t.boolean "anonym"
+    t.boolean "anonym", default: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "context_y"
     t.index ["user_id"], name: "index_polls_on_user_id"
   end
 
