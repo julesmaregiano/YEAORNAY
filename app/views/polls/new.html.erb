@@ -3,11 +3,8 @@
 <div class="insert-image">
   <%= simple_form_for @poll do |f| %>
     <%= f.input :photo, as: :attachinary %>
-    <%= hidden_field_tag :extraparam, 0 %>
-    <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
 </div>
-
 
 <div class="poll">
   <div class="image-upload">
