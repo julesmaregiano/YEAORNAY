@@ -1,0 +1,68 @@
+<% content_for(:body_class, "full-page") %>
+
+<%= simple_form_for @poll, class: "add_photo" do |f| %>
+  <div class="insert-image">
+    <label>
+      <div class="wrapper-blue text-center">
+        <h1>Prenez une photo</h1>
+        <%= f.input_field :photo, as: :attachinary, label: false %>
+        <%= f.button :submit, class: "submit-photo" %>
+      </div>
+    </label>
+  </div>
+
+  <div class="poll">
+    <div class="image-upload">
+    </div>
+    <div class="poll-text">
+      <%= f.text_field :context, class: "context-zone" %>
+      <%= f.hidden_field :context_y %>
+    </div>
+    <div class="poll-button">
+      <%= f.button :submit, value: "Envoyer", class: "submit-new-poll" %>
+    </div>
+  </div>
+<% end %>
+
+<% content_for(:after_js) do %>
+  <script>
+    $(function(){
+
+      $(".poll").hide();
+      $(".attachinary-input").hide();
+      $(".submit-photo").hide();
+
+      $('.attachinary-input').fileupload().on('fileuploadsend', function (e, data) {
+        $(".submit-photo").show();
+      });
+
+      $('.attachinary-input').fileupload().on('fileuploaddone', function (e, data) {
+        var $url = JSON.parse($('.attachinary_container input')["0"].defaultValue)[0].secure_url;
+
+        $(".image-upload").append("<img class='photo_poll' src='" + $url + "'/>");
+        $(".poll").show()
+        $(".insert-image").hide()
+
+        var $pollText = $(".poll-text");
+
+        $pollText.hide()
+        $('.image-upload').on('touchstart', function(event){
+          $pollText.show()
+          var $positionY = event.originalEvent.changedTouches["0"].clientY
+          $("#poll_context_y").val($positionY)
+          $pollText.css({ top: $positionY });
+        });
+
+        $('.image-upload').on('touchmove', function(event){
+          var $positionY = event.originalEvent.changedTouches["0"].clientY
+          $("#poll_context_y").val($positionY)
+          $pollText.css({ top: $positionY });
+        });
+
+      });
+
+    });
+
+  </script>
+<% end %>
+
