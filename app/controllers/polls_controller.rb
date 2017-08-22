@@ -10,7 +10,7 @@ class PollsController < ApplicationController
   def create
     @poll = current_user.polls.build(poll_params)
     if @poll.save
-      redirect_to "polls_path"
+      redirect_to polls_path
     else
       render :new
     end
