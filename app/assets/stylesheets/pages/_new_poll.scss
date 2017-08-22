@@ -6,7 +6,6 @@
   width: 100%;
   height: 100vh;
   object-fit: cover;
-  position: fixed;
 }
 
 .poll {
@@ -29,8 +28,8 @@
 
 .poll-button {
   position: absolute;
-  right: 15px;
-  top: 600px;
+  right: 5%;
+  bottom: 4%;
 }
 
 .wrapper-blue {
