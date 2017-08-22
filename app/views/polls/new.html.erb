@@ -1,9 +1,12 @@
 <% content_for(:body_class, "full-page") %>
 
 <div class="insert-image">
-  <%= simple_form_for @poll do |f| %>
-    <%= f.input :photo, as: :attachinary %>
-  <% end %>
+  <div class="wrapper-blue">
+    <h1>Prenez une photo</h1>
+    <%= simple_form_for @poll, class: "add_photo" do |f| %>
+      <%= f.input :photo, as: :attachinary, label: false %>
+    <% end %>
+  </div>
 </div>
 
 <div class="poll">
@@ -23,7 +26,14 @@
   <script>
     $(function(){
 
-    $(".poll").hide()
+    $(".poll").hide();
+    $(".attachinary-input").hide();
+
+    $(".insert-image").one("click", function() {
+
+      $(".attachinary-input").click();
+
+    });
 
     $('.attachinary-input').fileupload().on('fileuploaddone', function (e, data) {
        var $url =  $('#new_poll > div > div > input[type="hidden"]')["0"].defaultValue.split(",")[13].split('"')[3];
