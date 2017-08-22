@@ -1,7 +1,6 @@
 <div class="poll">
   <%= cl_image_tag @poll.photo.path, class: 'photo_poll'  %>
   <%= form_for @poll do |f| %>
-    <%= hidden_field_tag :extraparam, 1 %>
     <div class="poll-text">
       <%= f.text_field :context %>
     </div>
