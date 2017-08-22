@@ -1,4 +1,8 @@
 class PollsController < ApplicationController
+  def index
+    @polls = Poll.answerable(current_user)
+  end
+
   def new
     @poll = Poll.new
   end
@@ -6,7 +10,7 @@ class PollsController < ApplicationController
   def create
     @poll = current_user.polls.build(poll_params)
     if @poll.save
-      redirect_to "answers/new"
+      redirect_to "polls_path"
     else
       render :new
     end
