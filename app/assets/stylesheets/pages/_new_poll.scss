@@ -6,6 +6,7 @@
   width: 100%;
   height: 100vh;
   object-fit: cover;
+  position: fixed;
 }
 
 .poll {
@@ -32,10 +33,13 @@
   bottom: 4%;
 }
 
-
 .wrapper-blue {
   height: 100vh;
   background-color: #00C8FF;
+}
+
+.insert-image {
+  text-align: center;
 }
 
 .insert-image h1 {
@@ -43,9 +47,8 @@
   padding: 0;
   text-align: center;
   color: white;
-  padding-top: 47.5vh;
-  font-size: 5vh;
   font-weight: bold;
+  font-size: 30px;
 }
 
 .insert-image label {
@@ -70,6 +73,29 @@
   font-weight: bold;
   padding: 10px;
 }
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 40px;
+  margin: 0 20px;
+}
+.links i {
+  color: white;
+}
+
+.take-picture {
+  padding-top: 25vh;
+}
+
+.take-picture img {
+  width: 160px;
+  margin-top: 25px;
+}
+
+
+
 
 
 
