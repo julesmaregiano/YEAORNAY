@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
   devise_for :users
   root to: 'pages#home'
-  resources :polls, only: [:index, :create] do
+  resources :polls, only: [:new, :index, :create] do
     resources :targets, only: [:new, :create]
   end
   resources :answers, only: [:new, :create]
