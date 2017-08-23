@@ -1,0 +1,27 @@
+
+  <div class="poll">
+    <%= render "poll_show", poll: @poll  %>
+  </div>
+  <div class="poll-info">
+    <%= render "poll_info", poll: @poll  %>
+  </div>
+
+
+ <% content_for(:after_js) do %>
+   <script>
+     $(function(){
+       $(".poll-info").hide();
+       var $pollShow = false;
+         $('.poll').on('touchstart', function(event){
+           console.log("Click");
+           if ($pollShow == false) {
+             $(".poll-info").show();
+             $pollShow = true;
+           } else {
+             $(".poll-info").hide();
+             $pollShow = false;
+           }
+         });
+       });
+   </script>
+ <% end %>

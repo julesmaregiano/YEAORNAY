@@ -7,10 +7,6 @@ class PollsController < ApplicationController
     @poll = Poll.new
   end
 
-  def show
-    @poll = Poll.find(params[:id])
-  end
-
   def create
     @poll = current_user.polls.build(poll_params)
     @poll.ends_at = Time.now + 7200
