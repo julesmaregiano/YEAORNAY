@@ -1,23 +1,21 @@
- <%= link_to destroy_user_session_path, method: :delete do %>
+<% content_for(:body_class, "full-page") %>
+<%= link_to destroy_user_session_path, method: :delete do %>
     <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
 <% end %>
 
 <div class="container">
   <div class="row">
     <% @polls.each do |poll| %>
-    <div class="col-xs-12">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-              url('<%= cl_image_path poll.photo.path, height: 300, width: 400; %>')">
-        <p> <%= poll.context %> </p>
-
-        <%= link_to "YAY", answers_path( "answer" => {"value" => 1, "poll_id" => poll.id, "user_id" => current_user}), method: :post %>
-
-        <%= link_to "NAY", answers_path( "answer" => {"value" => 0, "poll_id" => poll.id, "user_id" => current_user}), method: :post %>
-
-
+      <div class="poll">
+        <%= cl_image_tag poll.photo.path, class: "photo_poll" %>
+        <div class="poll-text" style= "top: <%= poll.context_y %>%">
+        <p id= "poll_context"> <%= poll.context %> </p>
+        </div>
+        <%= link_to "Profile", my_polls_path, class: "poll-button-profile" %>
+        <%= link_to "New", new_poll_path, class: "poll-button-new" %>
+        <%= link_to "YAY", answers_path( "answer" => {"value" => 1, "poll_id" => poll.id, "user_id" => current_user}), class: "poll-button-yay", method: :post %>
+        <%= link_to "NAY", answers_path( "answer" => {"value" => 0, "poll_id" => poll.id, "user_id" => current_user}), class: "poll-button-nay", method: :post %>
       </div>
-    </div>
-    <% end %>
+    <% end %
   </div>
-</div>
-
+ </div>

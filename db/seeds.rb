@@ -26,6 +26,7 @@ puts 'Done.'
 
 puts 'Génération des Polls'
 context = ['Vous en pensez quoi ?', 'Si je met ça à un mariage, yay ou nay?', "Je le prend ? Vite j'ai 10min!! merci!!", "J'hésite à les prendre les filles, yay ou nay?", '85€, je prend?', 'Je rencontre mes beaux-parents demain, YoN ?? :))', 'Pour aller à la plage', 'Moche?', '']
+context_y = [50, 75, 25 ]
 user_id = rand(0..3).to_i
 photos = ["http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/bijou_2_480_tpr3ef.jpg",
          "http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/bijou_1_360_vyq3el.jpg",
@@ -37,7 +38,7 @@ photos = ["http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/bijou_2
          "http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/voiture_2_720_mqzabf.jpg",
          "http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/voiture_1_720_hqe0e2.jpg"]
 9.times do |i|
-  Poll.create!(context: context[i], ends_at: Time.now+7200 , anonym: rand(0..1).to_i, user: User.order('RANDOM()').first, photo_url: photos[i])
+  Poll.create!(context: context[i], ends_at: Time.now+7200 , anonym: rand(0..1).to_i, user: User.order('RANDOM()').first, photo_url: photos[i], context_y: context_y.sample)
   puts "Poll #{i+1} créé"
 end
 
