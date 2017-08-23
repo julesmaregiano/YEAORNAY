@@ -29,11 +29,14 @@
 }
 
 .profile-settings {
-  font-size: 35px;
+  font-size: 30px;
   opacity: 50%;
   flex-grow: 0;
   position: absolute;
-  top: 15px;
+  top: 5px;
   right: 5px;
+  ul {
+    list-style: none;
+  }
 }
 
