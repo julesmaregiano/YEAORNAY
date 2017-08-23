@@ -1,3 +1,7 @@
+ <%= link_to destroy_user_session_path, method: :delete do %>
+    <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+<% end %>
+
 <div class="container">
   <div class="row">
     <% @polls.each do |poll| %>
