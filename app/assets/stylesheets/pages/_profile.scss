@@ -1,7 +1,39 @@
-.container {
+.profile-container {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 20vh;
+  position: relative;
+  border-bottom: solid $blue 2px;
 }
 
-.container-child {
-
+.profile-avatar{
+  width: 20vh;
+  border-radius: 50px;
+  flex-grow: 0;
+  margin: 2px;
 }
+
+.profile-child  {
+  flex-grow: 1;
+  padding-left: 10px;
+}
+
+.profile-child h1{
+  font-size: 18px;
+}
+
+.profile-child h3{
+  font-size: 12px;
+  color: gray;
+}
+
+.profile-settings {
+  font-size: 35px;
+  opacity: 50%;
+  flex-grow: 0;
+  position: absolute;
+  top: 15px;
+  right: 5px;
+}
+
