@@ -5,7 +5,7 @@
 
 <div class="container">
   <div class="row">
-    <% @polls.each do |poll| %>
+<!--     <% @polls.each do |poll| %>
     <div class="poll">
       <%= cl_image_tag poll.photo.path, class: "photo_poll" %>
       <div class="poll-text" style= "top: <%= poll.context_y %>%">
@@ -16,7 +16,8 @@
       <%= link_to "YAY", answers_path( "answer" => {"value" => 1, "poll_id" => poll.id, "user_id" => current_user}), class: "poll-button-yay", method: :post %>
       <%= link_to "NAY", answers_path( "answer" => {"value" => 0, "poll_id" => poll.id, "user_id" => current_user}), class: "poll-button-nay", method: :post %>
     </div>
-   <!--  <%= render "poll_info", poll: poll  %> -->
-    <% end %>
+    <% end %> -->
+
+    <%= render "poll_info", poll: @polls.first  %>
   </div>
  </div>
