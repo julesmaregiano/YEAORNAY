@@ -2,47 +2,9 @@
   height: 100vh;
 }
 
-.photo_poll {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-}
-
-.poll {
-  position: relative;
-}
-
-.poll-text {
-  position: absolute;
-  width: 100%;
-  top: 50%;
-}
-
-#poll_context {
-  width: 100%;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: white;
-}
-
-.poll-button {
-  position: absolute;
-  right: 5%;
-  bottom: 4%;
-}
-
-.poll-anonym {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  color: white;
-}
-
 .wrapper-blue {
   height: 100vh;
   background-color: #00C8FF;
-
 }
 
 .insert-image {
@@ -100,13 +62,3 @@
   width: 160px;
   margin-top: 25px;
 }
-
-
-
-
-
-
-
-
-
-

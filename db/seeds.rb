@@ -46,7 +46,7 @@ User.all.each do |user|
   Poll.all.each do |poll|
     if [true, false].sample
       value = [0, 1].sample
-      poll.answers.create!(value: value, user: user)
+      # poll.answers.create!(value: value, user: user)
       puts "User  #{user.first_name} a répondu #{value} à #{poll.context}"
     end
   end

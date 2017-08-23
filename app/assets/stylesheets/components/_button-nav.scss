@@ -1,0 +1,17 @@
+%button-nav {
+  position: absolute;
+  top: 4%;
+  font-size: 30px;
+  color: white;
+  z-index: 1000;
+}
+
+.button-nav-right {
+  @extend %button-nav;
+  right: 5%;
+}
+
+.button-nav-left {
+  @extend %button-nav;
+  left: 5%;
+}

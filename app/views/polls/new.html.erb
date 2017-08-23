@@ -41,43 +41,32 @@
 <% content_for(:after_js) do %>
   <script>
     $(function(){
-
       $(".poll").hide();
       $(".attachinary-input").hide();
       $(".submit-photo").hide();
-
       $('.attachinary-input').fileupload().on('fileuploadsend', function (e, data) {
         $(".submit-photo").show();
       });
-
       $('.attachinary-input').fileupload().on('fileuploaddone', function (e, data) {
         var $url = JSON.parse($('.attachinary_container input')["0"].defaultValue)[0].secure_url;
-
-        $(".image-upload").append("<img class='photo_poll' src='" + $url + "'/>");
-        $(".poll").show()
-        $(".insert-image").hide()
-
+        $(".image-upload").append("<img class='poll-photo' src='" + $url + "'/>");
+        $(".poll").show();
+        $(".insert-image").hide();
         var $pollText = $(".poll-text");
-        var $height = $('.photo_poll')[0].height;
-
+        var $height = $('.poll-photo')[0].height;
         $pollText.hide()
         $('.image-upload').on('touchstart', function(event){
-          $pollText.show()
-          var $positionY = event.originalEvent.changedTouches["0"].clientY
-          $("#poll_context_y").val((($positionY/$height)*100))
+          $pollText.show();
+          var $positionY = event.originalEvent.changedTouches["0"].clientY;
+          $("#poll_context_y").val((($positionY/$height)*100));
           $pollText.css({ top: $positionY });
         });
-
         $('.image-upload').on('touchmove', function(event){
-          var $positionY = event.originalEvent.changedTouches["0"].clientY
-          $("#poll_context_y").val((($positionY/$height)*100))
+          var $positionY = event.originalEvent.changedTouches["0"].clientY;
+          $("#poll_context_y").val((($positionY/$height)*100));
           $pollText.css({ top: $positionY });
         });
-
       });
-
     });
-
   </script>
 <% end %>
-
