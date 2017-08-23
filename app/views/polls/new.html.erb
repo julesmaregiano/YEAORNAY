@@ -4,7 +4,18 @@
   <div class="insert-image">
     <label>
       <div class="wrapper-blue text-center">
-        <h1>Prenez une photo</h1>
+        <div class="links">
+          <%= link_to polls_path do %>
+            <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+          <% end %>
+          <%= link_to my_polls_path do %>
+            <i class="fa fa-user" aria-hidden="true"></i>
+          <% end %>
+        </div>
+        <div class="take-picture">
+          <h1>Prenez une photo</h1>
+          <%= image_tag "camera.png" %>
+        </div>
         <%= f.input_field :photo, as: :attachinary, label: false %>
         <%= f.button :submit, class: "submit-photo" %>
       </div>
@@ -16,6 +27,7 @@
     </div>
     <div class="poll-text">
       <%= f.text_field :context, class: "context-zone" %>
+      <%= f.input :anonym %>
       <%= f.hidden_field :context_y %>
     </div>
     <div class="poll-button">
@@ -44,18 +56,19 @@
         $(".insert-image").hide()
 
         var $pollText = $(".poll-text");
+        var $height = $('.photo_poll')[0].height;
 
         $pollText.hide()
         $('.image-upload').on('touchstart', function(event){
           $pollText.show()
           var $positionY = event.originalEvent.changedTouches["0"].clientY
-          $("#poll_context_y").val($positionY)
+          $("#poll_context_y").val((($positionY/$height)*100))
           $pollText.css({ top: $positionY });
         });
 
         $('.image-upload').on('touchmove', function(event){
           var $positionY = event.originalEvent.changedTouches["0"].clientY
-          $("#poll_context_y").val($positionY)
+          $("#poll_context_y").val((($positionY/$height)*100))
           $pollText.css({ top: $positionY });
         });
 

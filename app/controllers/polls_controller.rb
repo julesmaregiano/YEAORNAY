@@ -9,6 +9,7 @@ class PollsController < ApplicationController
 
   def create
     @poll = current_user.polls.build(poll_params)
+    @poll.ends_at = Time.now + 7200
     if @poll.save
       redirect_to polls_path
     else
@@ -24,6 +25,6 @@ class PollsController < ApplicationController
   private
 
   def poll_params
-    params.require(:poll).permit(:context, :ends_at, :anonym, :photo)
+    params.require(:poll).permit(:context, :ends_at, :anonym, :photo, :context_y)
   end
 end
