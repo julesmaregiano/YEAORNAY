@@ -29,10 +29,10 @@ class Poll < ApplicationRecord
   end
 
   def yays_count
-    self.answers.where(value: 1).count
+    self.answers.where(value: 1).size
   end
 
   def nays_count
-    self.answers.where(value: 0).count
+    self.answers.where(value: 0).size
   end
 end
