@@ -1,8 +1,9 @@
 <div class="row">
-  <%= user.photo %>
+  <%= cl_image_tag @user.photo.path %>
   <%= @user.first_name %>
   <%= @user.last_name %>
   <%= @user.polls.count %>
+  <%= @user.answers.count %>
 </div>
 
 <div class="container">
