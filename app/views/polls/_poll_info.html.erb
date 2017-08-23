@@ -1,0 +1,13 @@
+<div>
+  <div class="poll-text" style= "top: <%= poll.context_y %>%">
+    <p id= "poll_context"> <%= poll.context %> </p>
+  </div>
+  <div class= "poll-author">
+    <% user = poll.user %>
+    <p> <%= cl_image_tag user.photo_url, class: "avatar-bordered"  %> <%= user.first_name %> <%= user.last_name %> </p>
+  </div>
+  <div class= "poll-result">
+    <h3>YAY:<%= poll.yays_count %></h3>
+    <h3>NAY:<%= poll.nays_count %></h3>
+  </div>
+</div>
