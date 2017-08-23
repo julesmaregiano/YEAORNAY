@@ -1,14 +1,21 @@
-<div class="container">
-  <div class="poll-result">
-    <% @polls.each do |poll| %>
-    <div class="col-xs-12">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-              url('<%= cl_image_path poll.photo.path, height: 100, width: 100; %>')">
-        <p> <%= poll.context %> </p>
-        <h1>YAY:<%= poll.yays_count %></h1>
-        <h1>NAY:<%= poll.nays_count %></h1>
-      </div>
+<% @polls.each do |poll| %>
+  <div class="poll-informations">
+    <%= cl_image_tag poll.photo.path, width: 100, height: 120, crop: :fill, class: "min-photo-poll" %>
+
+    <div class="poll-answers">
+      <h2 id="yay"><%= poll.yays_count %><%= image_tag "yay.png", class: "poll-yn" %></h2>
+      <h2 id="nay"><%= poll.nays_count %><%= image_tag "nay.png", class: "poll-yn" %></h2>
+      <p><%= poll.context %></p>
     </div>
+
+    <div class="poll-time text-center">
+    <% if  poll.ends_at >  Time.zone.now %>
+      <p><%= ((poll.ends_at -  Time.zone.now) / 60).to_i %> min.</p>
+      <i class="fa fa-clock-o" aria-hidden="true"></i>
+    <% else %>
+      <p>Terminé</p>
     <% end %>
+    </div>
   </div>
-</div>
+<% end %>
+
