@@ -18,14 +18,13 @@
   position: relative;
 }
 
-
-
 .poll-button-yay {
   position: absolute;
   right: 5%;
   bottom: 4%;
-  font-size: 30px;
-  color: white;
+  img{
+    width: 80px;
+  }
 }
 
 .poll-button-nay {
@@ -33,7 +32,9 @@
   left: 5%;
   bottom: 4%;
   font-size: 30px;
-  color: white;
+   img{
+    width: 80px;
+  }
 }
 
 .poll-button-new {
@@ -77,8 +78,3 @@
   font-size: 20px;
   font-weight: bold;
 }
-
-
-
-
-
