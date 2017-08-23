@@ -1,5 +1,5 @@
-<div class="row">
-  <%= cl_image_tag @user.photo.path %>
+<div>
+  <%= image_tag @user.facebook_picture_url  %>
   <%= @user.first_name %>
   <%= @user.last_name %>
   <%= @user.polls.count %>
@@ -7,7 +7,7 @@
 </div>
 
 <div class="container">
-  <div class="row">
+  <div class="poll-result">
     <% @polls.each do |poll| %>
     <div class="col-xs-12">
       <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
