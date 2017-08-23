@@ -27,8 +27,10 @@
     </div>
     <div class="poll-text">
       <%= f.text_field :context, class: "context-zone" %>
-      <%= f.input :anonym %>
       <%= f.hidden_field :context_y %>
+    </div>
+    <div class="poll-anonym">
+      <%= f.input :anonym %>
     </div>
     <div class="poll-button">
       <%= f.button :submit, value: "Envoyer", class: "submit-new-poll" %>
