@@ -8,34 +8,49 @@
   object-fit: cover;
 }
 
+.photo_poll_info {
+  width: 100%;
+  height: 70vh;
+  object-fit: cover;
+}
+
 .poll {
   position: relative;
 }
-
-
 
 .poll-button-yay {
   position: absolute;
   right: 5%;
   bottom: 4%;
+  img{
+    width: 80px;
+  }
 }
 
 .poll-button-nay {
   position: absolute;
   left: 5%;
   bottom: 4%;
+  font-size: 30px;
+   img{
+    width: 80px;
+  }
 }
 
 .poll-button-new {
   position: absolute;
   right: 5%;
   top: 4%;
+  font-size: 30px;
+  color: white;
 }
 
 .poll-button-profile {
+  color: white;
   position: absolute;
   left: 5%;
   top: 4%;
+  font-size: 30px;
 }
 
 
@@ -51,9 +66,15 @@
 .poll-text {
   position: absolute;
   width: 100%;
-
 }
 
+.wrapper_info{
+  background-color: #00C8FF;
+}
 
-
-
+.poll_context_info{
+  background-color: #00C8FF;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}

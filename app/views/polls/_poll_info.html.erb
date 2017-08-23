@@ -1,13 +1,14 @@
-<div>
+<div class="wrapper_info">
   <div>
-    <p> <%= poll.context %> </p>
+    <p class= "poll_context_info"> <%= poll.context %> </p>
   </div>
-  <div class= "poll-author">
+  <div class= "poll-author text-center">
     <% user = poll.user %>
     <p> <%= cl_image_tag user.facebook_picture_url, class: "avatar-bordered"  %> <%= user.first_name %> <%= user.last_name %> </p>
   </div>
   <div class= "poll-result">
-    <h3> <strong> YAY: </strong> <%= poll.yays_count %></h3>
-    <h3> <strong> NAY: </strong> <%= poll.nays_count %></h3>
+    <h5> <strong> YAY: </strong> <%= poll.yays_count %></h5>
+    <h5> <strong> NAY: </strong> <%= poll.nays_count %></h5>
   </div>
 </div>
+
