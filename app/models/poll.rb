@@ -5,6 +5,8 @@ class Poll < ApplicationRecord
   validates_associated :user, presence: true
   has_attachment :photo
 
+  scope :from_me, -> (user) { where(user: user) }
+
   scope :random, -> { order('RANDOM()') }
   scope :not_from, -> (user) { where.not(user: user) }
   scope :ongoing, -> { where("ends_at > ?", DateTime.now) }
@@ -19,5 +21,18 @@ class Poll < ApplicationRecord
       .not_answered_by(user)
       .random
       .first(10)
+  end
+
+  def self.list user
+    ongoing
+      .from_me(user)
+  end
+
+  def yays_count
+    self.answers.where(value: 1).size
+  end
+
+  def nays_count
+    self.answers.where(value: 0).size
   end
 end
