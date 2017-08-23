@@ -1,23 +1,2 @@
-<div>
-  <%= image_tag @user.facebook_picture_url  %>
-  <%= @user.first_name %>
-  <%= @user.last_name %>
-  <%= @user.polls.count %>
-  <%= @user.answers.count %>
-</div>
-
-<div class="container">
-  <div class="poll-result">
-    <% @polls.each do |poll| %>
-    <div class="col-xs-12">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-              url('<%= cl_image_path poll.photo.path, height: 100, width: 100; %>')">
-        <p> <%= poll.context %> </p>
-        <h1>YAY:<%= poll.yays_count %></h1>
-        <h1>NAY:<%= poll.nays_count %></h1>
-      </div>
-    </div>
-    <% end %>
-  </div>
-</div>
-
+<%= render "profile_infos" %>
+<%= render "my_polls" %>
