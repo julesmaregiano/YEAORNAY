@@ -9,6 +9,7 @@
     </div>
 
     <div class="poll-time text-center">
+    <%= link_to "voir", my_poll_path(poll) %>
     <% if  poll.ends_at >  Time.zone.now %>
       <p><%= ((poll.ends_at -  Time.zone.now) / 60).to_i %> min.</p>
       <i class="fa fa-clock-o" aria-hidden="true"></i>

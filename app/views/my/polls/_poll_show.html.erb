@@ -1,0 +1,6 @@
+<%= cl_image_tag poll.photo.path, class: "photo_poll" %>
+<div class="poll-text" style= "top: <%= poll.context_y %>%">
+<p id= "poll_context"> <%= poll.context %> </p>
+</div>
+<%= link_to "", my_polls_path, class: "poll-button-profile fa fa-user" %>
+<%= link_to "", new_poll_path, class: "poll-button-new fa fa-camera" %>
