@@ -1,7 +1,16 @@
-<div>
-  <%= image_tag @user.facebook_picture_url  %>
-  <%= @user.first_name %>
-  <%= @user.last_name %>
-  <%= @user.polls.count %>
-  <%= @user.answers.count %>
+<div class="profile-container">
+  <%= image_tag @user.facebook_picture_url, class: "profile-avatar"  %>
+    <div class="profile-child">
+      <div>
+        <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+      </div>
+      <div>
+        <h3><%= @user.polls.count %> sondages</h3>
+        <h3><%= @user.answers.count %> réponses</h3>
+      </div>
+    </div>
+    <div class="profile-settings">
+        <%= link_to "#" do %><i class="fa fa-cog" aria-hidden="true"></i> <% end %>
+    </div>
+  </div>
 </div>
