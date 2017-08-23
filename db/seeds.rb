@@ -14,12 +14,11 @@ puts 'Users, Polls, Answers & Groups supprimés.'
 
 first_name = ['Jerome', 'Ophélie', 'Jules', 'Arnaud']
 last_name = ['Vivier', 'Delrieu', 'Maregiano', 'APRAHAMIAN']
-email = ['jerome.vivier@edhec.com','ophelie.delrieu3@orange.fr', 'jules.maregiano@gmail.com', 'arnaud.aprahamian@gmail.com']
-photo_url = ['https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/11709247_10206311692807977_6592313504708086650_n.jpg?oh=2999ffd774b07fd32e14cbd751e96913&oe=5A356408', 'https://scontent-cdg2-1.xx.fbcdn.net/v/t31.0-1/c348.0.960.960/p960x960/14542538_10207929828985442_1702045537103892698_o.jpg?oh=ab794795797586cd1a3261fc7ccdfc70&oe=5A323BF0', 'https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/11026142_10153369592714788_3993364344459696435_n.jpg?oh=47564b9b9f6b5b1f05670c19bc2f8e88&oe=59EFE3D4', 'https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/20841823_1488940124502033_1504670497674323338_n.jpg?oh=50044d80a2eb734c7820d5ac84d44f21&oe=5A32C238']
+email = ['jeromevivier31@hotmail.com','ophelie.delrieu3@orange.fr', 'jmaregiano@gmail.com', 'arnaud.aprahamian@hotmail.fr']
 
 puts 'Génération des users...'
 for i in (0..3) do
-  User.create(last_name: last_name[i], first_name: first_name[i], email: email[i], password: 'coucou', photo_url: photo_url[i]).save!
+  User.create(last_name: last_name[i], first_name: first_name[i], email: email[i], password: 'coucou').save!
   puts "User #{i+1} créé"
 end
 puts 'Done.'
