@@ -1,15 +1,15 @@
 <% @polls.each do |poll| %>
+ <div class= "text-center profile-title"> <p><%= poll.context %></p> </div>
   <div class="poll-informations">
-    <%= cl_image_tag poll.photo.path, width: 100, height: 120, crop: :fill, class: "min-photo-poll" %>
-
+    <%= link_to my_poll_path(poll) do %>
+      <% cl_image_tag(poll.photo.path, width: 100, height: 120, crop: :fill, class: "min-photo-poll") %>
+    <% end %>
     <div class="poll-answers">
       <h2 id="yay"><%= poll.yays_count %><%= image_tag "yay.png", class: "poll-yn-profile" %></h2>
       <h2 id="nay"><%= poll.nays_count %><%= image_tag "nay.png", class: "poll-yn-profile" %></h2>
-      <p><%= poll.context %></p>
     </div>
 
     <div class="poll-time text-center">
-    <%= link_to "voir", my_poll_path(poll) %>
     <% if  poll.ends_at >  Time.zone.now %>
       <p><%= ((poll.ends_at -  Time.zone.now) / 60).to_i %> min.</p>
       <i class="fa fa-clock-o" aria-hidden="true"></i>
