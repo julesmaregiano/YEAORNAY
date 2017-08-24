@@ -3,8 +3,17 @@
     <p class= "poll_context_info text-center"> <%= poll.context %> </p>
   </div>
   <div class= "poll-author text-center">
+<<<<<<< HEAD
+    <% if poll.anonym? %>
+      <% user = {first_name: "Captain", last_name: "Annonyme", facebook_picture_url: "http://res.cloudinary.com/yay-or-nay/image/upload/v1503565490/anon_s9osdj.jpg"} %>
+    <% else %>
+      <% user = poll.user %>
+    <%end%>
+    <p> <%= cl_image_tag user[:facebook_picture_url], class: "avatar-bordered"  %> <%= user[:first_name] %> <%= user[:last_name] %> </p>
+=======
     <% user = poll.user %>
     <p> <%= cl_image_tag user.facebook_picture_url, class: "avatar-large"  %> <%= user.first_name %> <%= user.last_name %> </p>
+>>>>>>> master
   </div>
   <div class="poll-answers">
     <div class= "yay-barre" style= "width: <%= poll.yays_percent %>%">
