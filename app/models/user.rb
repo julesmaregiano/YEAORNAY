@@ -2,12 +2,14 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :rememberable, :trackable, :validatable
+  devise :omniauthable, omniauth_providers: [:facebook]
+
   has_many :polls
   has_many :belongings
+  has_many :groups, through: :belongings
   has_many :answers
   validates :first_name, :last_name, presence: true
   has_attachment :photo
-  devise :omniauthable, omniauth_providers: [:facebook]
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
@@ -27,11 +29,32 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]  # Fake password for validation
       user.save
     end
+    user.add_groups
     return user
   end
 
-  def facebook
-    @graph = Koala::Facebook::API.new(ENV["MY_TOKEN"])
-    @graph.get_object("me")
+  def facebook_likes # récupére les likes de l'utilisateur
+    @graph = Koala::Facebook::API.new(token)
+
+    likes = []
+
+    feed = @graph.get_connections("me", "likes")
+
+    until feed.nil?
+      likes << feed
+      feed = feed.next_page
+    end
+    likes.flatten  # tableau de hash
   end
+
+  def add_groups # ajoute les pages dans la DB sauf si elles existent déjà
+    self.facebook_likes.each do |like|
+      group = Group.find_by(facebook_id: like["id"].to_i) || Group.create(name: like["name"], facebook_id: like["id"].to_i)
+      unless Belonging.find_by(group_id: group.id)
+        self.groups << group
+        self.save
+      end
+    end
+  end
+
 end
