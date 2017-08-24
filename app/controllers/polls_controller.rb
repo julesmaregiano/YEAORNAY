@@ -11,7 +11,7 @@ class PollsController < ApplicationController
     @poll = current_user.polls.build(poll_params)
     @poll.ends_at = Time.now + 7200
     if @poll.save
-      redirect_to polls_path
+      redirect_to new_poll_target_path(@poll)
     else
       render :new
     end
