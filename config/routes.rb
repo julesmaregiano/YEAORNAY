@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :polls, only: [:new, :index, :create] do
     resources :targets, only: [:new, :create]
+    resources :answers, only: [:new, :create]
   end
-  resources :answers, only: [:new, :create]
-
+  
   namespace :my do
     resources :polls, only: [:index, :destroy]
   end

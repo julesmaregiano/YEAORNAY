@@ -1,38 +1,15 @@
 <% content_for(:body_class, "full-page") %>
 
-<div class="container">
-  <div class="row">
-    <% @polls.each do |poll| %>
-      <div class="poll">
-        <%= render "poll", poll: poll  %>
-      </div>
-      <div class="poll-info">
-        <%= render "poll_info", poll: poll  %>
-      </div>
-    <% end %>
-  </div>
-</div>
-<% if @polls.empty? %>
-  <div class="container text-center">
-    <%= render "no_poll" %>
-  </div>
-<%end%>
+<%= link_to "", my_polls_path, class: "button-nav-left fa fa-user" %>
+<%= link_to "", new_poll_path, class: "button-nav-right fa fa-camera" %>
 
- <% content_for(:after_js) do %>
-   <script>
-     $(function(){
-       $(".poll-info").hide();
-       var $pollShow = false;
-         $('.poll').on('touchstart', function(event){
-           console.log("Click");
-           if ($pollShow == false) {
-             $(".poll-info").show();
-             $pollShow = true;
-           } else {
-             $(".poll-info").hide();
-             $pollShow = false;
-           }
-         });
-       });
-   </script>
- <% end %>
+<div class="polls">
+  <% @polls.each do |poll| %>
+    <%= render "poll", poll: poll  %>
+  <% end %>
+</div>
+
+<div class="text-center">
+  <p> Nothing to yay or nay :( </p>
+  <%= link_to "Try to Refresh :) ", "" %>
+</div>
