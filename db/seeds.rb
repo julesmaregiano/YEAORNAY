@@ -7,10 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts 'Suppression des datas existantes'
+Belonging.destroy_all
+Target.destroy_all
+Group.destroy_all
 Answer.destroy_all
 Poll.destroy_all
 User.destroy_all
-puts 'Users, Polls, Answers & Groups supprimés.'
+puts 'Users, Polls, Answers, Belongings, Targets & Groups supprimés.'
 
 first_name = ['Jerome', 'Ophélie', 'Jules', 'Arnaud']
 last_name = ['Vivier', 'Delrieu', 'Maregiano', 'APRAHAMIAN']
