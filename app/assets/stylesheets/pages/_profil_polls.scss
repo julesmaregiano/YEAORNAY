@@ -13,6 +13,9 @@
 .min-photo-poll {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  height: 20vh;
+  margin-top: -15px;
+
 }
 
 .poll-yn {
@@ -21,6 +24,24 @@
   position: absolute;
   top: -34px;
   right: -83px;
+}
+
+.poll-ny {
+  width: 55px;
+  margin: 0px 15px;
+  position: absolute;
+  top: -28px;
+  right: -80px;
+}
+
+.poll-yn-profile {
+  width: 55px;
+  margin: 0px 15px;
+}
+
+.poll-ny-profile {
+  width: 55px;
+  margin: 0px 15px;
 }
 
 .yay-barre-count{
@@ -39,14 +60,6 @@
   top: 4px;
   right: -80px;
   color: #00C8FF;
-}
-
-.poll-ny {
-  width: 55px;
-  margin: 0px 15px;
-  position: absolute;
-  top: -28px;
-  right: -80px;
 }
 
 .poll-answers {

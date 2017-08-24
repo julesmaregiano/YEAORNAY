@@ -1,27 +1,31 @@
 
-  <div class="poll">
-    <%= render "poll_show", poll: @poll  %>
-  </div>
-  <div class="poll-info">
-    <%= render "poll_info", poll: @poll  %>
-  </div>
+<div class="poll" id="poll-<%= @poll.id %>">
+  <%= cl_image_tag @poll.photo.path, class: "poll-photo" %>
+  <% unless @poll.context.empty? %>
+    <div class="poll-text" style= "top: <%= @poll.context_y %>%">
+        <%=@poll.context%>
+    </div>
+  <% end %>
+  <%= render "poll_info", poll: @poll  %>
+</div>
 
-
- <% content_for(:after_js) do %>
-   <script>
-     $(function(){
-       $(".poll-info").hide();
-       var $pollShow = false;
-         $('.poll').on('touchstart', function(event){
-           console.log("Click");
-           if ($pollShow == false) {
-             $(".poll-info").show();
-             $pollShow = true;
-           } else {
-             $(".poll-info").hide();
-             $pollShow = false;
-           }
-         });
-       });
-   </script>
- <% end %>
+<% content_for(:after_js) do %>
+  <script>
+ $(function(){
+   var $pollShow = false;
+     $('#poll-<%= @poll.id %> > img').on('touchstart', function(event){
+       if ($pollShow == false) {
+         $("#poll-info-<%= @poll.id %>").removeClass('hide-info');
+         $("#poll-info-<%= @poll.id %>").addClass('show-info');
+         $('#poll-<%= @poll.id %> > div.poll-text').hide()
+         $pollShow = true;
+       } else {
+         $("#poll-info-<%= @poll.id %>").removeClass('show-info');
+         $("#poll-info-<%= @poll.id %>").addClass('hide-info');
+         $('#poll-<%= @poll.id %> > div.poll-text').show()
+         $pollShow = false;
+       }
+     });
+   });
+  </script>
+<% end %>
