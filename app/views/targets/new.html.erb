@@ -1,0 +1,21 @@
+<h1>Choisis tes cibles</h1>
+
+<%= simple_form_for @poll, url: poll_targets_path(@poll), method: :post do |f| %>
+  <div class="collection-check-boxes">
+    <%= f.collection_check_boxes :group_ids, current_user.groups, :id, :name do |input| %>
+      <label>
+        <%= input.check_box %>
+        <div class="check-box">
+          <i class="fa fa-check-square-o checked" aria-hidden="true"></i>
+          <i class="fa fa-square-o unchecked" aria-hidden="true"></i>
+          <%= input.text %>
+        </div>
+      </label>
+    <% end %>
+  </div>
+  <%= f.button :submit, class: "btn btn-primary btn-block"  %>
+<% end %>
+
+
+
+

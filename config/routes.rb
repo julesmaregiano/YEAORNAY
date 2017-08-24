@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :targets, only: [:new, :create]
     resources :answers, only: [:new, :create]
   end
-  
+
   namespace :my do
     resources :polls, only: [:index, :show, :destroy]
   end
