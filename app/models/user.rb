@@ -19,9 +19,9 @@ class User < ApplicationRecord
 
     user = User.find_by(provider: auth.provider, uid: auth.uid)
     user ||= User.find_by(email: auth.info.email) # User did a regular sign up in the past.
-
     if user
       user.update(user_params)
+      raise
     else
       user = User.new(user_params)
       user.password = Devise.friendly_token[0,20]  # Fake password for validation
@@ -30,8 +30,35 @@ class User < ApplicationRecord
     return user
   end
 
-  def facebook
-    @graph = Koala::Facebook::API.new(ENV["MY_TOKEN"])
-    @graph.get_object("me")
+  def facebook_likes
+    @graph = Koala::Facebook::API.new(token)
+
+    likes = []
+
+    feed = @graph.get_connections("me", "likes")
+
+    until feed.nil?
+      likes << feed
+      feed = feed.next_page
+    end
+    likes.flatten  # tableau de hash
+  end
+
+  def add_groups
+    self.facebook_likes.each do |like|
+      Group.create(name: like["name"])
+    end
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
