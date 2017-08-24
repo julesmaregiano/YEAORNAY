@@ -4,7 +4,7 @@
   justify-content: space-between;
   height: 20vh;
   position: relative;
-  border-bottom: solid $blue 2px;
+  border-bottom: solid $red 2px;
   margin: 20px 20px;
 }
 
@@ -54,6 +54,13 @@
   &-child{
     height: 25px;
   }
+}
+
+.profile-title{
+  line-height: 15px;
+  color: rgba(0, 0, 0, 0.9);
+  opacity: 0.5;
+  font-style: bold;
 }
 
 
