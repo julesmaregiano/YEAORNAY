@@ -7,10 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts 'Suppression des datas existantes'
+Belonging.destroy_all
+Target.destroy_all
+Group.destroy_all
 Answer.destroy_all
 Poll.destroy_all
 User.destroy_all
-puts 'Users, Polls, Answers & Groups supprimés.'
+puts 'Users, Polls, Answers, Belongings, Targets & Groups supprimés.'
 
 first_name = ['Jerome', 'Ophélie', 'Jules', 'Arnaud']
 last_name = ['Vivier', 'Delrieu', 'Maregiano', 'APRAHAMIAN']
@@ -39,19 +42,20 @@ photos = ["http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/bijou_2
          "http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/voiture_2_720_mqzabf.jpg",
          "http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/voiture_1_720_hqe0e2.jpg"]
 9.times do |i|
-  Poll.create!(context: context[i], ends_at: Time.now+7200 , anonym: rand(0..1).to_i, user: User.first, photo_url: photos[i], context_y: context_y.sample)
-  puts "Poll #{i+1} créé"
+  value = [true, false].sample
+  a = Poll.create!(context: context[i], ends_at: Time.now+7200, user: User.first, photo_url: photos[i], context_y: context_y.sample, anonym: value)
+  puts "Poll, anonym: #{a.anonym}, n°#{i+1} créé"
 end
 
-# User.all.each do |user|
-#   Poll.all.each do |poll|
-#     if [true, false].sample
-#       value = [0, 1].sample
-#       # poll.answers.create!(value: value, user: user)
-#       puts "User  #{user.first_name} a répondu #{value} à #{poll.context}"
-#     end
-#   end
-# end
+User.all.each do |user|
+  Poll.all.each do |poll|
+    if [true, false].sample
+      value = [0, 1].sample
+      poll.answers.create!(value: value, user: user)
+      puts "User  #{user.first_name} a répondu #{value} à #{poll.context}"
+    end
+  end
+end
 
 puts 'Done.'
 puts 'Fin du Seed'
