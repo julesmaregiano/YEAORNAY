@@ -27,5 +27,4 @@ class AnswersController < ApplicationController
   def answer_params
     params.require(:answer).permit(:value)
   end
-
 end

@@ -3,13 +3,11 @@
 <%= link_to "", my_polls_path, class: "button-nav-left fa fa-user" %>
 <%= link_to "", new_poll_path, class: "button-nav-right fa fa-camera" %>
 
-
 <div class="polls">
   <% @polls.each do |poll| %>
     <%= render "poll", poll: poll  %>
   <% end %>
 </div>
-
 
 <div class="text-center">
   <p> Nothing to yay or nay :( </p>
