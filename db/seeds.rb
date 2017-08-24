@@ -43,15 +43,15 @@ photos = ["http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/bijou_2
   puts "Poll #{i+1} créé"
 end
 
-# User.all.each do |user|
-#   Poll.all.each do |poll|
-#     if [true, false].sample
-#       value = [0, 1].sample
-#       # poll.answers.create!(value: value, user: user)
-#       puts "User  #{user.first_name} a répondu #{value} à #{poll.context}"
-#     end
-#   end
-# end
+User.all.each do |user|
+  Poll.all.each do |poll|
+    if [true, false].sample
+      value = [0, 1].sample
+      poll.answers.create!(value: value, user: user)
+      puts "User  #{user.first_name} a répondu #{value} à #{poll.context}"
+    end
+  end
+end
 
 puts 'Done.'
 puts 'Fin du Seed'
