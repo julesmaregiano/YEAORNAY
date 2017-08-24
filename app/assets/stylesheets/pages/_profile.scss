@@ -5,7 +5,7 @@
   height: 20vh;
   position: relative;
   border-bottom: solid $blue 2px;
-  margin: 10px 10px;
+  margin: 20px 20px;
 }
 
 .profile-avatar{
@@ -13,12 +13,12 @@
   border-radius: 20px;
   flex-grow: 0;
   margin: 2px;
-  margin-bottom: 14px;
+  margin-bottom: 20px;
 }
 
 .profile-child  {
   flex-grow: 1;
-  padding-left: 10px;
+  padding-left: 25px;
 }
 
 .profile-child h1{
@@ -55,4 +55,6 @@
     height: 25px;
   }
 }
+
+
 

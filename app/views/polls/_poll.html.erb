@@ -8,7 +8,7 @@
   <%= link_to (image_tag("smiley1.png")), poll_answers_path(poll, "answer" => {"value" => 1 }), class: "poll-button-yay", method: :post, remote: true %>
   <%= link_to (image_tag("pile-of-poo.png")), poll_answers_path(poll, "answer" => {"value" => 0 }), class: "poll-button-nay", method: :post, remote: true %>
   <%= render "poll_info", poll: poll  %>
-</div>
+</div> a
 
 <% content_for(:after_js) do %>
   <script>
