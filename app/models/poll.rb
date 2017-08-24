@@ -6,7 +6,6 @@ class Poll < ApplicationRecord
   has_attachment :photo
 
   scope :from_me, -> (user) { where(user: user) }
-
   scope :random, -> { order('RANDOM()') }
   scope :not_from, -> (user) { where.not(user: user) }
   scope :ongoing, -> { where("ends_at > ?", DateTime.now) }

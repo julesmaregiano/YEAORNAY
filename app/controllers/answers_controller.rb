@@ -1,5 +1,4 @@
 class AnswersController < ApplicationController
-
   def new
     @answer = Answer.new
     @user = current_user
@@ -19,5 +18,4 @@ class AnswersController < ApplicationController
   def answer_params
     params.require(:answer).permit(:value, :user_id, :poll_id)
   end
-
 end
