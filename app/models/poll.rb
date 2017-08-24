@@ -34,4 +34,22 @@ class Poll < ApplicationRecord
   def nays_count
     self.answers.where(value: 0).size
   end
+
+  def yays_percent
+    if self.answers.size != 0
+      (yays_count * 100) / self.answers.size
+    else
+      yays_count
+    end
+  end
+
+  def nays_percent
+    if self.answers.size != 0
+      (nays_count * 100) / self.answers.size
+    else
+      nays_count
+    end
+  end
+
+
 end
