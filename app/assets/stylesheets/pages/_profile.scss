@@ -5,13 +5,15 @@
   height: 20vh;
   position: relative;
   border-bottom: solid $blue 2px;
+  margin: 10px 10px;
 }
 
 .profile-avatar{
   width: 20vh;
-  border-radius: 50px;
+  border-radius: 20px;
   flex-grow: 0;
   margin: 2px;
+  margin-bottom: 14px;
 }
 
 .profile-child  {
@@ -37,6 +39,20 @@
   right: 5px;
   ul {
     list-style: none;
+  }
+}
+
+.profile-figures{
+  line-height: 4px;
+  color: rgba(0, 0, 0, 0.5);
+  opacity: 0.5;
+  font-style: italic;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 70px;
+  &-child{
+    height: 25px;
   }
 }
 

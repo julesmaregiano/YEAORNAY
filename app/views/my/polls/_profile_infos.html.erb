@@ -1,32 +1,33 @@
 <div class="profile-container">
   <%= image_tag @user.facebook_picture_url, class: "profile-avatar"  %>
-    <div class="profile-child">
-      <div>
-        <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-      </div>
-      <div>
-        <h3><%= @user.polls.count %> sondages</h3>
-        <h3><%= @user.answers.count %> réponses</h3>
-      </div>
+  <div class="profile-child">
+    <div>
+      <h1><%= @user.first_name %> <%= @user.last_name %></h1>
     </div>
-    <div class="profile-settings">
-      <ul>
-        <li>
-          <%= link_to "#" do %><i class="fa fa-cog" aria-hidden="true"></i> <% end %>
-        </li>
-        <li>
-          <%= link_to new_poll_path do %><i class="fa fa-camera" aria-hidden="true"></i></i> <% end %>
-        </li>
-        <li>
-          <%= link_to polls_path do %><i class="fa fa-eye" aria-hidden="true"></i><% end %>
-        </li>
-        <li>
-          <%= link_to destroy_user_session_path, method: :delete do %>
-            <i class="fa fa-sign-out"></i>
-          <% end %>
-        </li>
-      </ul>
+    <div class= "profile-figures">
+      <div class="profile-figures-child"> <%= @user.polls.count %> yay </div>
+      <div class="profile-figures-child"><%= @user.answers.count %> réponses</div>
+      <div class="profile-figures-child"> 7 groupes </div>
     </div>
   </div>
+  <div class="profile-settings">
+    <ul>
+      <li>
+        <%= link_to "#" do %><i class="fa fa-cog" aria-hidden="true"></i> <% end %>
+      </li>
+      <li>
+        <%= link_to new_poll_path do %><i class="fa fa-camera" aria-hidden="true"></i></i> <% end %>
+      </li>
+      <li>
+        <%= link_to polls_path do %><i class="fa fa-eye" aria-hidden="true"></i><% end %>
+      </li>
+      <li>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out"></i>
+        <% end %>
+      </li>
+    </ul>
+  </div>
 </div>
+
 
