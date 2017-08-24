@@ -1,4 +1,4 @@
-<div class="poll-info" id="poll-info-<%= poll.id %>">
+<div class="poll-info hide-info" id="poll-info-<%= poll.id %>">
   <div>
     <p class= "poll_context_info"> <%= poll.context %> </p>
   </div>
@@ -6,8 +6,8 @@
     <% user = poll.user %>
     <p> <%= cl_image_tag user.facebook_picture_url, class: "avatar-bordered"  %> <%= user.first_name %> <%= user.last_name %> </p>
   </div>
-  <div class= "poll-result">
-    <h5> <strong> YAY: </strong> <%= poll.yays_count %></h5>
-    <h5> <strong> NAY: </strong> <%= poll.nays_count %></h5>
+  <div class="poll-answers">
+    <h2 id="yay"><%= poll.yays_count %><%= image_tag "yay.png", class: "poll-yn" %></h2>
+    <h2 id="nay"><%= poll.nays_count %><%= image_tag "nay.png", class: "poll-yn" %></h2>
   </div>
 </div>
