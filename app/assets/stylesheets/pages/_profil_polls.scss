@@ -16,12 +16,43 @@
 }
 
 .poll-yn {
-  width: 60px;
+  width: 55px;
   margin: 0px 15px;
+  position: absolute;
+  top: -34px;
+  right: -83px;
+}
+
+.yay-barre-count{
+  width: 55px;
+  margin: 0px 15px;
+  position: absolute;
+  top: -5px;
+  right: -80px;
+  color: #FF0066;
+}
+
+.nay-barre-count{
+  width: 55px;
+  margin: 0px 15px;
+  position: absolute;
+  top: 4px;
+  right: -80px;
+  color: #00C8FF;
+}
+
+.poll-ny {
+  width: 55px;
+  margin: 0px 15px;
+  position: absolute;
+  top: -28px;
+  right: -80px;
 }
 
 .poll-answers {
   margin-left: 20px;
+  margin-right: 92px;
+  margin-top: 70px;
   p {
     padding-top: 10px;
     opacity: 0.5;

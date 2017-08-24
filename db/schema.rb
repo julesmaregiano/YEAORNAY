@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170823083913) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
+    t.bigint "facebook_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
