@@ -24,8 +24,7 @@ class Poll < ApplicationRecord
   end
 
   def self.list user
-    ongoing
-      .from_me(user)
+    from_me(user)
   end
 
   def yays_count
