@@ -7,6 +7,8 @@
     </div>
   <% end %>
   <%= render "poll_info", poll: @poll  %>
+  <%= link_to "", my_polls_path, class: "poll-button-profile fa fa-user" %>
+  <%= link_to "", new_poll_path, class: "poll-button-new fa fa-camera" %>
 </div>
 
 <% content_for(:after_js) do %>

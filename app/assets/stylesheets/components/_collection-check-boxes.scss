@@ -10,12 +10,15 @@
     cursor: pointer;
   }
   .check-box {
-    background: #CCC;
+    background: $blue;
     border-radius: 3px;
     padding: 6px 10px;
     color: white;
     margin: 5px;
     font-weight: normal;
+    font-size: 18px;
+    width: 50vh;
+
   }
 
   input:checked + .check-box .checked {
@@ -25,6 +28,30 @@
     display: none;
   }
   input:checked + .check-box {
-    background: $green;
+    background: #86A6DF;
+    color: white;
+    font-size: 27px;
+
   }
+}
+
+.check-box-title{
+  background-color: $red;
+  color: white;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+}
+
+.btn-block{
+  color: white;
+  background-color: $red;
+}
+
+.hidden {
+    display: none;
 }
