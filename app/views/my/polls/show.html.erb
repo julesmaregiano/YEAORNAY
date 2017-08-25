@@ -6,11 +6,10 @@
         <%=@poll.context%>
     </div>
   <% end %>
-  <%= render "poll_info", poll: @poll  %>
-  <%= link_to "", my_polls_path, class: "poll-button-profile fa fa-user" %>
-  <%= link_to "", new_poll_path, class: "poll-button-new fa fa-camera" %>
+  <%= render "poll_info", poll: @poll %>
 </div>
-
+<%= link_to "", my_polls_path, class: "button-nav-left fa fa-user" %>
+<%= link_to "", new_poll_path, class: "button-nav-right fa fa-camera" %>
 <% content_for(:after_js) do %>
   <script>
  $(function(){
