@@ -9,7 +9,10 @@ class AnswersController < ApplicationController
   def create
     @answer = current_user.answers.new(answer_params)
     @answer.poll = @poll
-
+    if last_answer?
+      @polls = Poll.answerable(current_user)
+    end
+    
     if @answer.save!
       respond_to do |format|
         format.html { redirect_to polls_path }
@@ -22,6 +25,10 @@ class AnswersController < ApplicationController
 
   def set_poll
     @poll = Poll.find(params[:poll_id])
+  end
+
+  def last_answer?
+    params[:answer][:last].empty?
   end
 
   def answer_params

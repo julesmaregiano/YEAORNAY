@@ -4,7 +4,8 @@
 <%= link_to "", new_poll_path, class: "button-nav-right fa fa-camera" %>
 
 <div class="polls">
-  <% @polls.each do |poll| %>
+  <%= render "poll", poll: @polls.last, last: true unless @polls.empty? %>
+  <% @polls[0..-2].each do |poll| %>
     <%= render "poll", poll: poll  %>
   <% end %>
 </div>

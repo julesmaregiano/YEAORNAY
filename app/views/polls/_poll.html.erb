@@ -5,32 +5,79 @@
         <%=poll.context%>
     </div>
   <% end %>
-  <%= link_to (image_tag("smiley1.png")), poll_answers_path(poll, "answer" => {"value" => 1 }), class: "poll-button-yay", method: :post, remote: true %>
-  <%= link_to (image_tag("pile-of-poo.png")), poll_answers_path(poll, "answer" => {"value" => 0 }), class: "poll-button-nay", method: :post, remote: true %>
-  <%= render "poll_info", poll: poll  %>
-</div> a
+  <%= link_to (image_tag("smiley1.png")), poll_answers_path(poll, "answer" => {"value" => 1, "last" => local_assigns[:last] } ), class: "poll-button-yay", method: :post, remote: true %>
+  <%= link_to (image_tag("pile-of-poo.png")), poll_answers_path(poll, "answer" => {"value" => 0, "last" => local_assigns[:last] } ), class: "poll-button-nay", method: :post, remote: true %>
+  <%= render "polls/poll_info", poll: poll  %>
+</div>
+
 
 <% content_for(:after_js) do %>
-  <script>
- $(function(){
-   var $pollShow = false;
-     $('#poll-<%= poll.id %> > img').on('touchstart', function(event){
-       if ($pollShow == false) {
-         $("#poll-info-<%= poll.id %>").removeClass('hide-info');
-         $("#poll-info-<%= poll.id %>").addClass('show-info');
-         $('#poll-<%= poll.id %> > div.poll-text').hide()
-         $('#poll-<%= poll.id %> > a.poll-button-yay').hide()
-         $('#poll-<%= poll.id %> > a.poll-button-nay').hide()
-         $pollShow = true;
-       } else {
-         $("#poll-info-<%= poll.id %>").removeClass('show-info');
-         $("#poll-info-<%= poll.id %>").addClass('hide-info');
-         $('#poll-<%= poll.id %> > div.poll-text').show()
-         $('#poll-<%= poll.id %> > a.poll-button-yay').show()
-         $('#poll-<%= poll.id %> > a.poll-button-nay').show()
-         $pollShow = false;
-       }
-     });
+<script>
+$(function(){
+ var $pollShow = false;
+   $('#poll-<%= poll.id %> > img').on('touchstart', function(event){
+     if ($pollShow == false) {
+       $("#poll-info-<%= poll.id %>").removeClass('hide-info');
+       $("#poll-info-<%= poll.id %>").addClass('show-info');
+       $('#poll-<%= poll.id %> > div.poll-text').hide()
+       $('#poll-<%= poll.id %> > a.poll-button-yay').hide()
+       $('#poll-<%= poll.id %> > a.poll-button-nay').hide()
+       $pollShow = true;
+     } else {
+       $("#poll-info-<%= poll.id %>").removeClass('show-info');
+       $("#poll-info-<%= poll.id %>").addClass('hide-info');
+       $('#poll-<%= poll.id %> > div.poll-text').show()
+       $('#poll-<%= poll.id %> > a.poll-button-yay').show()
+       $('#poll-<%= poll.id %> > a.poll-button-nay').show()
+       $pollShow = false;
+     }
    });
-  </script>
+ });
+</script>
+<!--
+<script>
+$(function(){
+  swipe_det = new Object();
+  swipe_det.sX = 0; swipe_det.sY = 0; swipe_det.eX = 0; swipe_det.eY = 0;
+  var min_x = 30;  //min x swipe for horizontal swipe
+  var max_x = 30;  //max x difference for vertical swipe
+  var min_y = 50;  //min y swipe for vertical swipe
+  var max_y = 60;  //max y difference for horizontal swipe
+  var direc = "";
+  console.log("initialized")
+  $('#poll-<%= poll.id %> > img').on('touchstart', function(e){
+    console.log("touched");
+    var t = e.touches[0];
+    swipe_det.sX = t.screenX;
+    swipe_det.sY = t.screenY;
+  });//max x difference for vertical swipe
+  var min_y = 50;
+  $('#poll-<%= poll.id %>').on('touchmove',function(e){
+    console.log("Mouved");
+    e.preventDefault();
+    var t = e.touches[0];
+    swipe_det.eX = t.screenX;
+    swipe_det.eY = t.screenY;
+  });
+  $('#poll-<%= poll.id %>').on('touchend',function(e){
+    console.log("release")
+    //horizontal detection
+    if ((((swipe_det.eX - min_x > swipe_det.sX) || (swipe_det.eX + min_x < swipe_det.sX)) && ((swipe_det.eY < swipe_det.sY + max_y) && (swipe_det.sY > swipe_det.eY - max_y) && (swipe_det.eX > 0)))) {
+      if(swipe_det.eX > swipe_det.sX) direc = "r";
+      else direc = "l";
+    }
+    //vertical detection
+    else if ((((swipe_det.eY - min_y > swipe_det.sY) || (swipe_det.eY + min_y < swipe_det.sY)) && ((swipe_det.eX < swipe_det.sX + max_x) && (swipe_det.sX > swipe_det.eX - max_x) && (swipe_det.eY > 0)))) {
+      if(swipe_det.eY > swipe_det.sY) direc = "d";
+      else direc = "u";
+    }
+
+    if (direc != "") {
+      if(typeof func == 'function') func(el,direc);
+    }
+    direc = "";
+    swipe_det.sX = 0; swipe_det.sY = 0; swipe_det.eX = 0; swipe_det.eY = 0;
+  });
+});
+</script> -->
 <% end %>
