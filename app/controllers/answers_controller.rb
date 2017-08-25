@@ -9,11 +9,15 @@ class AnswersController < ApplicationController
   def create
     @answer = current_user.answers.new(answer_params)
     @answer.poll = @poll
-    if last_answer?
-      @polls = Poll.answerable(current_user)
-    end
-    
+
     if @answer.save!
+
+      if last_answer?
+        @polls = Poll.answerable(current_user)
+      else
+        @polls = []
+      end
+
       respond_to do |format|
         format.html { redirect_to polls_path }
         format.js # render app/views/answers/create.js.erb
@@ -28,7 +32,7 @@ class AnswersController < ApplicationController
   end
 
   def last_answer?
-    params[:answer][:last].empty?
+    not params[:answer][:last].empty?
   end
 
   def answer_params

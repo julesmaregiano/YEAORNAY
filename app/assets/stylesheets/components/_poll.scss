@@ -6,6 +6,7 @@
   right: 0;
   transition: transform 600ms ease;
   overflow: hidden;
+  background: $pink;
 
   &.animate-yay {
     transform: rotate(10deg) translateX(200%);
@@ -175,5 +176,9 @@
   margin-top: -15px;
   position: relative;
   top: 14px;
+}
 
+a.poll-button-yay > img:active {
+    transition: transform ease 200ms;
+    transform: scale(1.2);
 }
