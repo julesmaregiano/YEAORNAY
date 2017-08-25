@@ -20,7 +20,7 @@ class Poll < ApplicationRecord
       .not_from(user)
       .not_answered_by(user)
       .random
-      .first(10)
+      .first(3)
   end
 
   def self.list user
