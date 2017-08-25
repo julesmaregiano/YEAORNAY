@@ -21,6 +21,7 @@ class User < ApplicationRecord
 
     user = User.find_by(provider: auth.provider, uid: auth.uid)
     user ||= User.find_by(email: auth.info.email) # User did a regular sign up in the past.
+
     if user
       user.update(user_params)
     else
@@ -35,15 +36,16 @@ class User < ApplicationRecord
   def facebook_likes # récupére les likes de l'utilisateur
     @graph = Koala::Facebook::API.new(token)
 
-    likes = []
+    # Décommenter tout le gris pour redemander tous les likes à la connection.
+    # likes = []
 
     feed = @graph.get_connections("me", "likes")
 
-    until feed.nil?
-      likes << feed
-      feed = feed.next_page
-    end
-    likes.flatten  # tableau de hash
+    # until feed.nil?
+    #   likes << feed
+    #   feed = feed.next_page
+    # end
+    # likes.flatten  # tableau de hash
   end
 
   def add_groups # ajoute les pages dans la DB sauf si elles existent déjà
@@ -58,5 +60,3 @@ class User < ApplicationRecord
   end
 
 end
-
-
