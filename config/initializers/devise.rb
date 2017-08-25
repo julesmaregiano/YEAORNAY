@@ -11,7 +11,7 @@ Devise.setup do |config|
   config.omniauth :facebook, ENV["FB_ID"], ENV["FB_SECRET"],
     scope: 'email, user_likes',
     info_fields: 'email, first_name, last_name, id, name',
-    image_size: 'square',  # 50x50, guaranteed ratio
+    image_size: {width: 800, height: 800},  # 50x50, guaranteed ratio
     secure_image_url: true
 
 
