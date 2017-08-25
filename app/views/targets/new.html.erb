@@ -1,20 +1,28 @@
-<h1>Choisis tes cibles</h1>
+<div class= "check-box-title">
+<h4 class= "text-center">Choisis tes cibles</h4>
+</div>
 
-<%= simple_form_for @poll, url: poll_targets_path(@poll), method: :post do |f| %>
-  <div class="collection-check-boxes">
-    <%= f.collection_check_boxes :group_ids, current_user.groups, :id, :name do |input| %>
-      <label>
-        <%= input.check_box %>
-        <div class="check-box">
-          <i class="fa fa-check-square-o checked" aria-hidden="true"></i>
-          <i class="fa fa-square-o unchecked" aria-hidden="true"></i>
-          <%= input.text %>
-        </div>
-      </label>
-    <% end %>
-  </div>
-  <%= f.button :submit, class: "btn btn-primary btn-block"  %>
-<% end %>
+
+<div class= "container">
+  <%= simple_form_for @poll, url: poll_targets_path(@poll), method: :post do |f| %>
+    <div class="collection-check-boxes">
+      <%= f.collection_check_boxes :group_ids, current_user.groups, :id, :name do |input| %>
+        <label>
+          <%= input.check_box %>
+          <div class="check-box">
+            <%= image_tag "smiley1.png", class: "avatar" %>
+            <i class="fa fa-check-square-o checked hidden" aria-hidden="true"></i>
+            <i class="fa fa-square-o unchecked hidden" aria-hidden="true"></i>
+            <%= input.text %>
+          </div>
+        </label>
+      <% end %>
+    </div>
+    <%= f.button :submit, class: "btn btn-primary btn-block"  %>
+  <% end %>
+</div>
+
+
 
 
 
