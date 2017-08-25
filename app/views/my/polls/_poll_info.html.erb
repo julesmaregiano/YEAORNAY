@@ -11,7 +11,14 @@
     <p> <%= cl_image_tag user[:facebook_picture_url], class: "avatar-bordered"  %> <%= user[:first_name] %> <%= user[:last_name] %> </p>
   </div>
   <div class="poll-answers">
-    <h2 id="yay"><%= poll.yays_count %><%= image_tag "yay.png", class: "poll-yn" %></h2>
-    <h2 id="nay"><%= poll.nays_count %><%= image_tag "nay.png", class: "poll-yn" %></h2>
+    <div class= "yay-barre" style= "width: <%= poll.yays_percent %>%">
+      <%= image_tag "yay.png", class: "poll-yn" %>
+      <h4 class="yay-barre-count"> <%= poll.yays_count%> </h4>
+    </div>
+    <div class= "nay-barre" style= "width: <%= poll.nays_percent %>%">
+      <%= image_tag "nay.png", class: "poll-ny" %>
+      <h4 class="nay-barre-count"> <%= poll.nays_count %> </h4>
+    </div>
   </div>
+</div>
 </div>
