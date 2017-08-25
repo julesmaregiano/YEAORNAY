@@ -21,11 +21,12 @@ email = ['jeromevivier31@hotmail.com','ophelie.delrieu3@orange.fr', 'jmaregiano@
 facebook_picture_url = ["http://res.cloudinary.com/yay-or-nay/image/upload/v1503482894/vg5ohumoquc9brfvlcki.jpg", "http://res.cloudinary.com/yay-or-nay/image/upload/v1503482896/yptcefuagwuvrsszbart.jpg", "http://res.cloudinary.com/yay-or-nay/image/upload/v1503482898/jfqncddujly54p9lxnip.jpg", "http://res.cloudinary.com/yay-or-nay/image/upload/v1503482901/bx7btychqictejahrsqw.jpg"]
 
 puts 'Génération des users...'
-User.create(last_name: "Annonyme", first_name: "Annonyme", email: "yayornaytheapp@gmail.com", password: 'coucou', facebook_picture_url: facebook_picture_url[0]).save!
-for i in (0..3) do
-  User.create(last_name: last_name[i], first_name: first_name[i], email: email[i], password: 'coucou', facebook_picture_url: facebook_picture_url[i]).save!
-  puts "User #{i+1} créé"
-end
+User.create(last_name: "Captain", first_name: "Anonyme", email: "yayornaytheapp@gmail.com", password: 'coucou', facebook_picture_url: facebook_picture_url[0]).save!
+puts 'Captain Anonyme creé'
+# for i in (0..3) do
+#   User.create(last_name: last_name[i], first_name: first_name[i], email: email[i], password: 'coucou', facebook_picture_url: facebook_picture_url[i]).save!
+#   puts "User #{i+1} créé"
+# end
 puts 'Done.'
 
 puts 'Génération des Polls'
@@ -46,16 +47,16 @@ photos = ["http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/bijou_2
   a = Poll.create!(context: context[i], ends_at: Time.now+7200, user: User.first, photo_url: photos[i], context_y: context_y.sample, anonym: value)
   puts "Poll, anonym: #{a.anonym}, n°#{i+1} créé"
 end
-
-User.all.each do |user|
-  Poll.all.each do |poll|
-    if [true, false].sample
-      value = [0, 1].sample
-      poll.answers.create!(value: value, user: user)
-      puts "User  #{user.first_name} a répondu #{value} à #{poll.context}"
-    end
-  end
-end
+#
+# User.all.each do |user|
+#   Poll.all.each do |poll|
+#     if [true, false].sample
+#       value = [0, 1].sample
+#       poll.answers.create!(value: value, user: user)
+#       puts "User  #{user.first_name} a répondu #{value} à #{poll.context}"
+#     end
+#   end
+# end
 
 puts 'Done.'
 puts 'Fin du Seed'
