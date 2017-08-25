@@ -31,7 +31,7 @@ puts 'Done.'
 
 puts 'Génération des Polls'
 context = ['Vous en pensez quoi ?', 'Si je met ça à un mariage, yay ou nay?', "Je le prend ? Vite j'ai 10min!! merci!!", "J'hésite à les prendre les filles, yay ou nay?", '85€, je prend?', 'Je rencontre mes beaux-parents demain, YoN ?? :))', 'Pour aller à la plage', 'Moche?', 'Baleze non ?']
-context_y = [50, 75, 25 ]
+context_y = [50, 75, 25]
 user_id = rand(0..3).to_i
 photos = ["http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/bijou_2_480_tpr3ef.jpg",
          "http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/bijou_1_360_vyq3el.jpg",
@@ -42,7 +42,7 @@ photos = ["http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/bijou_2
          "http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/voiture_3_480_v6sykx.jpg",
          "http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/voiture_2_720_mqzabf.jpg",
          "http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/voiture_1_720_hqe0e2.jpg"]
-  yon = Group.create(facebook_id: 1696236193750789, name: "Yay or Nay")
+  yon = Group.create(facebook_id: 1696236193750789, name: "Yay or Nay", url: "https://scontent.xx.fbcdn.net/v/t1.0-1/c31.0.50.50/p50x50/20954014_1696236387084103_5962366096731458549_n.png?oh=cc4f425e9f1ba31593391324923c8605&oe=5A2CF534")
   puts yon
 9.times do |i|
   value = [true, false].sample
