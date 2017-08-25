@@ -7,6 +7,7 @@ class Poll < ApplicationRecord
   has_attachment :photo
 
   scope :from_me, -> (user) { where(user: user) }
+  scope :latest_to_old, -> { order(ends_at: :desc)}
   scope :ending_soon, -> { order(ends_at: :asc) }
   scope :not_from, -> (user) { where.not(user: user) }
   scope :ongoing, -> { where("ends_at > ?", DateTime.now) }
@@ -27,6 +28,7 @@ class Poll < ApplicationRecord
 
   def self.list user
     from_me(user)
+      .latest_to_old
   end
 
   def yays_count
