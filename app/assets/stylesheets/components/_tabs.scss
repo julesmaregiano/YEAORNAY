@@ -3,7 +3,6 @@
   margin-top: -20px;
   margin-bottom: -30px;
   padding: 12px 12px 12px 12px;
-  border-bottom: 2px solid $red;
   margin: 15px;
 }
 
@@ -45,4 +44,8 @@
 .tab.active {
   color: $blue;
   border-color: $red;
+}
+
+.dropdown-size{
+
 }
