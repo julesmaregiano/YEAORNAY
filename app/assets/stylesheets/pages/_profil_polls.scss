@@ -3,25 +3,67 @@
   align-items: center;
   justify-content: space-between;
   color: #4A4A4A;
-  border-bottom: 0.5px solid #4A4A4A;
-  margin: 15px;
-  h2 {
-    margin: 0;
-  }
+  border-bottom: solid $blue 2px;
+  margin: 20px 20px;
+
 }
 
 .min-photo-poll {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  height: 20vh;
+  margin-top: -15px;
+
 }
 
 .poll-yn {
-  width: 60px;
+  width: 55px;
   margin: 0px 15px;
+  position: absolute;
+  top: -34px;
+  right: -83px;
+}
+
+.poll-ny {
+  width: 55px;
+  margin: 0px 15px;
+  position: absolute;
+  top: -28px;
+  right: -80px;
+}
+
+.poll-yn-profile {
+  width: 55px;
+  margin: 0px 15px;
+}
+
+.poll-ny-profile {
+  width: 55px;
+  margin: 0px 15px;
+}
+
+.yay-barre-count{
+  width: 55px;
+  margin: 0px 15px;
+  position: absolute;
+  top: -5px;
+  right: -80px;
+  color: #FF0066;
+}
+
+.nay-barre-count{
+  width: 55px;
+  margin: 0px 15px;
+  position: absolute;
+  top: 4px;
+  right: -80px;
+  color: #00C8FF;
 }
 
 .poll-answers {
   margin-left: 20px;
+  margin-right: 92px;
+  margin-top: 70px;
   p {
     padding-top: 10px;
     opacity: 0.5;

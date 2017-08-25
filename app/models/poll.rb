@@ -1,7 +1,8 @@
 class Poll < ApplicationRecord
   belongs_to :user
-  has_many :answers
+  has_many :answers, dependent: :destroy
   has_many :targets
+  has_many :groups, through: :targets
   validates_associated :user, presence: true
   has_attachment :photo
 
@@ -34,4 +35,22 @@ class Poll < ApplicationRecord
   def nays_count
     self.answers.where(value: 0).size
   end
+
+  def yays_percent
+    if self.answers.size != 0
+      (yays_count * 100) / self.answers.size
+    else
+      yays_count
+    end
+  end
+
+  def nays_percent
+    if self.answers.size != 0
+      (nays_count * 100) / self.answers.size
+    else
+      nays_count
+    end
+  end
+
+
 end

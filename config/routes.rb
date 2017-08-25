@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     resources :targets, only: [:new, :create]
     resources :answers, only: [:new, :create]
   end
-  
+
   namespace :my do
-    resources :polls, only: [:index, :destroy]
+    resources :polls, only: [:index, :show, :destroy]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

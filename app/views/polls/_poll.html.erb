@@ -1,12 +1,14 @@
 <div class="poll" id="poll-<%= poll.id %>">
   <%= cl_image_tag poll.photo.path, class: "poll-photo" %>
-  <div class="poll-text" style= "top: <%= poll.context_y %>%">
-    <%= poll.context %>
-  </div>
+  <% unless poll.context.empty? %>
+    <div class="poll-text" style= "top: <%= poll.context_y %>%">
+        <%=poll.context%>
+    </div>
+  <% end %>
   <%= link_to (image_tag("smiley1.png")), poll_answers_path(poll, "answer" => {"value" => 1 }), class: "poll-button-yay", method: :post, remote: true %>
   <%= link_to (image_tag("pile-of-poo.png")), poll_answers_path(poll, "answer" => {"value" => 0 }), class: "poll-button-nay", method: :post, remote: true %>
   <%= render "poll_info", poll: poll  %>
-</div>
+</div> a
 
 <% content_for(:after_js) do %>
   <script>
