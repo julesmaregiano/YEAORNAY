@@ -1,10 +1,11 @@
 $('#poll-<%= @poll.id %>').addClass('animate-<%= @answer.value == 0 ? "nay" : "yay" %>');
 
-// $('.poll.animate-nay, .polls-animate-yay').remove();*
-
-<% unless @polls.empty? %>
-  $('.polls').prepend('<%= j render "polls/poll", poll: @polls.last, last: true unless @polls.empty? %>');
+<% if @polls.size > 1 %>
   <% @polls[0..-2].each do |poll| %>
     $('.polls').prepend('<%= j render "polls/poll", poll: poll  %>');
   <% end %>
+<% end %>
+
+<% if @polls.last %>
+  $('.polls').prepend('<%= j render "polls/poll", poll: @polls.last, last: true unless @polls.empty? %>');
 <% end %>

@@ -7,10 +7,11 @@ class Poll < ApplicationRecord
   has_attachment :photo
 
   scope :from_me, -> (user) { where(user: user) }
-  scope :random, -> { order('RANDOM()') }
+  scope :ending_soon, -> { order(ends_at: :asc) }
   scope :not_from, -> (user) { where.not(user: user) }
   scope :ongoing, -> { where("ends_at > ?", DateTime.now) }
   scope :not_answered_by, -> (user) { where('polls.id NOT IN (SELECT DISTINCT(poll_id) FROM answers WHERE user_id = ?)', user.id) }
+  scope :targeting, -> (user) { joins(:targets).where('targets.group_id IN (SELECT DISTINCT(group_id) FROM belongings WHERE user_id = ?)', user.id) }
 
   def self.answerable user
     # Le poll ne doit pas appartenir à l'utilisateur
@@ -19,7 +20,8 @@ class Poll < ApplicationRecord
     ongoing
       .not_from(user)
       .not_answered_by(user)
-      .random
+      .targeting(user)
+      .ending_soon
       .first(3)
   end
 
@@ -50,20 +52,6 @@ class Poll < ApplicationRecord
     else
       nays_count
     end
-  end
-
-  def self.common_groups user
-    polls = answerable(user)
-    belongings = user.belongings
-    common_polls = []
-    polls.each do |poll|
-      poll.targets.each do |target|
-        belongings.each do |belonging|
-          common_polls << poll if belonging.group_id == target.group_id
-        end
-      end
-    end
-    common_polls
   end
 
 end
