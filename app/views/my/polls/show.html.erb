@@ -1,0 +1,33 @@
+
+<div class="poll" id="poll-<%= @poll.id %>">
+  <%= cl_image_tag @poll.photo.path, class: "poll-photo" %>
+  <% unless @poll.context.empty? %>
+    <div class="poll-text" style= "top: <%= @poll.context_y %>%">
+        <%=@poll.context%>
+    </div>
+  <% end %>
+  <%= render "poll_info", poll: @poll  %>
+  <%= link_to "", my_polls_path, class: "poll-button-profile fa fa-user" %>
+  <%= link_to "", new_poll_path, class: "poll-button-new fa fa-camera" %>
+</div>
+
+<% content_for(:after_js) do %>
+  <script>
+ $(function(){
+   var $pollShow = false;
+     $('#poll-<%= @poll.id %> > img').on('touchstart', function(event){
+       if ($pollShow == false) {
+         $("#poll-info-<%= @poll.id %>").removeClass('hide-info');
+         $("#poll-info-<%= @poll.id %>").addClass('show-info');
+         $('#poll-<%= @poll.id %> > div.poll-text').hide()
+         $pollShow = true;
+       } else {
+         $("#poll-info-<%= @poll.id %>").removeClass('show-info');
+         $("#poll-info-<%= @poll.id %>").addClass('hide-info');
+         $('#poll-<%= @poll.id %> > div.poll-text').show()
+         $pollShow = false;
+       }
+     });
+   });
+  </script>
+<% end %>
