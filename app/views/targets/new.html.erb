@@ -2,11 +2,15 @@
 <h4 class= "text-center">Choisis tes cibles</h4>
 </div>
 
+<%= simple_form_for :search, html: {class: "text-center form-inline"}, url: new_poll_target_url, method: :get do |f| %>
+  <%= f.input :search, label: false %>
+  <%= f.button :submit, class: "btn btn-primary search-btn", value: "Rechercher" %>
+<% end %>
 
 <div class= "container">
   <%= simple_form_for @poll, url: poll_targets_path(@poll), method: :post do |f| %>
     <div class="collection-check-boxes">
-      <%= f.collection_check_boxes :group_ids, current_user.groups, :id, :name do |input| %>
+      <%= f.collection_check_boxes :group_ids, @groups, :id, :name do |input| %>
         <label>
           <%= input.check_box %>
           <div class="check-box">
@@ -21,6 +25,7 @@
     <%= f.button :submit, class: "btn btn-primary btn-block"  %>
   <% end %>
 </div>
+
 
 
 
