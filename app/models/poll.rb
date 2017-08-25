@@ -52,5 +52,18 @@ class Poll < ApplicationRecord
     end
   end
 
+  def self.common_groups user
+    polls = answerable(user)
+    belongings = user.belongings
+    common_polls = []
+    polls.each do |poll|
+      poll.targets.each do |target|
+        belongings.each do |belonging|
+          common_polls << poll if belonging.group_id == target.group_id
+        end
+      end
+    end
+    common_polls
+  end
 
 end

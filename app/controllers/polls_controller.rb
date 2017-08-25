@@ -1,6 +1,6 @@
 class PollsController < ApplicationController
   def index
-    @polls = Poll.answerable(current_user)
+    @polls = Poll.common_groups(current_user)
   end
 
   def new
