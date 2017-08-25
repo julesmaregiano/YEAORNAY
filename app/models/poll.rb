@@ -1,7 +1,7 @@
 class Poll < ApplicationRecord
   belongs_to :user
   has_many :answers, dependent: :destroy
-  has_many :targets
+  has_many :targets, dependent: :destroy
   has_many :groups, through: :targets
   validates_associated :user, presence: true
   has_attachment :photo
