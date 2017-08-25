@@ -25,5 +25,12 @@
   </div>
 </div>
 
-
-
+<% content_for(:after_js) do %>
+  <script>
+    $(function(){
+      $(".navbar-wagon-item").click(function() {
+        $(".dropdown-menu").toggle()
+      });
+    });
+  </script>
+<% end %>
