@@ -181,3 +181,8 @@ a.poll-button-yay > img:active {
     transition: transform ease 200ms;
     transform: scale(1.2);
 }
+
+a.poll-button-nay > img:active {
+    transition: transform ease 200ms;
+    transform: scale(1.2);
+}
