@@ -7,4 +7,9 @@ class Group < ApplicationRecord
   validates_uniqueness_of :facebook_id
   validates_uniqueness_of :name
   # has_attachment :photo
+
+  def self.search(params)
+    groups = Group.all
+    groups.where("name LIKE ?", "%#{search}%")
+  end
 end
