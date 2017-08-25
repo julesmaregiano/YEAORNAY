@@ -8,8 +8,8 @@ class Group < ApplicationRecord
   validates_uniqueness_of :name
   # has_attachment :photo
 
-  def self.search(params)
+  def self.search(search)
     groups = Group.all
-    groups.where("name LIKE ?", "%#{search}%")
+    groups = groups.where("name LIKE ?", "%#{search[:search]}%")
   end
 end
