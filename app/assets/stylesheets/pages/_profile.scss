@@ -2,47 +2,57 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 20vh;
+  height: 17vh;
   position: relative;
-  margin: 3vh;
-}
-
-.profile-container h1{
-  margin-top: 2vh;
+  margin: 1vh;
+  h1{
+    margin-top: 2vh;
+  }
+  h3 {
+    color: black;
+    font-size: 20px;
+  }
+  h4 {
+    font-size: 17px;
+  }
+  h3, h4 {
+    margin: 2px 4px;
+    padding: 0px 4px;
+  }
 }
 
 .profile-avatar{
-  width: 17vh;
-  border-radius: 20px;
+  width: 15vh;
+  border-radius: 50px;
   flex-grow: 0;
-  margin: 0vh;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   object-fit: cover;
 }
 
 .profile-child  {
   flex-grow: 1;
-  padding-left: 4vh;
+  padding-left: 2vh;
 }
 
 .profile-child h1{
-  font-size: 18px;
+  font-weight: bold;
 }
 
-.profile-child h3{
-  font-size: 12px;
+.profile-child h4{
   color: gray;
 }
 
 .profile-settings {
   font-size: 30px;
-  opacity: 50%;
   flex-grow: 0;
   position: absolute;
   top: 5px;
   right: 5px;
   ul {
     list-style: none;
+  }
+  i {
+    opacity: 990%;
   }
 }
 
@@ -51,19 +61,18 @@
   color: rgba(0, 0, 0, 0.5);
   opacity: 0.5;
   font-style: italic;
-  margin-bottom: 5px;
   display: flex;
-  flex-direction: column;
-  height: 70px;
+  justify-content: center;
+  margin: 2px;
+  padding: 2px;
   &-child{
-    height: 25px;
+    height: 10px;
   }
 }
 
 .profile-title{
   line-height: 15px;
   color: rgba(0, 0, 0, 0.9);
-  opacity: 0.5;
   font-style: bold;
   position: absolute;
   top: 21px;

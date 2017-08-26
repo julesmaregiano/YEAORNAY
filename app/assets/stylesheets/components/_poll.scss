@@ -144,9 +144,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #4A4A4A;
   border-bottom: solid $blue 2px;
-  margin: 20px 20px;
   position: relative;
 }
 
@@ -159,22 +157,23 @@
 .poll-answers {
   margin-left: 20px;
   margin-right: 92px;
-  margin-top: 70px;
-  margin-bottom: 60px;
   p {
     padding-top: 10px;
     opacity: 0.5;
-    font-style: italic;
+    font-style: iftab
+
+
+
+    lic;
   }
 }
 
 .min-photo-poll {
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  height: 20vh;
-  margin-top: -15px;
+  border-radius: 5px;
+  height: 150px;
+  width: 110px;
   position: relative;
-  top: 14px;
+  object-fit: cover;
 }
 
 a.poll-button-yay > img:active {
