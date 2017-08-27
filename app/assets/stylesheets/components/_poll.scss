@@ -123,7 +123,6 @@
   margin-top: 50px;
 }
 
-
 .poll-yn {
   width: 55px;
   margin: 0px 15px;
@@ -138,42 +137,6 @@
   position: absolute;
   top: -28px;
   right: -80px;
-}
-
-.poll-profile-informations {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: solid $blue 2px;
-  position: relative;
-}
-
-.poll-yn-profile-picture{
-  width: 45px;
-  position: absolute;
-  left: 170px;
-}
-
-.poll-answers {
-  margin-left: 20px;
-  margin-right: 92px;
-  p {
-    padding-top: 10px;
-    opacity: 0.5;
-    font-style: iftab
-
-
-
-    lic;
-  }
-}
-
-.min-photo-poll {
-  border-radius: 5px;
-  height: 150px;
-  width: 110px;
-  position: relative;
-  object-fit: cover;
 }
 
 a.poll-button-yay > img:active {
