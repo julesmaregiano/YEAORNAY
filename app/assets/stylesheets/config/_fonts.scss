@@ -1,14 +1,11 @@
 // Import Google fonts
 @import url("https://fonts.googleapis.com/css?family=Cardo|Montserrat:400,700" rel="stylesheet");
-@font-face{
-font-family: "High Voltage";
-src: url("/fonts/High-Voltage.ttf");
-}
 
 // Define fonts for body and headers
-$body-font: "Cardo", "Helvetica", "sans-serif";
+
+  $body-font: "Cardo", "Helvetica", "sans-serif";
 $headers-font: "Montserrat", "Helvetica", "sans-serif";
-$custom-font: "High-Voltage", Helvetica, "sans-serif";
+
 // To use a font file (.woff) uncomment following lines
 // @font-face {
 //   font-family: "Font Name";
