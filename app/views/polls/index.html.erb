@@ -14,3 +14,36 @@
   <p> Nothing to yay or nay :( </p>
   <%= link_to "Try to Refresh :) ", "" %>
 </div>
+
+<% content_for(:after_js) do %>
+<script>
+$(document).ready(function(){
+
+    $(".poll").swipe({
+      swipeRight:function(event, direction, distance, duration, fingerCount) {
+        $(this).addClass('animate-nay').delay(700).fadeOut(1);
+        $('.poll').find('.status').remove();
+        $(this).append('<div class="status yay">Yay!</div>');
+        if ( $(this).is(':last-child') ) {
+          $('.poll:nth-child(1)').removeClass ('animate-nay animate-yay').fadeIn(300);
+         } else {
+            $(this).next().removeClass('animate-nay animate-yay').fadeIn(400);
+         }
+      }
+    });
+
+   $(".poll").swipe({
+     swipeLeft:function(event, direction, distance, duration, fingerCount) {
+       $(this).addClass('animate-yay').delay(700).fadeOut(1);
+       $('.poll').find('.status').remove();
+       $(this).append('<div class="status nay">Nay!</div>');
+       if ( $(this).is(':last-child') ) {
+         $('.poll:nth-child(1)').removeClass ('animate-nay animate-yay').fadeIn(300);
+       } else {
+         $(this).next().removeClass('animate-nay animate-yay').fadeIn(400);
+       }
+      }
+  });
+});
+</script>
+<% end %>

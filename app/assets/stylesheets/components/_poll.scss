@@ -7,13 +7,25 @@
   transition: transform 600ms ease;
   overflow: hidden;
   background: $pink;
+  display: none;
+  cursor: hand;
 
   &.animate-yay {
-    transform: rotate(10deg) translateX(200%);
+    transform: rotate(-30deg) scale(0.8);
+    transition: 1s;
+    opacity: 0;
+    margin-left: -400px;
+    cursor: w-resize;
+    z-index: 10;
   }
 
   &.animate-nay {
-    transform: rotate(-10deg) translateX(-200%);
+    transform: rotate(30deg) scale(0.8);
+    transition: 1s;
+    margin-left: 400px;
+    cursor: e-resize;
+    opacity: 0;
+    z-index: 10;
   }
 }
 
@@ -185,4 +197,44 @@ a.poll-button-yay > img:active {
 a.poll-button-nay > img:active {
     transition: transform ease 200ms;
     transform: scale(1.2);
+}
+
+.polls {
+  margin: auto !important;
+  display: block;
+  position: relative;
+  list-style-type: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.yay {
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 2px solid $yay;
+  color: $yay;
+  text-transform: uppercase;
+  font-size: 70px;
+  position: absolute;
+  top: 50%;
+  right: 35%;
+  text-shadow: none;
+  transform: rotate(25deg);
+}
+.nay {
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 2px solid $nay;
+  color: $nay;
+  text-transform: uppercase;
+  font-size: 70px;
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  text-shadow: none;
+  transform: rotate(25deg);
 }
