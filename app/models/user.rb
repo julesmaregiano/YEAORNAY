@@ -1,8 +1,6 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  # after_save :async_update
-
   devise :database_authenticatable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
 
@@ -31,7 +29,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]  # Fake password for validation
       user.save
     end
-    user.add_groups
+    # user.add_groups
     return user
   end
 
@@ -52,19 +50,17 @@ class User < ApplicationRecord
 
   def add_groups # ajoute les pages dans la DB sauf si elles existent déjà
     self.facebook_likes.each do |like|
-      url = @graph.get_picture_data(like["id"])["data"]["url"]
-      group = Group.find_by(facebook_id: like["id"].to_i) || Group.find_by(name: like["name"]) || Group.create(name: like["name"], facebook_id: like["id"].to_i, url: url)
-      unless Belonging.find_by(group_id: group.id, user_id: id)
-        self.groups << group
-        self.save
+      begin
+        url = @graph.get_picture_data(like["id"])["data"]["url"]
+        group = Group.find_by(facebook_id: like["id"].to_i) || Group.find_by(name: like["name"]) || Group.create(name: like["name"], facebook_id: like["id"].to_i, url: url)
+        unless Belonging.find_by(group_id: group.id, user_id: id)
+          self.groups << group
+          self.save
+        end
+      rescue
+        puts "GROUP ERROR #{like["name"]} -- ID #{like["id"]} -- User: #{self.id}"
       end
     end
   end
-
-  private
-
-  # def async_update
-  #   UsersLoginJob.perform_later(self.id)
-  # end
 
 end

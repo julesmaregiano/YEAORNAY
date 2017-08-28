@@ -1,7 +1,7 @@
 <% content_for(:body_class, "full-page") %>
 
-<%= link_to "", my_polls_path, class: "button-nav-left fa fa-user" %>
-<%= link_to "", new_poll_path, class: "button-nav-right fa fa-camera" %>
+<%= link_to "", my_polls_path, class: "button-nav-right fa fa-user" %>
+<%= link_to "", new_poll_path, class: "button-nav-left fa fa-camera" %>
 
 <div id="polls">
   <%= render "poll", poll: @polls.last, last: true unless @polls.empty? %>
@@ -10,9 +10,13 @@
   <% end %>
 </div>
 
-<div class="text-center index-poll-refresh">
-  <p> Nothing to yay or nay :( </p>
-  <%= link_to "Try to Refresh :) ", "" %>
+<div class="background-message">
+  <div class="wrapper-blue text-center">
+    <div class="index-poll-refresh background-picture">
+      <%= image_tag "loudly-crying-face.png" %>
+      <h1> Nothing to yay or nay!!</h1>
+    </div>
+  </div>
 </div>
 
 <% content_for(:after_js) do %>
