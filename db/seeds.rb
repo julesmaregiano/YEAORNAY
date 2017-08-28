@@ -47,7 +47,7 @@ photos = ["http://res.cloudinary.com/yay-or-nay/image/upload/v1503328479/bijou_2
 9.times do |i|
   value = [true, false].sample
   poll = Poll.create(context: context[i], ends_at: Time.now+7200, user: User.first, photo_url: photos[i], context_y: context_y.sample, anonym: value)
-  target =Target.create(poll_id: poll.id, group_id: yon.id)
+  target = Target.create(poll_id: poll.id, group_id: yon.id)
   puts "Poll, anonym: #{poll.anonym}, n°#{i+1} créé avec comme target Y"
 end
 #
