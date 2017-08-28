@@ -15,14 +15,14 @@
           </p>
         </div>
         <div class="poll-results">
-          <%= image_tag "YAYicon.png", class: "flex-child", height: 70+1*poll.yays_count %>
-          <h3 class="flex-child">
+          <%= image_tag "YAYicon.png", class: "flex-child", height: 50+1*poll.yays_count %>
+          <h4 class="flex-child">
             <%= poll.yays_count%>
-          </h3>
-          <h3 class="flex-child">
+          </h4>
+          <h4 class="flex-child">
             <%= poll.nays_count%>
-          </h3>
-          <%= image_tag "NAYicon.png", class: "flex-child", height: 70+1*poll.nays_count %>
+          </h4>
+          <%= image_tag "NAYicon.png", class: "flex-child", height: 50+1*poll.nays_count %>
         </div>
       </div>
       <div class="poll-timer">
