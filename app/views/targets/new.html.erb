@@ -14,7 +14,10 @@
         <label>
           <%= input.check_box %>
           <div class="check-box">
-            <%= image_tag input.object.url, class: "avatar" %>
+            <%= if input.object.url == nil
+                  image_tag "https://www.fillmurray.com/100/100",  class: "avatar"
+                else image_tag input.object.url, class: "avatar"
+                end%>
             <i class="fa fa-check-square-o checked hidden" aria-hidden="true"></i>
             <i class="fa fa-square-o unchecked hidden" aria-hidden="true"></i>
             <%= input.text %>
