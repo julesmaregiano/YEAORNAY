@@ -36,12 +36,16 @@
 
         // Time calculations for days, hours, minutes and seconds
         //var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        //var hours<%= poll.id %> = Math.floor((distance<%= poll.id %> % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes<%= poll.id %> = Math.floor((distance<%= poll.id %> % (1000 * 60 * 60 * 24)) / (1000 * 60));
+        var hours<%= poll.id %> = Math.floor((distance<%= poll.id %> % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes<%= poll.id %> = Math.floor((distance<%= poll.id %> % (1000 * 60 * 60)) / (1000 * 60));
         var seconds<%= poll.id %> = Math.floor((distance<%= poll.id %> % (1000 * 60)) / 1000);
 
         // Display the result in the element with id="demo"
-        document.getElementById("timer<%= poll.id %>").innerHTML =  minutes<%= poll.id %> + " min " + seconds<%= poll.id %> + " sec" + " <i class='fa fa-clock-o text-center' aria-hidden='true'></i>";
+        if (hours<%= poll.id %> > 0) {
+        document.getElementById("timer<%= poll.id %>").innerHTML = hours<%= poll.id %> + ":" + minutes<%= poll.id %> + ":" + seconds<%= poll.id %> + " <i class='fa fa-clock-o text-center' aria-hidden='true'></i>";
+         } else {
+          document.getElementById("timer<%= poll.id %>").innerHTML = minutes<%= poll.id %> + ":" + seconds<%= poll.id %> + " <i class='fa fa-clock-o text-center' aria-hidden='true'></i>";
+         }
 
         // If the count down is finished, write some text
         if (distance<%= poll.id %> < 0) {
