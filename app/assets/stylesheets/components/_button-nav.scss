@@ -1,17 +1,22 @@
 %button-nav {
   position: absolute;
-  top: 4%;
-  font-size: 30px;
+  top: 10px;
+  font-size: 40px;
   color: white;
   z-index: 1000;
 }
 
+%button-nav:hover {
+  color: $yellow;
+  text-decoration: none;
+}
+
 .button-nav-right {
   @extend %button-nav;
-  right: 5%;
+  right: 15px;
 }
 
 .button-nav-left {
   @extend %button-nav;
-  left: 5%;
+  left: 15px;
 }

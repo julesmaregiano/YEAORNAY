@@ -5,7 +5,7 @@
   position: absolute;
   top: -5px;
   right: -80px;
-  color: #FF0066;
+  color: $blue;
 }
 
 .nay-barre-count{
@@ -14,14 +14,14 @@
   position: absolute;
   top: 4px;
   right: -80px;
-  color: #00C8FF;
+  color: $pink;
 }
 
 
 #yay {
-  color: #FF0066;
+  color: $blue;
 }
 
 #nay {
-  color: #00C8FF;
+  color: $pink;
 }
