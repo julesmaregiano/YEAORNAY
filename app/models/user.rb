@@ -50,11 +50,15 @@ class User < ApplicationRecord
 
   def add_groups # ajoute les pages dans la DB sauf si elles existent déjà
     self.facebook_likes.each do |like|
-      url = @graph.get_picture_data(like["id"])["data"]["url"]
-      group = Group.find_by(facebook_id: like["id"].to_i) || Group.find_by(name: like["name"]) || Group.create(name: like["name"], facebook_id: like["id"].to_i, url: url)
-      unless Belonging.find_by(group_id: group.id, user_id: id)
-        self.groups << group
-        self.save
+      begin
+        url = @graph.get_picture_data(like["id"])["data"]["url"]
+        group = Group.find_by(facebook_id: like["id"].to_i) || Group.find_by(name: like["name"]) || Group.create(name: like["name"], facebook_id: like["id"].to_i, url: url)
+        unless Belonging.find_by(group_id: group.id, user_id: id)
+          self.groups << group
+          self.save
+        end
+      rescue
+        puts "GROUP ERROR #{like["name"]} -- ID #{like["id"]} -- User: #{self.id}"
       end
     end
   end
