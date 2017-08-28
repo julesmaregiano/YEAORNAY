@@ -1,10 +1,12 @@
 // Import Google fonts
-@import url("https://fonts.googleapis.com/css?family=Cardo|Montserrat:400,700" rel="stylesheet");
+@import url(
+"https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600i,900"
+);
 
 // Define fonts for body and headers
 
-  $body-font: "Cardo", "Helvetica", "sans-serif";
-$headers-font: "Montserrat", "Helvetica", "sans-serif";
+$body-font: "Source Sans Pro", "Helvetica", "sans-serif";
+$headers-font: "Source Sans Pro", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
