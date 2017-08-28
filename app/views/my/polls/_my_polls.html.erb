@@ -26,17 +26,52 @@
         </div>
       </div>
       <div class="poll-timer">
-        <% if poll.ends_at > Time.zone.now %>
-          <%= image_tag "sablier", class: "timer", height: 35 %>
-          <p>
-            <%= ((poll.ends_at -  Time.zone.now) / 60).to_i %> min
-          </p>
-        <% else %>
-          <p>Terminé</p>
-        <% end %>
+        <div id="timer<%= poll.id %>" class ="text-center">
+          <% if  poll.ends_at >  Time.zone.now %>
+            <p><span id="timer-val"><%= ((poll.ends_at -  Time.zone.now) / 60).to_i %></span> min.</p>
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+          <% else %>
+            <p>Terminé</p>
+          <% end %>
+        </div>
       </div>
     </div>
+
+<% content_for(:after_js) do %>
+
+    <script>
+      // Set the date we're counting down to (@choogle.due_at)
+      var pollEndAt<%= poll.id %> = '<%= poll.ends_at %>';
+      var countDownDate<%= poll.id %> = new Date(pollEndAt<%= poll.id %>).getTime();
+      // Update the count down every 1 second
+      var x<%= poll.id %> = setInterval(function() {
+        // Get todays date and time
+        var now = new Date().getTime();
+        // Find the distance between now an the count down date
+        var distance<%= poll.id %> = countDownDate<%= poll.id %> - now;
+        // Time calculations for days, hours, minutes and seconds
+        //var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours<%= poll.id %> = Math.floor((distance<%= poll.id %> % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes<%= poll.id %> = Math.floor((distance<%= poll.id %> % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds<%= poll.id %> = Math.floor((distance<%= poll.id %> % (1000 * 60)) / 1000);
+        // Display the result in the element with id="demo"
+        if (hours<%= poll.id %> > 0) {
+        document.getElementById("timer<%= poll.id %>").innerHTML = hours<%= poll.id %> + ":" + minutes<%= poll.id %> + ":" + seconds<%= poll.id %> + " <i class='fa fa-clock-o text-center' aria-hidden='true'></i>";
+         } else {
+          document.getElementById("timer<%= poll.id %>").innerHTML = minutes<%= poll.id %> + ":" + seconds<%= poll.id %> + " <i class='fa fa-clock-o text-center' aria-hidden='true'></i>";
+         }
+        // If the count down is finished, write some text
+        if (distance<%= poll.id %> < 0) {
+          clearInterval(x<%= poll.id %>);
+          document.getElementById("timer<%= poll.id %>").innerHTML = "Finished";
+        }
+      }, 1000);
+    </script>
+
   <% end %>
+
+<% end %>
+
 </div>
 
 
