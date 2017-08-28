@@ -38,7 +38,6 @@
     </div>
 
 <% content_for(:after_js) do %>
-
     <script>
       // Set the date we're counting down to (@choogle.due_at)
       var pollEndAt<%= poll.id %> = '<%= poll.ends_at %>';
@@ -69,9 +68,5 @@
     </script>
 
   <% end %>
-
 <% end %>
-
 </div>
-
-
