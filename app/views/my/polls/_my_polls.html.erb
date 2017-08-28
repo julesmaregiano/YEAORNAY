@@ -1,23 +1,42 @@
-<% @polls.each do |poll| %>
-  <div class="poll-profile-informations">
-    <div class= "text-center profile-title"> <p><%= poll.context %></p> </div>
-    <%= link_to my_poll_path(poll) do %>
-      <% cl_image_tag(poll.photo.path, width: 100, height: 120, crop: :fill, class: "min-photo-poll") %>
-    <% end %>
-    <div class="poll-answers">
-      <h3 id="yay"><%= poll.yays_count %><%= image_tag "yay.png", class: "poll-yn-profile-picture" %></h3>
-      <h3 id="nay"><%= poll.nays_count %><%= image_tag "nay.png", class: "poll-yn-profile-picture" %></h3>
+<div class="poll-background">
+  <% @polls.each do |poll| %>
+    <div class="poll-profile-informations">
+      <%= link_to my_poll_path(poll) do %>
+        <% cl_image_tag(poll.photo.path, class: "min-photo-poll") %>
+      <% end %>
+      <div class="poll-answers">
+        <div class="rappel-context">
+          <p>
+            <% if poll.context.size < 50 %>
+              <%= poll.context %>
+            <% else %>
+              <%= poll.context.first(50) + "... " %>
+            <% end %>
+          </p>
+        </div>
+        <div class="poll-results">
+          <%= image_tag "YAYicon.png", class: "flex-child", height: 70+1*poll.yays_count %>
+          <h3 class="flex-child">
+            <%= poll.yays_count%>
+          </h3>
+          <h3 class="flex-child">
+            <%= poll.nays_count%>
+          </h3>
+          <%= image_tag "NAYicon.png", class: "flex-child", height: 70+1*poll.nays_count %>
+        </div>
+      </div>
+      <div class="poll-timer">
+        <% if poll.ends_at > Time.zone.now %>
+          <%= image_tag "sablier", class: "timer", height: 35 %>
+          <p>
+            <%= ((poll.ends_at -  Time.zone.now) / 60).to_i %> min
+          </p>
+        <% else %>
+          <p>Terminé</p>
+        <% end %>
+      </div>
     </div>
-    <div class="poll-time text-center">
-    <% if  poll.ends_at >  Time.zone.now %>
-      <p><%= ((poll.ends_at -  Time.zone.now) / 60).to_i %> min.</p>
-      <i class="fa fa-clock-o" aria-hidden="true"></i>
-    <% else %>
-      <p>Terminé</p>
-    <% end %>
-    </div>
-  </div>
-<% end %>
-
+  <% end %>
+</div>
 
 

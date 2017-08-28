@@ -1,7 +1,7 @@
 <% content_for(:body_class, "full-page") %>
 
 <%= simple_form_for @poll, class: "add_photo" do |f| %>
-  <div class="insert-image">
+  <div class="background-message">
     <label>
       <div class="wrapper-blue text-center">
         <div class="links">
@@ -12,9 +12,9 @@
             <i class="fa fa-user" aria-hidden="true"></i>
           <% end %>
         </div>
-        <div class="take-picture">
-          <h1>Prenez une photo</h1>
+        <div class="background-picture">
           <%= image_tag "camera.png" %>
+          <h1>Prenez une photo</h1>
         </div>
         <%= f.input_field :photo, as: :attachinary, label: false %>
         <%= f.button :submit, class: "submit-photo" %>
