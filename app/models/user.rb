@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  after_save :async_update
+
   devise :database_authenticatable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
 
@@ -29,7 +31,6 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]  # Fake password for validation
       user.save
     end
-    user.add_groups
     return user
   end
 
@@ -37,15 +38,15 @@ class User < ApplicationRecord
     @graph = Koala::Facebook::API.new(token)
 
     # Décommenter tout le gris pour redemander tous les likes à la connection.
-    # likes = []
+    likes = []
 
     feed = @graph.get_connections("me", "likes")
 
-    # until feed.nil?
-    #   likes << feed
-    #   feed = feed.next_page
-    # end
-    # likes.flatten  # tableau de hash
+    until feed.nil?
+      likes << feed
+      feed = feed.next_page
+    end
+    likes.flatten  # tableau de hash
   end
 
   def add_groups # ajoute les pages dans la DB sauf si elles existent déjà
@@ -57,6 +58,12 @@ class User < ApplicationRecord
         self.save
       end
     end
+  end
+
+  private
+
+  def async_update
+    UsersLoginJob.perform_later(self.id)
   end
 
 end

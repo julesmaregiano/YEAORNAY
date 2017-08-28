@@ -21,7 +21,7 @@ email = ['jeromevivier31@hotmail.com','ophelie.delrieu3@orange.fr', 'jmaregiano@
 facebook_picture_url = ["http://res.cloudinary.com/yay-or-nay/image/upload/v1503482894/vg5ohumoquc9brfvlcki.jpg", "http://res.cloudinary.com/yay-or-nay/image/upload/v1503482896/yptcefuagwuvrsszbart.jpg", "http://res.cloudinary.com/yay-or-nay/image/upload/v1503482898/jfqncddujly54p9lxnip.jpg", "http://res.cloudinary.com/yay-or-nay/image/upload/v1503482901/bx7btychqictejahrsqw.jpg"]
 
 puts 'Génération des users...'
-User.create(last_name: "Captain", first_name: "Anonyme", email: "yayornaytheapp@gmail.com", password: 'coucou', facebook_picture_url: facebook_picture_url[0]).save!
+User.create(last_name: "Captain", first_name: "Anonyme", email: "yayornaytheapp@gmail.com", password: 'coucou', facebook_picture_url: facebook_picture_url[0], admin: true).save!
 puts 'Captain Anonyme creé'
 # for i in (0..3) do
 #   User.create(last_name: last_name[i], first_name: first_name[i], email: email[i], password: 'coucou', facebook_picture_url: facebook_picture_url[i]).save!
