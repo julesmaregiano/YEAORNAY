@@ -10,6 +10,8 @@ gem 'rails', '5.1.3'
 gem 'redis'
 gem 'omniauth-facebook'
 gem 'koala'
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
