@@ -1,4 +1,4 @@
-<div class="poll" id="poll-<%= poll.id %>">
+<div class="poll" style="display: block;" id="poll-<%= poll.id %>">
   <%= cl_image_tag poll.photo.path, class: "poll-photo" %>
   <% unless poll.context.empty? %>
     <div class="poll-text" style= "top: <%= poll.context_y %>%">
@@ -14,23 +14,35 @@
 <script>
 $(function(){
  var $pollShow = false;
-   $('#poll-<%= poll.id %> > img').on('touchstart', function(event){
-     if ($pollShow == false) {
-       $("#poll-info-<%= poll.id %>").removeClass('hide-info');
-       $("#poll-info-<%= poll.id %>").addClass('show-info');
-       $('#poll-<%= poll.id %> > div.poll-text').hide()
-       $('#poll-<%= poll.id %> > a.poll-button-yay').hide()
-       $('#poll-<%= poll.id %> > a.poll-button-nay').hide()
-       $pollShow = true;
-     } else {
-       $("#poll-info-<%= poll.id %>").removeClass('show-info');
-       $("#poll-info-<%= poll.id %>").addClass('hide-info');
-       $('#poll-<%= poll.id %> > div.poll-text').show()
-       $('#poll-<%= poll.id %> > a.poll-button-yay').show()
-       $('#poll-<%= poll.id %> > a.poll-button-nay').show()
-       $pollShow = false;
-     }
-   });
- });
+ var tapped=false
+   $('#poll-<%= poll.id %> > img').on("touchstart",function(event){
+    if(!tapped){ //if tap is not set, set up single tap
+      tapped=setTimeout(function(){
+          tapped=null
+          //insert things you want to do when single tapped
+      },300);   //wait 300ms then run single click code
+    } else {    //tapped within 300ms of last tap. double tap
+      clearTimeout(tapped); //stop single tap callback
+      tapped=null
+      if ($pollShow == false) {
+        $("#poll-info-<%= poll.id %>").removeClass('hide-info');
+        $("#poll-info-<%= poll.id %>").addClass('show-info');
+        $('#poll-<%= poll.id %> > div.poll-text').hide()
+        $('#poll-<%= poll.id %> > a.poll-button-yay').hide()
+        $('#poll-<%= poll.id %> > a.poll-button-nay').hide()
+        $pollShow = true;
+      } else {
+        $("#poll-info-<%= poll.id %>").removeClass('show-info');
+        $("#poll-info-<%= poll.id %>").addClass('hide-info');
+        $('#poll-<%= poll.id %> > div.poll-text').show()
+        $('#poll-<%= poll.id %> > a.poll-button-yay').show()
+        $('#poll-<%= poll.id %> > a.poll-button-nay').show()
+        $pollShow = false;
+      }
+    }
+    event.preventDefault()
+    });
+});
+
 </script>
 <% end %>

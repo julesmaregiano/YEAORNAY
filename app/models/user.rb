@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  after_save :async_update
+  # after_save :async_update
 
   devise :database_authenticatable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
@@ -31,6 +31,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]  # Fake password for validation
       user.save
     end
+    user.add_groups
     return user
   end
 
@@ -62,8 +63,8 @@ class User < ApplicationRecord
 
   private
 
-  def async_update
-    UsersLoginJob.perform_later(self.id)
-  end
+  # def async_update
+  #   UsersLoginJob.perform_later(self.id)
+  # end
 
 end

@@ -24,6 +24,7 @@ gem 'cloudinary'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
+gem 'rails-assets-jquery-touchswipe', source: 'https://rails-assets.org'
 
 group :development, :test do
   gem 'pry-byebug'
