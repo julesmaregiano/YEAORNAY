@@ -18,6 +18,8 @@
     font-size: 23px;
     color: white;
     font-weight: bold;
+    margin-top: 7px;
+    margin-bottom: 6px;
   }
   h3 {
     font-size: 18px;
@@ -45,12 +47,10 @@
   padding-left: 1vh;
 }
 
-.profile-child h1{
+.profile-child {
+  h1, h3 {
   font-weight: bold;
-}
-
-.profile-child h4{
-  color: gray;
+  }
 }
 
 .profile-settings {
@@ -69,8 +69,7 @@
 .profile-figures{
   line-height: 4px;
   color: rgba(0, 0, 0, 0.5);
-  opacity: 0.5;
-  font-style: italic;
+  opacity: 0.8;
   display: flex;
   justify-content: center;
   margin: 2px;
