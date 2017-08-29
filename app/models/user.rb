@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :belongings
   has_many :groups, through: :belongings
   has_many :answers
+  has_many :favourites
   validates :first_name, :last_name, presence: true
   has_attachment :photo
 

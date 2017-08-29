@@ -1,3 +1,8 @@
+.opacity-dropdown {
+  opacity: 0.5;
+  color: white;
+}
+
 .profile-container {
   display: flex;
   flex-direction: row;
@@ -10,14 +15,17 @@
     color: white;
   }
   h2 {
+    font-size: 23px;
     color: white;
     font-weight: bold;
+    margin-top: 7px;
+    margin-bottom: 6px;
   }
   h3 {
-    font-size: 20px;
+    font-size: 18px;
   }
   h4 {
-    font-size: 18px;
+    font-size: 15px;
   }
   h3, h4 {
     margin: 2px 4px;
@@ -30,25 +38,22 @@
   width: 15vh;
   border-radius: 50px;
   flex-grow: 0;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   object-fit: cover;
 }
 
 .profile-child  {
   flex-grow: 1;
-  padding-left: 2vh;
+  padding-left: 1vh;
 }
 
-.profile-child h1{
+.profile-child {
+  h1, h3 {
   font-weight: bold;
-}
-
-.profile-child h4{
-  color: gray;
+  }
 }
 
 .profile-settings {
-  font-size: 30px;
   flex-grow: 0;
   position: absolute;
   top: 5px;
@@ -57,15 +62,14 @@
     list-style: none;
   }
   i {
-    opacity: 990%;
+    opacity: 99%;
   }
 }
 
 .profile-figures{
   line-height: 4px;
   color: rgba(0, 0, 0, 0.5);
-  opacity: 0.5;
-  font-style: italic;
+  opacity: 0.8;
   display: flex;
   justify-content: center;
   margin: 2px;
