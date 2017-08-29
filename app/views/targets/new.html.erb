@@ -14,34 +14,48 @@
     <h5 class= "text-center">Tes cibles actuelles:</h4>
     <%= simple_form_for @poll, url: poll_targets_path(@poll), method: :post do |f| %>
     <div class="collection-check-boxes" id="collection-selected">
-      <div class="check-box" id="selected"><label></label></div>
     </div>
       <%= f.button :submit, class: "btn btn-primary btn-block", value: "Envoyer" %>
     <% end %>
     </div>
-  <div class="targets">
+  <div class="targets" id="search-results">
     <%= render "search_results" %>
   </div>
 </div>
 
 <% content_for(:after_js) do %>
-<script>
-$(function(){
-  $('.selected-targets').hide();
+  <script>
+  $(function(){
+    $('.selected-targets').hide();
 
-  $('.targets').on('click', '#collection-targets > span ', function(event) {
-    $('.selected-targets').show();
-    $(this).attr('id', 'added')
-    $('#selected').append($(this));
+    $('.targets').on('click', '#collection-targets > span ', function(event) {
+      console.log("tu me rajoute");
+      $('.selected-targets').show();
+      $(this).children().children().children().removeAttr('id');
+      $(this).children().children().children().attr('id','selected');
+
+      $checkbox = $(this).find('input[type="checkbox"]');
+      $checkbox.prop('checked', true);
+
+      $('#collection-selected').append($(this).clone());
+      $(this).remove();
+    });
+
+
+    $('.selected-targets').on('click', '#collection-selected > span', function(event) {
+      console.log("tu me vire");
+      $(this).children().children().children().removeAttr('id');
+      $(this).children().children().children().attr('id','target');
+
+      $checkbox = $(this).find('input[type="checkbox"]');
+      $checkbox.prop('checked', false);
+
+      $('#collection-targets').prepend($(this).clone());
+      if ($(this).siblings().size() == 0){
+        $('.selected-targets').hide();
+      }
+      $(this).remove();
+    });
   });
-
-  // $('.selected-targets').on('click', '#collection-selected > span ', function(event) {
-  //   $(this).attr('id', '')
-  //   $('#target').prepend($(this));
-  //   if ($(this).is(':last-child')){
-  //     $('.selected-targets').hide();
-  //   }
-  // });
-});
-</script>
+  </script>
 <% end %>

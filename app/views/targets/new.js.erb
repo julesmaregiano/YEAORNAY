@@ -1,1 +1,11 @@
 $('body > div.container > div.targets').html('<%= j render "targets/search_results" %>');
+
+
+// choper les id des selected et les supprimer dans le search result
+var ids = [];
+$('.selected-targets .group-wrapper').each(function(){ ids.push(this.id); });
+console.log(ids);
+
+ids.forEach(function(id){
+  $('#search-results').find("#" + id).remove();
+});
