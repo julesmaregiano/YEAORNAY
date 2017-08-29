@@ -1,4 +1,7 @@
 class Group < ApplicationRecord
+  include PgSearch
+  pg_search_scope :search_by_name, against: [ :name ]
+
   has_many :targets
   has_many :belongings
   has_many :polls, through: :targets
