@@ -11,6 +11,7 @@ Belonging.destroy_all
 Target.destroy_all
 Group.destroy_all
 Answer.destroy_all
+Favourite.destroy_all
 Poll.destroy_all
 User.destroy_all
 puts 'Users, Polls, Answers, Belongings, Targets & Groups supprimés.'
