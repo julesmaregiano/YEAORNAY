@@ -8,7 +8,7 @@ class TargetsController < ApplicationController
     end
     respond_to do |format|
       format.html { render :new }
-      format.js # render app/views/targets/search.js.erb
+      format.js # render app/views/targets/new.js.erb
     end
   end
 

@@ -32,20 +32,18 @@ $(function(){
   $('.selected-targets').hide();
 
   $('.targets').on('click', '#collection-targets > span ', function(event) {
-    console.log("Entre mon enfant.");
     $('.selected-targets').show();
     $(this).attr('id', 'added')
     $('#selected').append($(this));
   });
 
-  $('.selected-targets').on('click', '#collection-selected > span ', function(event) {
-    console.log("Degage mon Enfant.");
-    $(this).attr('id', '')
-    $('#target').prepend($(this));
-    if ($(this).is(':last-child')){
-      $('.selected-targets').hide();
-    }
-  });
+  // $('.selected-targets').on('click', '#collection-selected > span ', function(event) {
+  //   $(this).attr('id', '')
+  //   $('#target').prepend($(this));
+  //   if ($(this).is(':last-child')){
+  //     $('.selected-targets').hide();
+  //   }
+  // });
 });
 </script>
 <% end %>
