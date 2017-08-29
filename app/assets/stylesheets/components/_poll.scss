@@ -94,12 +94,11 @@
 }
 
 .poll_context_info{
-  background-color: $blue;
+  background-color: $transparent20;
   color: white;
   font-size: 17px;
-  font-weight: bold;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 .poll-info{
@@ -117,54 +116,30 @@
   }
 }
 
-.yay-barre{
-  margin-bottom: 40px;
-  height: 20px;
-  border: 1px solid, rgba(0,0,0,0.2);
-  background: #FF0066;
-  position: relative;
-}
-
-.nay-barre{
-  height: 20px;
-  border: 1px solid, rgba(0,0,0,0.2);
-  background: #00C8FF;
-  position: relative;
-}
-
 .poll-author{
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
-.poll-yn {
-  width: 55px;
+.poll-smiley {
+  width: 80px;
   margin: 0px 15px;
   position: absolute;
-  top: -34px;
-  right: -83px;
-}
-
-.poll-ny {
-  width: 55px;
-  margin: 0px 15px;
-  position: absolute;
-  top: -28px;
-  right: -80px;
+  top: 60px;
 }
 
 a.poll-button-yay > img:active {
     transition: transform ease 200ms;
-    transform: scale(1.2);
+    transform: scale(1.5);
 }
 
 a.poll-button-nay > img:active {
     transition: transform ease 200ms;
-    transform: scale(1.2);
+    transform: scale(1.5);
 }
 
 a.poll-button-favourite > img:active {
     transition: transform ease 200ms;
-    transform: scale(1.2);
+    transform: scale(1.5);
 }
 
 
