@@ -21,17 +21,12 @@
 
   <div class="row">
     <div class="col-xs-6 text-center">
-      <div class= "yay-barre" style= "width: 40%">
-        <%= image_tag "YAYicon.png", class: "poll-smiley" %>
-      </div>
-      <h3><%= poll.yays_count %></h3>
+      <span id="poll-info-number"><%= poll.nays_count %></span>
+      <%= image_tag "NAYicon.png", class: "poll-smiley" %>
     </div>
-
     <div class="col-xs-6 text-center">
-      <div class= "nay-barre" style= "width: 40%">
-        <%= image_tag "NAYicon.png", class: "poll-smiley" %>
-      </div>
-      <h3><%= poll.yays_count %></h3>
+      <%= image_tag "YAYicon.png", class: "poll-smiley" %>
+      <span id="poll-info-number"><%= poll.yays_count %></span>
     </div>
   </div>
 </div>

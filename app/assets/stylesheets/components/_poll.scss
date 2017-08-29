@@ -69,10 +69,10 @@
   bottom: 4%;
   font-size: 30px;
   img {
-    width: 53px;
-    background-color: white;
+    width: 50px;
+    background-color: $transparent50;
     border-radius: 50px;
-    padding: 8px;
+    padding: 5px;
   }
 }
 
@@ -114,10 +114,9 @@
 }
 
 .poll-smiley {
-  width: 80px;
-  margin: 0px 15px;
-  position: absolute;
-  top: 60px;
+  width: 10vh;
+  margin: 0px 2vh;
+  top: 10vh;
 }
 
 a.poll-button-yay > img:active {
