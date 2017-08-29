@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :polls, only: [:new, :index, :create] do
     resources :targets, only: [:new, :create]
     resources :answers, only: [:new, :create]
+    resources :favourites, only: [:create]
   end
 
   namespace :my do
