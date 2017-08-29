@@ -6,6 +6,7 @@
 .tabs a {
   color: white;
   padding: 5px;
+  border-bottom-color: $blue;
 }
 
 .tabs a:hover {
@@ -33,19 +34,17 @@
 }
 
 
-.tab.active {
-}
-
-.dropdown-size{
-}
-
 .nav-tabs > li.active > a {
   color: white;
   border-color: $blue;
+  transition: transform ease 200ms;
+  transform: scale(1.1) ;
 }
 
 .nav-tabs > li > a {
   color: white;
+  opacity: 0.8;
+  border-bottom: 3px solid $pink;
 }
 
 .nav > li > a {
