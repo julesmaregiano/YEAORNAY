@@ -1,53 +1,50 @@
 // Override bootstrap
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+a {
+  text-decoration: none;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus, .nav-tabs > a {
   border: 0px;
+}
+.nav > li > a {
+  padding: 0px;
+  margin: 0px;
+  border-bottom: 0px;
 }
 
 .tabs {
   display: flex;
+  text-align: center;
+  align-items: center;
+  margin: 0px 50px;
+  a:hover {
+    text-decoration: none;
+  }
+  h3 {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  p {
+    opacity: 0.5;
+  }
 }
 
-.tabs a {
-  color: $mid-gray;
-  padding: 1px;
-}
-
-.tabs a:hover {
+.nav > li {
+  width: 20vh;
+  border-bottom: 0px;
   text-decoration: none;
 }
 
-.tabs h3 {
-  font-size: 15px;
-  font-weight: bold;
-  margin-top: 0;
-}
-
-.tabs p {
-  opacity: 0.5;
-  margin-bottom: 0;
-}
-
-.tab {
-  flex: 0 0 25%;
-  text-align: center;
-  padding-right: 25px;
-  padding-left: 25px;
-}
-
-
 .nav-tabs > li.active > a {
-  color: $blue;
-  border-bottom: 3px solid $blue;
-
+  color: $white;
+  font-weight: bold;
+  border-top: 3px solid $pink;
+  text-decoration: none;
 }
 
 .nav-tabs > li > a {
-  color: $mid-gray;
-  opacity: 0.8;
-  border-bottom: 3px solid $mid-gray;
+  color: white;
+  border-top: 3px solid white;
+  border-bottom: 0px;
+  text-decoration: none !important;
 }
-
-.nav > li > a {
-  padding: 5px;
-}
-

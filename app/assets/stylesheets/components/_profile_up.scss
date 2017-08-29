@@ -1,13 +1,11 @@
 .profile-container {
   display: flex;
   background-color: white;
-  border: 1px solid #ececec;
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
   flex-direction: row;
   justify-content: space-between;
-  height: 17vh;
+  align-items: center;
+  height: 14vh;
   position: relative;
-  margin: 1vh;
   h1 {
     margin-top: 2vh;
     color: $mid-gray;
@@ -16,8 +14,8 @@
     font-size: 23px;
     color: $mid-gray;
     font-weight: bold;
-    margin-top: 7px;
-    margin-bottom: 6px;
+    margin-top: 5px;
+    margin-bottom: 4px;
   }
   h3 {
     font-size: 18px;
@@ -33,10 +31,11 @@
 }
 
 .profile-avatar{
-  width: 15vh;
+  height: 12vh;
+  width: 12vh;
+  margin: 2px;
   border-radius: 50px;
   flex-grow: 0;
-  margin-bottom: 14px;
   object-fit: cover;
 }
 
@@ -55,11 +54,8 @@
 
 .profile-child  {
   flex-grow: 1;
-  padding-left: 1vh;
-}
-
-.profile-child {
   h1, h3 {
-  font-weight: bold;
+    font-weight: bold;
+    color: $blue;
   }
 }
