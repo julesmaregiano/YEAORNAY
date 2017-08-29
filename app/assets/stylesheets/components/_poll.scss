@@ -65,7 +65,7 @@
   left: 5%;
   bottom: 4%;
   font-size: 30px;
-   img{
+   img {
     width: 80px;
   }
 }
@@ -75,8 +75,11 @@
   left: 24vh;
   bottom: 4%;
   font-size: 30px;
-   img{
-    width: 80px;
+  img {
+    width: 53px;
+    background-color: white;
+    border-radius: 50px;
+    padding: 8px;
   }
 }
 
@@ -163,12 +166,7 @@ a.poll-button-favourite > img:active {
     transition: transform ease 200ms;
     transform: scale(1.2);
 }
-.poll-button-favourite img {
-  width: 53px;
-  background-color: white;
-  border-radius: 50px;
-  padding: 8px;
-}
+
 
 
 
