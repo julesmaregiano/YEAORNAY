@@ -1,10 +1,8 @@
-.opacity-dropdown {
-  opacity: 0.5;
-  color: white;
-}
-
 .profile-container {
   display: flex;
+  background-color: white;
+  border: 1px solid #ececec;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
   flex-direction: row;
   justify-content: space-between;
   height: 17vh;
@@ -12,11 +10,11 @@
   margin: 1vh;
   h1 {
     margin-top: 2vh;
-    color: white;
+    color: $mid-gray;
   }
   h2 {
     font-size: 23px;
-    color: white;
+    color: $mid-gray;
     font-weight: bold;
     margin-top: 7px;
     margin-bottom: 6px;
@@ -30,7 +28,7 @@
   h3, h4 {
     margin: 2px 4px;
     padding: 0px 4px;
-    color: white;
+    color: $mid-gray;
   }
 }
 
@@ -40,30 +38,6 @@
   flex-grow: 0;
   margin-bottom: 14px;
   object-fit: cover;
-}
-
-.profile-child  {
-  flex-grow: 1;
-  padding-left: 1vh;
-}
-
-.profile-child {
-  h1, h3 {
-  font-weight: bold;
-  }
-}
-
-.profile-settings {
-  flex-grow: 0;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  ul {
-    list-style: none;
-  }
-  i {
-    opacity: 99%;
-  }
 }
 
 .profile-figures{
@@ -79,17 +53,13 @@
   }
 }
 
-.profile-title{
-  line-height: 15px;
-  color: rgba(0, 0, 0, 0.9);
-  font-style: bold;
-  position: absolute;
-  top: 21px;
+.profile-child  {
+  flex-grow: 1;
+  padding-left: 1vh;
 }
 
-.dropdown-size{
-  font-size: 35px;
+.profile-child {
+  h1, h3 {
+  font-weight: bold;
+  }
 }
-
-
-

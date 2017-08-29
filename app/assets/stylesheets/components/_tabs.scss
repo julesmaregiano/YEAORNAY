@@ -1,17 +1,18 @@
+// Override bootstrap
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  border: 0px;
+}
+
 .tabs {
   display: flex;
-  margin-top: -20px;
 }
 
 .tabs a {
-  color: white;
-  padding: 5px;
-  border-bottom-color: $blue;
+  color: $mid-gray;
+  padding: 1px;
 }
 
 .tabs a:hover {
-  opacity: 0.5;
-  cursor: pointer;
   text-decoration: none;
 }
 
@@ -35,18 +36,18 @@
 
 
 .nav-tabs > li.active > a {
-  color: white;
-  border-color: $blue;
-  transition: transform ease 200ms;
-  transform: scale(1.1) ;
+  color: $blue;
+  border-bottom: 3px solid $blue;
+
 }
 
 .nav-tabs > li > a {
-  color: white;
+  color: $mid-gray;
   opacity: 0.8;
-  border-bottom: 3px solid $pink;
+  border-bottom: 3px solid $mid-gray;
 }
 
 .nav > li > a {
   padding: 5px;
 }
+

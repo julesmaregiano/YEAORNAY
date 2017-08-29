@@ -20,3 +20,22 @@
   @extend %button-nav;
   left: 15px;
 }
+
+.opacity-dropdown {
+  opacity: 0.5;
+  color: $blue;
+}
+
+.dropdown-size{
+  font-size: 25px;
+}
+
+.profile-settings {
+  flex-grow: 0;
+  ul {
+    list-style: none;
+  }
+  i {
+    opacity: 99%;
+  }
+}
