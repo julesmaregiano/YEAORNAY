@@ -3,6 +3,7 @@ class Poll < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :targets
   has_many :groups, through: :targets
+  has_many :favourites
   validates_associated :user, presence: true
   has_attachment :photo
 
