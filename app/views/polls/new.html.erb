@@ -32,7 +32,9 @@
     <div class="poll-anonym">
       <label>
         <%= f.input :anonym, label: false %>
-        <%= image_tag "monkey.png", id: "anonym-emoji" %>
+        <div class="img-anonym">
+          <%= image_tag "monkey.png", id: "anonym-emoji" %>
+        </div>
       </label>
     </div>
     <div class="poll-button">
@@ -72,12 +74,12 @@
       });
 
       var $anonym = false;
-      $('#anonym-emoji').click(function() {
+      $('.img-anonym').click(function() {
         if ($anonym == false) {
-          $('#anonym-emoji').attr('src','/assets/anonym.png');
+         $('.img-anonym').html('<%= j image_tag "anonym.png", id: "anonym-emoji" %>')
           $anonym = true;
         } else {
-          $('#anonym-emoji').attr('src','/assets/monkey.png');
+          $('.img-anonym').html('<%= j image_tag "monkey.png", id: "anonym-emoji" %>')
           $anonym = false;
         }
       });
