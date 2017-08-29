@@ -2,9 +2,13 @@ class TargetsController < ApplicationController
   def new
     @poll = Poll.find(params[:poll_id])
     if params[:search]
-      @groups = current_user.groups.search(search_params)
+      @groups = current_user.groups.search_by_name(search_params["search"])
     else
       @groups = current_user.groups
+    end
+    respond_to do |format|
+      format.html { render :new }
+      format.js # render app/views/targets/new.js.erb
     end
   end
 

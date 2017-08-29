@@ -2,58 +2,46 @@
 <h4 class= "text-center">Choisis tes cibles</h4>
 </div>
 
-<%= simple_form_for :search, html: {class: "text-center form-inline"}, url: new_poll_target_url, method: :get do |f| %>
-  <%= f.input :search, label: false %>
-  <%= f.button :submit, class: "btn btn-primary search-btn", value: "Rechercher" %>
-<% end %>
+<div class="text-center form-inline">
+  <%= simple_form_for(:search, :url => new_poll_target_url, :method => :get, :remote => true) do |f| %>
+    <%= f.input :search, label: false %>
+    <%= f.button :submit, class: "btn btn-primary search-btn", value: "Rechercher" %>
+  <% end %>
+</div>
 
 <div class= "container">
-  <div id="selected-targets">
+  <div class="selected-targets">
+    <h5 class= "text-center">Tes cibles actuelles:</h4>
     <%= simple_form_for @poll, url: poll_targets_path(@poll), method: :post do |f| %>
-      <div id="selected">
-      </div>
+    <div class="collection-check-boxes" id="collection-selected">
+      <div class="check-box" id="selected"><label></label></div>
+    </div>
       <%= f.button :submit, class: "btn btn-primary btn-block", value: "Envoyer" %>
     <% end %>
     </div>
-
-
-  <%= simple_form_for @poll, url: poll_targets_path(@poll), method: :post do |f| %>
-    <div class="collection-check-boxes">
-      <%= f.collection_check_boxes :group_ids, @groups, :id, :name do |input| %>
-        <label>
-          <%= input.check_box %>
-          <div class="check-box">
-            <%= image_tag input.object.url, class: "avatar" %>
-            <i class="fa fa-check-square-o checked hidden" aria-hidden="true"></i>
-            <i class="fa fa-square-o unchecked hidden" aria-hidden="true"></i>
-            <%= input.text %>
-            <p><%= pluralize(Belonging.where(group_id: input.object.id).count - 1, "yayer") %> </p>
-          </div>
-        </label>
-      <% end %>
-    </div>
-  <% end %>
+  <div class="targets">
+    <%= render "search_results" %>
+  </div>
 </div>
 
 <% content_for(:after_js) do %>
 <script>
 $(function(){
-  $('#selected-targets').hide();
-  $('.collection-check-boxes > span').click(function() {
-    console.log("CLICCCCCCCC");
-    $('#selected-targets').show();
+  $('.selected-targets').hide();
+
+  $('.targets').on('click', '#collection-targets > span ', function(event) {
+    $('.selected-targets').show();
+    $(this).attr('id', 'added')
     $('#selected').append($(this));
   });
 
-  $('#selected > input').click(function() {
-    console.log("DEGAGE");
-    $('.collection_check_boxes').prepend($(this));
-  });
-
-
+  // $('.selected-targets').on('click', '#collection-selected > span ', function(event) {
+  //   $(this).attr('id', '')
+  //   $('#target').prepend($(this));
+  //   if ($(this).is(':last-child')){
+  //     $('.selected-targets').hide();
+  //   }
+  // });
 });
 </script>
 <% end %>
-
-
-
