@@ -24,9 +24,39 @@
 <% content_for(:after_js) do %>
   <script>
     $(function(){
-      $('#btn-refresh').hide()
+      $('#btn-refresh').hide();
       $('.index-poll-refresh').on('touchstart', function(event){
-        $('#btn-refresh').click()
+        console.log("tu me touche");
+        $('#btn-refresh').click();
+      });
+      var $pollShow = false;
+      $('.polls').on('touchstart', '.poll > img', function(event) {
+        console.log("Tu me touche depuis l'index");
+        if ($pollShow == false) {
+          $(".poll-info").removeClass('hide-info');
+          $(".poll-info").addClass('show-info');
+          $('.poll > div.poll-text').hide()
+          $('.poll > a.poll-button-yay').hide()
+          $('.poll > a.poll-button-nay').hide()
+          $('.poll > a.poll-button-favourite').hide()
+          $pollShow = true;
+        } else {
+          $(".poll-info").removeClass('show-info');
+          $(".poll-info").addClass('hide-info');
+          $('.poll > div.poll-text').show()
+          $('.poll > a.poll-button-yay').show()
+          $('.poll > a.poll-button-nay').show()
+          $('.poll > a.poll-button-favourite').show()
+          $pollShow = false;
+        }
+      });
+      $('.polls').on('touchstart','.poll > a.poll-button-nay', function(event) {
+        console.log("tu yay");
+        $(this).addClass('animate-yay');
+      });
+      $('.polls').on('touchstart','.poll > a.poll-button-nay', function(event) {
+        console.log("tu nay");
+        $(this).addClass('animate-nay');
       });
     });
   </script>
