@@ -1,6 +1,10 @@
 class PollsController < ApplicationController
   def index
     @polls = Poll.answerable(current_user)
+    respond_to do |format|
+      format.html { render :index }
+      format.js # render app/views/polls/index.js.erb
+    end
   end
 
   def new

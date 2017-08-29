@@ -15,6 +15,19 @@
     <div class="index-poll-refresh background-picture">
       <%= image_tag "loudly-crying-face.png" %>
       <h1> Nothing to yay or nay!!</h1>
+      <%= link_to "Rafraichir", polls_path, id:"btn-refresh", method: :get, remote: true %>
     </div>
   </div>
 </div>
+
+
+<% content_for(:after_js) do %>
+  <script>
+    $(function(){
+      $('#btn-refresh').hide()
+      $('.index-poll-refresh').on('touchstart', function(event){
+        $('#btn-refresh').click()
+      });
+    });
+  </script>
+<% end %>
