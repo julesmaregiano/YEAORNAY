@@ -6,11 +6,11 @@
     </div>
   <% end %>
 
-  <%= link_to (image_tag("smiley1.png")), poll_answers_path(poll, "answer" => {"value" => 1, "last" => local_assigns[:last] } ), class: "poll-button-yay", method: :post, remote: true %>
+  <%= link_to (image_tag("YAYicon.png")), poll_answers_path(poll, "answer" => {"value" => 1, "last" => local_assigns[:last] } ), class: "poll-button-yay", method: :post, remote: true %>
 
-  <%= link_to (image_tag("pile-of-poo.png")), poll_answers_path(poll, "answer" => {"value" => 0, "last" => local_assigns[:last] } ), class: "poll-button-nay", method: :post, remote: true %>
+  <%= link_to (image_tag("NAYicon.png")), poll_answers_path(poll, "answer" => {"value" => 0, "last" => local_assigns[:last] } ), class: "poll-button-nay", method: :post, remote: true %>
 
-  <%= link_to (image_tag("heart.png")), poll_favourites_path(poll, favourite: { poll_id: poll.id }), method: :post, remote: true, class: "poll-button-favourite" %>
+  <%= link_to (image_tag("star.png")), poll_favourites_path(poll, favourite: { poll_id: poll.id }), method: :post, remote: true, class: "poll-button-favourite" %>
 
   <%= render "polls/poll_info", poll: poll  %>
 </div>

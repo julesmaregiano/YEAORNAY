@@ -5,6 +5,7 @@
   border-bottom: solid $blue 2px;
   position: relative;
   background-color: $transparent20;
+  border-top: 1px solid $transparent50;
 }
 
 .poll-results {
@@ -15,11 +16,11 @@
   align-items: center;
   margin: 5px;
   padding: 20px 0px;
-}
-
-.flex-child {
-  flex-shrink: 0;
-  margin: 3px;
+  h4 {
+    color: white;
+    font-weight: bold;
+    opacity: 0.8;
+  }
 }
 
 .poll-answers {
@@ -28,7 +29,6 @@
   flex-direction: column;
   display: flex;
   position: relative;
-
 }
 
 .rappel-context {
@@ -51,16 +51,25 @@
   }
 }
 
+.anonym {
+  padding-bottom: 55px;
+}
+
 .min-photo-poll {
-  border-radius: 1px;
-  box-shadow: 1px 1px 1px $light-gray;
-  height: 130px;
+  border-radius: 5px;
+  height: 140px;
   width: 90px;
   position: relative;
   object-fit: cover;
-  padding: 1px;
+  padding: 3px;
 }
 
 .poll-background {
   background-color: $blue;
 }
+
+.flex-child {
+  flex-shrink: 0;
+  margin: 3px;
+}
+

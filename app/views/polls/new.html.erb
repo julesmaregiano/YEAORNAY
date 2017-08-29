@@ -30,7 +30,10 @@
       <%= f.hidden_field :context_y %>
     </div>
     <div class="poll-anonym">
-      <%= f.input :anonym %>
+      <label>
+        <%= f.input :anonym, label: false %>
+        <%= image_tag "monkey.png", id: "anonym-emoji" %>
+      </label>
     </div>
     <div class="poll-button">
       <%= f.button :submit, value: "Envoyer", class: "submit-new-poll" %>
@@ -67,6 +70,29 @@
           $pollText.css({ top: $positionY });
         });
       });
+
+      var $anonym = false;
+      $('#anonym-emoji').click(function() {
+        if ($anonym == false) {
+          $('#anonym-emoji').attr('src','/assets/anonym.png');
+          $anonym = true;
+        } else {
+          $('#anonym-emoji').attr('src','/assets/monkey.png');
+          $anonym = false;
+        }
+      });
+
     });
   </script>
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
