@@ -30,6 +30,7 @@
   text-align: center;
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
+  padding: 5px;
 }
 
 .poll-button {
@@ -109,8 +110,15 @@
   }
 }
 
-.poll-author{
+.poll-author {
   margin-top: 10px;
+  img {
+    margin-right: 2vh;
+  }
+}
+
+.poll-target img {
+  margin-right: 2vh;
 }
 
 .poll-smiley {
