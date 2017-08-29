@@ -14,7 +14,7 @@
       <p><%= image_tag "anonym.png",  height: 25 %> Anonyme !</p>
     <% else %>
       <% user = poll.user %>
-    <p> Posté par : <%= cl_image_tag user[:facebook_picture_url], class: "avatar-bordered"  %> <%= user[:first_name] %> <%= user[:last_name] %> </p>
+    <p><%= cl_image_tag user[:facebook_picture_url], class: "avatar-bordered"  %> <%= user[:first_name] %> <%= user[:last_name] %> </p>
     <%end%>
   </div>
 
