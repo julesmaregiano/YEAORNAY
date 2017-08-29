@@ -7,31 +7,46 @@
       <div class="poll-answers">
         <div class="rappel-context">
           <p>
-            <% if poll.context.size < 50 %>
+            <% if poll.context.size < 30 %>
               <%= poll.context %>
             <% else %>
-              <%= poll.context.first(50) + "... " %>
+              <%= poll.context.first(30) + "... " %>
             <% end %>
           </p>
         </div>
         <div class="poll-results">
-          <%= image_tag "YAYicon.png", class: "flex-child", height: 50+1*poll.yays_count %>
+          <%= image_tag "YAYicon.png", class: "flex-child", height: 50+3*poll.yays_count %>
           <h4 class="flex-child">
             <%= poll.yays_count%>
           </h4>
           <h4 class="flex-child">
             <%= poll.nays_count%>
           </h4>
-          <%= image_tag "NAYicon.png", class: "flex-child", height: 50+1*poll.nays_count %>
+          <%= image_tag "NAYicon.png", class: "flex-child", height: 50+3*poll.nays_count %>
         </div>
       </div>
+
       <div class="poll-timer">
+        <div class="anonym text-center">
+          <% if poll.anonym == true %>
+            <%= image_tag "anonym.png",  height: 25 %>
+          <% end %>
+        </div>
+
+        <div class="sablier text-center">
+          <% if  poll.ends_at >  Time.zone.now %>
+            <%= image_tag "sablier_full.png",  height: 25 %>
+          <% else %>
+            <%= image_tag "sablier.png",  height: 25 %>
+          <% end %>
+        </div>
+
         <div id="timer<%= poll.id %>" class ="text-center">
           <% if  poll.ends_at >  Time.zone.now %>
             <p><span id="timer-val"><%= ((poll.ends_at -  Time.zone.now) / 60).to_i %></span> min.</p>
             <i class="fa fa-clock-o" aria-hidden="true"></i>
           <% else %>
-            <p>Terminé</p>
+            <p>Over</p>
           <% end %>
         </div>
       </div>
@@ -55,14 +70,16 @@
         var seconds<%= poll.id %> = Math.floor((distance<%= poll.id %> % (1000 * 60)) / 1000);
         // Display the result in the element with id="demo"
         if (hours<%= poll.id %> > 0) {
-        document.getElementById("timer<%= poll.id %>").innerHTML = hours<%= poll.id %> + ":" + minutes<%= poll.id %> + ":" + seconds<%= poll.id %> + " <i class='fa fa-clock-o text-center' aria-hidden='true'></i>";
+        document.getElementById("timer<%= poll.id %>").innerHTML = hours<%= poll.id %> + "h" + minutes<%= poll.id %> + "min";
          } else {
-          document.getElementById("timer<%= poll.id %>").innerHTML = minutes<%= poll.id %> + ":" + seconds<%= poll.id %> + " <i class='fa fa-clock-o text-center' aria-hidden='true'></i>";
+          document.getElementById("timer<%= poll.id %>").innerHTML = minutes<%= poll.id %> + "min" + seconds<%= poll.id %> + "s";
          }
+
+
         // If the count down is finished, write some text
         if (distance<%= poll.id %> < 0) {
           clearInterval(x<%= poll.id %>);
-          document.getElementById("timer<%= poll.id %>").innerHTML = "Finished";
+          document.getElementById("timer<%= poll.id %>").innerHTML = "Over";
         }
       }, 1000);
     </script>
