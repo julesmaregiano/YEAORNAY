@@ -2,6 +2,9 @@ class Group < ApplicationRecord
   include PgSearch
   pg_search_scope :search_by_name, against: [ :name ]
 
+  scope :not_alone, -> { joins(:belongings).group("groups.id").having("COUNT(belongings.group_id) > 1") }
+  scope :by_yayers, -> { joins(:belongings).order("COUNT(belongings) DESC") }
+
   has_many :targets
   has_many :belongings
   has_many :polls, through: :targets
