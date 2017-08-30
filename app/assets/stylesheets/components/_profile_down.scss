@@ -1,64 +1,67 @@
 .min-photo-poll {
-  border-radius: 10px 0px 0px 10px;
   height: 120px;
   width: 90px;
-  position: relative;
   object-fit: cover;
-  border-right: 1px solid $blue;
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.poll-background {
-  background-color: $light-gray;
+.border-blue {
+  border-bottom: 2px solid $blue;
+  margin: 6% 5%;
 }
 
-.poll-timer{
-  border-radius: 0px 10px 10px 0px;
-  color: white;
-  font-weight: bold;
-  height: 120px;
-  width: 70px;
-  background: $light-blue;
-  .text-center {
-    opacity: 0.9;
-    margin: 10px;
-  }
-}
-
-.poll-profile-informations {
-  width: 97%;
-  margin: 4px;
+.context-anonyme {
   display: flex;
-  flex-direction: row;
+  margin-left: 4%;
+}
+
+.smileys-yn {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10%;
+}
+
+.nay-smiley {
+  display: flex;
   justify-content: space-between;
-  align-items: center;
-  position: relative;
-  background-color: white;
-  border-radius: 10px;
-}
-
-.poll-results {
-  display: flex;
-  align-items: center;
-  margin: 5px;
-  padding: 0px 0px;
-}
-
-.poll-answers {
-  margin: 2px;
-  height: auto;
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.flex-child {
-  flex-shrink: 1;
-  margin: 3px;
-  h4 {
+  padding: 5%;
+  background-color: rgba(0, 200, 255, 0.1);
+  border-radius: 15px;
+  padding-right: 12%;
+  p {
     color: $blue;
-    font-weight: bold;
-    opacity: 0.8;
+    margin-right: 14%;
+    font-size: 25px;
   }
+}
+
+.yay-smiley {
+  display: flex;
+  justify-content: space-between;
+  padding: 5%;
+  background-color: rgba(255, 0, 102, 0.1);
+  border-radius: 15px;
+  padding-right: 12%;
+  p {
+    color: $pink;
+    margin-right: 14%;
+    font-size: 25px;
+
+  }
+}
+
+.profile-context {
+  padding: 1% 5%;
+  border-radius: 10px;
+  background: linear-gradient(0deg, #00E6FF, $blue);
+  p {
+    margin: 0;
+    color: white;
+    font-size: 17px;
+  }
+  margin-right: 4%;
+}
+
+.poll-timer {
+  color: #B06842;
 }
