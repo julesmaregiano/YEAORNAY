@@ -1,61 +1,69 @@
-.profile-container {
-  display: flex;
+.white-body {
   background-color: white;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 14vh;
-  position: relative;
+}
+
+.profile {
+  background: linear-gradient(0deg, #00E6FF, $blue);
+  height: 17vh;
+  color: white;
   h1 {
-    margin-top: 2vh;
-    color: $mid-gray;
+    font-size: 3vh;
+    margin: 0;
+    margin-top: 3vh;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
   }
   h2 {
-    font-size: 23px;
-    color: $mid-gray;
-    font-weight: bold;
-    margin-top: 5px;
-    margin-bottom: 4px;
+    margin: 0;
+    font-size: 3vh;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
   }
-  h3 {
-    font-size: 18px;
-  }
-  h4 {
+  p {
+    margin: 0;
     font-size: 15px;
-  }
-  h3, h4 {
-    margin: 2px 4px;
-    padding: 0px 4px;
-    color: $mid-gray;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
   }
 }
 
-.profile-avatar{
+.profile-count {
+  display: flex;
+  align-items: space-between;
+  text-align: center;
+  margin-top: 1vh;
+}
+
+.profile-picture {
+  margin-top: 1vh;
+}
+
+.profile-avatar {
   height: 12vh;
   width: 12vh;
   margin: 2px;
   border-radius: 50px;
   flex-grow: 0;
   object-fit: cover;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
+  border: 3px solid white;
 }
 
-.profile-figures{
-  line-height: 4px;
-  color: rgba(0, 0, 0, 0.5);
-  opacity: 0.8;
-  display: flex;
-  justify-content: center;
-  margin: 2px;
-  padding: 2px;
-  &-child{
-    height: 10px;
-  }
+.yays {
+  margin-right: 2vh;
 }
 
-.profile-child  {
-  flex-grow: 1;
-  h1, h3 {
-    font-weight: bold;
-    color: $blue;
-  }
+.reponses {
+  margin-right: 2vh;
 }
+
+.groupes {
+  margin-right: 2vh;
+}
+
+.profile-btn {
+  margin-top: 1vh;
+}
+
+
+
+
+
+
