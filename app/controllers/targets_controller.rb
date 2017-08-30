@@ -1,10 +1,12 @@
 class TargetsController < ApplicationController
   def new
     @poll = Poll.find(params[:poll_id])
-    if params[:search]
-      @groups = current_user.groups.search_by_name(search_params["search"])
-    else
+
+    if params.dig(:search, :search).blank?
       @groups = current_user.groups
+    else
+      groups = current_user.groups.search_by_name(search_params["search"])
+      @groups = groups
     end
     respond_to do |format|
       format.html { render :new }
@@ -15,7 +17,7 @@ class TargetsController < ApplicationController
   def create
     @poll = Poll.find(params[:poll_id])
     @poll.update(poll_params)
-    redirect_to polls_path
+    redirect_to polls_path, notice: "Ton YAY a bien été créé !"
   end
 
   private

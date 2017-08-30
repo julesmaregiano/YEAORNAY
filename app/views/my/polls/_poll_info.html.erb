@@ -1,25 +1,37 @@
-<div class="container">
-  <div class="poll-info hide-info" id="poll-info-<%= poll.id %>">
-    <div>
-      <p class= "poll_context_info"> <%= poll.context %> </p>
-    </div>
-    <div class= "poll-author text-center">
-      <% if poll.anonym? %>
-        <% user = {first_name: "Captain", last_name: "Annonyme", facebook_picture_url: "http://res.cloudinary.com/yay-or-nay/image/upload/v1503565490/anon_s9osdj.jpg"} %>
-      <% else %>
-        <% user = poll.user %>
-      <%end%>
-      <p> <%= cl_image_tag user[:facebook_picture_url], class: "avatar-bordered"  %> <%= user[:first_name] %> <%= user[:last_name] %> </p>
-    </div>
-    <div class="poll-answers">
-      <div class= "yay-barre" style= "width: <%= poll.yays_percent %>%">
-        <%= image_tag "yay.png", class: "poll-yn" %>
-        <h4 class="yay-barre-count"> <%= poll.yays_count%> </h4>
+<div class="poll-info hide-info" id="poll-info-<%= poll.id %>">
+
+  <div>
+    <p class= "poll_context_info text-center"> <%= poll.context %> </p>
+  </div>
+  <div class="poll-target">
+    <% poll.targets.each do |target| %>
+      <span><%= image_tag target.group.url ,  height: 25 %> <%= target.group.name %></span>
+    <% end %>
+  </div>
+
+  <div class= "poll-author">
+    <% if poll.anonym? %>
+      <p><%= image_tag "anonym.png",  height: 25 %> Anonyme !</p>
+    <% else %>
+      <% user = poll.user %>
+    <p><%= cl_image_tag user[:facebook_picture_url], class: "avatar-bordered"  %> <%= user[:first_name] %> <%= user[:last_name] %> </p>
+    <%end%>
+  </div>
+
+
+  <div class="row">
+    <div class="col-xs-6 text-center">
+      <div class= "yay-barre" style= "width: 40%">
+        <%= image_tag "YAYicon.png", class: "poll-smiley" %>
       </div>
-      <div class= "nay-barre" style= "width: <%= poll.nays_percent %>%">
-        <%= image_tag "nay.png", class: "poll-ny" %>
-        <h4 class="nay-barre-count"> <%= poll.nays_count %> </h4>
+      <h3><%= poll.yays_count %></h3>
+    </div>
+
+    <div class="col-xs-6 text-center">
+      <div class= "nay-barre" style= "width: 40%">
+        <%= image_tag "NAYicon.png", class: "poll-smiley" %>
       </div>
+      <h3><%= poll.yays_count %></h3>
     </div>
   </div>
 </div>

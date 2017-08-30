@@ -1,7 +1,7 @@
 <%= simple_form_for @poll, url: poll_targets_path(@poll), method: :post do |f| %>
   <div class="collection-check-boxes" id="collection-targets">
     <%= f.collection_check_boxes :group_ids, @groups, :id, :name do |input| %>
-      <label>
+      <label class="group-wrapper" id="group-<%= input.object.id %>">
         <%= input.check_box %>
         <div class="check-box" id="target">
           <%= image_tag input.object.url, class: "avatar" %>

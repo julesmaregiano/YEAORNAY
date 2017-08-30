@@ -14,30 +14,3 @@
 
   <%= render "polls/poll_info", poll: poll  %>
 </div>
-
-<% content_for(:after_js) do %>
-<script>
-$(function(){
- var $pollShow = false;
-   $('#poll-<%= poll.id %> > img').on('touchstart', function(event){
-     if ($pollShow == false) {
-       $("#poll-info-<%= poll.id %>").removeClass('hide-info');
-       $("#poll-info-<%= poll.id %>").addClass('show-info');
-       $('#poll-<%= poll.id %> > div.poll-text').hide()
-       $('#poll-<%= poll.id %> > a.poll-button-yay').hide()
-       $('#poll-<%= poll.id %> > a.poll-button-nay').hide()
-       $('#poll-<%= poll.id %> > a.poll-button-favourite').hide()
-       $pollShow = true;
-     } else {
-       $("#poll-info-<%= poll.id %>").removeClass('show-info');
-       $("#poll-info-<%= poll.id %>").addClass('hide-info');
-       $('#poll-<%= poll.id %> > div.poll-text').show()
-       $('#poll-<%= poll.id %> > a.poll-button-yay').show()
-       $('#poll-<%= poll.id %> > a.poll-button-nay').show()
-       $('#poll-<%= poll.id %> > a.poll-button-favourite').show()
-       $pollShow = false;
-     }
-   });
- });
-</script>
-<% end %>
