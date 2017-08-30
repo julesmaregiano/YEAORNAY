@@ -54,6 +54,15 @@
   }
 }
 
+.icon-smiley {
+  transition: transform ease 100ms;
+  transform: scale(1);
+}
+
+.bump {
+  transform: scale(1.4);
+}
+
 .profile-context {
   padding: 1% 3%;
   border-radius: 10px;
