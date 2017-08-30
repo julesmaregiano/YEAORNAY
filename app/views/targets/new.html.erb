@@ -1,21 +1,29 @@
 <div class= "check-box-title">
-<h4 class= "text-center">Choisis tes cibles</h4>
+  <h4 class= "text-center">Choisis tes cibles</h4>
 </div>
-
-<div class="text-center form-inline">
+<div class="text-center form-inline target-wrap">
   <%= simple_form_for(:search, :url => new_poll_target_url, :method => :get, :remote => true) do |f| %>
-    <%= f.input :search, label: false %>
-    <%= f.button :submit, class: "btn btn-primary search-btn", value: "Rechercher" %>
+  <div class="target-container">
+    <div id="target-search-btn-div">
+
+      <%= f.button :button, class: "target-btn-targets" do %>
+      <i class="fa fa-search target-search-icon" aria-hidden="true"></i>
+      <% end %>
+    </div>
+
+    <div id= "target-search-bar-div">
+      <%= f.input :search, input_html: {class: "target-search-bar"}, label: false %>
+    </div>
+  </div>
   <% end %>
 </div>
-
 <div class= "container">
   <div class="selected-targets">
-    <h5 class= "text-center">Tes cibles actuelles:</h4>
+    <h5 class= "text-center target-select-targets"><strong>Tes cibles: </strong></h5>
     <%= simple_form_for @poll, url: poll_targets_path(@poll), method: :post do |f| %>
     <div class="collection-check-boxes" id="collection-selected">
     </div>
-      <%= f.button :submit, class: "btn btn-primary btn-block", value: "Envoyer" %>
+      <%= f.button :submit, class: "btn btn-primary btn-block target-btn-envoyer", value: "Envoyer" %>
     <% end %>
     </div>
   <div class="targets" id="search-results">

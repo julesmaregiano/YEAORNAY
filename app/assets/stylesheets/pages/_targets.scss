@@ -1,0 +1,70 @@
+#target-search-bar-div{
+  position: relative;
+  top: -59px;
+
+
+}
+
+#target-search-btn-div{
+  position: relative;
+  top: -20px;
+  left: 45%;
+  z-index: 2;
+}
+
+#target-search-btn-div input{
+  padding-left: 40px;
+  background-color: white;
+}
+
+.target-container{
+  position: absolute;
+  width: 100%;
+  height: 10px;
+}
+
+.target-wrap{
+  margin-bottom: 80px;
+
+}
+
+.form-control{
+  height: 55px;
+}
+
+.target-search-icon{
+  position: absolute;
+  font-size: 35px;
+  left: 165px;
+  top: -5px;
+  color: $blue
+}
+
+.target-select-targets{
+  color: $red;
+}
+
+.target-btn-targets{
+  background-color: white;
+  border-color: white;
+}
+
+.target-btn-targets:focus, .target-btn-targets:visited, .target-btn-targets:hover:active {
+  border: none;
+  background-color: white;
+  outline: none;
+  box-shadow: none;
+}
+
+.target-btn-envoyer{
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-size: 20px;
+}
+
+
+
