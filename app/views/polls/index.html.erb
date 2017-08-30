@@ -1,4 +1,4 @@
-<% content_for(:body_class, "full-page") %>
+<% content_for(:body_class, "full-page-scrollable") %>
 <div class="index-poll-page">
   <%= notice %>
   <div class="links">
@@ -9,7 +9,7 @@
       <i class="button-nav-right fa fa-user" aria-hidden="true"></i>
     <% end %>
   </div>
-  
+
   <div class="polls">
     <%= render "poll", poll: @polls.last, last: true unless @polls.empty? %>
     <% @polls[0..-2].each do |poll| %>
