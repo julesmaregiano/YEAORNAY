@@ -1,56 +1,64 @@
-<div class="poll-background">
-  <% @favourites.each do |favourite| %>
-    <div class="poll-profile-informations">
+<% @favourites.each do |favourite| %>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-3">
       <%= link_to my_poll_path(favourite.poll) do %>
-        <%= cl_image_tag(favourite.poll.photo.path, class: "min-photo-poll") %>
+        <% cl_image_tag(favourite.poll.photo.path, class: "min-photo-poll") %>
       <% end %>
-      <div class="poll-answers">
-        <div class="rappel-context">
-          <p>
-            <% if favourite.poll.context.size < 30 %>
-              <%= favourite.poll.context %>
-            <% else %>
-              <%= favourite.poll.context.first(30) + "... " %>
-            <% end %>
-          </p>
+    </div>
+
+    <div class="col-xs-7">
+      <div class="context-anonyme">
+        <div class="profile-context">
+          <% if favourite.poll.context.size < 30 %>
+            <p><%= favourite.poll.context.capitalize %></p>
+          <% else %>
+            <p><%= favourite.poll.context.first(30).capitalize + "... " %></p>
+          <% end %>
         </div>
-        <div class="poll-results">
-          <%= image_tag "YAYicon.png", class: "flex-child", height: 50+3*favourite.poll.yays_count %>
-          <h4 class="flex-child">
-            <%= favourite.poll.yays_count%>
-          </h4>
-          <h4 class="flex-child">
-            <%= favourite.poll.nays_count%>
-          </h4>
-          <%= image_tag "NAYicon.png", class: "flex-child", height: 50+3*favourite.poll.nays_count %>
+        <div class="profile-anonym">
+          <% if favourite.poll.anonym %>
+            <%= image_tag "anonym.png", height: 25 %>
+          <% else %>
+            <%= image_tag "monkey.png", height: 25 %>
+          <% end %>
         </div>
       </div>
 
-      <div class="poll-timer">
-        <div class="anonym text-center">
-          <% if favourite.poll.anonym == true %>
-            <%= image_tag "anonym.png",  height: 25 %>
-          <% end %>
+      <div class="smileys-yn">
+         <div class="nay-smiley">
+         <p><%= favourite.poll.nays_count %></p>
+          <%= image_tag "nay-profile.png", height: 50 %>
         </div>
-
-        <div class="sablier text-center">
-          <% if  favourite.poll.ends_at >  Time.zone.now %>
-            <%= image_tag "sablier_full.png",  height: 25 %>
-          <% else %>
-            <%= image_tag "sablier.png",  height: 25 %>
-          <% end %>
+        <div class="yay-smiley">
+          <p><%= favourite.poll.yays_count %></p>
+          <%= image_tag "yay-profile.png", height: 50 %>
         </div>
+      </div>
+    </div>
 
+    <div class="col-xs-2">
+      <div class="poll-timer text-center">
         <div id="timer<%= favourite.poll.id %>" class ="text-center">
           <% if  favourite.poll.ends_at >  Time.zone.now %>
-            <p><span id="timer-val"><%= ((favourite.poll.ends_at -  Time.zone.now) / 60).to_i %></span> min.</p>
+            <p><span id="timer-val"><%= ((favourite.poll.ends_at - Time.zone.now) / 60).to_i %></span> min.</p>
             <i class="fa fa-clock-o" aria-hidden="true"></i>
           <% else %>
             <p>Over</p>
           <% end %>
         </div>
+        <%= image_tag "sablier.png", height: 20 %>
       </div>
     </div>
+
+
+  </div>
+</div>
+
+<div class="border-blue"></div>
+
 
 <% content_for(:after_js) do %>
     <script>
@@ -70,12 +78,12 @@
         var seconds<%= favourite.poll.id %> = Math.floor((distance<%= favourite.poll.id %> % (1000 * 60)) / 1000);
         // Display the result in the element with id="demo"
         if (hours<%= favourite.poll.id %> > 0) {
-        document.getElementById("timer<%= favourite.poll.id %>").innerHTML = hours<%= favourite.poll.id %> + "h" + minutes<%= favourite.poll.id %> + "min";
+        document.getElementById("timer<%= favourite.poll.id %>").innerHTML = hours<%= favourite.poll.id %> + "h";
+         } else if (minutes<%= favourite.poll.id %> < 0) {
+          document.getElementById("timer<%= favourite.poll.id %>").innerHTML = seconds<%= favourite.poll.id %> + "s";
          } else {
-          document.getElementById("timer<%= favourite.poll.id %>").innerHTML = minutes<%= favourite.poll.id %> + "min" + seconds<%= favourite.poll.id %> + "s";
+          document.getElementById("timer<%= favourite.poll.id %>").innerHTML = minutes<%= favourite.poll.id %> + "min";
          }
-
-
         // If the count down is finished, write some text
         if (distance<%= favourite.poll.id %> < 0) {
           clearInterval(x<%= favourite.poll.id %>);
@@ -83,7 +91,7 @@
         }
       }, 1000);
     </script>
-
   <% end %>
+
 <% end %>
-</div>
+
