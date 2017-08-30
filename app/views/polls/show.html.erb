@@ -26,6 +26,7 @@
     App['poll_<%= @poll.id %>'] = App.cable.subscriptions.create(
       { channel: 'PollsChannel', poll_id: <%= @poll.id %> },
       { received: (data) => {
+        byebug
         if (data.current_user_id !== <%= current_user.id %>) {
         const messagesContainer = document.querySelector('.messages');
         messagesContainer.insertAdjacentHTML('beforeend', data.message_partial)

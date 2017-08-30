@@ -25,7 +25,7 @@ class Poll < ApplicationRecord
       .not_answered_by(user)
       .targeting(user)
       .ending_soon
-      .first(3)
+      .first(1)
   end
 
   def self.list user
