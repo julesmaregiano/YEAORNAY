@@ -1,5 +1,7 @@
 <div class="poll" id="poll-<%= poll.id %>">
-  <%= cl_image_tag poll.photo.path, class: "poll-photo" %>
+  <% unless poll.photo.nil? %>
+    <%= cl_image_tag poll.photo.path, class: "poll-photo" %>
+  <% end %>
   <% unless poll.context.empty? %>
     <div class="poll-text" style= "top: <%= poll.context_y %>%">
         <%=poll.context%>
