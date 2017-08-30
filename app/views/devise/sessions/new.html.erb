@@ -1,4 +1,5 @@
-<div class="full-page">
+<% content_for(:body_class, "full-page") %>
+<div class="login-page">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
@@ -34,8 +35,6 @@
       </div>
     </div>
   </div>
-</div>
-
 </div>
 
 <% content_for(:after_js) do %>
@@ -163,16 +162,3 @@ requestAnimationFrame(animationStep);
 
     </script>
 <% end %>
-
-
-<!-- <div class="footer">
-  <div class="footer-links">
-    <a href="#"><i class="fa fa-instagram"></i></a>
-    <a href="#"><i class="fa fa-facebook"></i></a>
-    <a href="#"></a>
-    <a href="#" style="font-size: 14px;">Politique de confidentialité</a>
-    <a href="#" style="font-size: 14px;">coucou@yayornay.io</a>
-  </div>
-</div> -->
-
-
