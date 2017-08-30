@@ -11,20 +11,18 @@
 
     <div class="col-xs-9">
       <div class="context-anonyme">
-        <div class="profile-context">
-          <% if poll.context.size < 30 %>
-            <p><%= poll.context.capitalize %></p>
-          <% else %>
-            <p><%= poll.context.first(30).capitalize + "... " %></p>
-          <% end %>
-        </div>
-      <!--   <div class="profile-anonym">
-          <% if poll.anonym %>
-            <%= image_tag "anonym.png", height: 25 %>
-          <% else %>
-            <%= image_tag "monkey.png", height: 25 %>
-          <% end %>
-        </div> -->
+        <% if poll.context == "" %>
+         <div class="profile-context-nil"></div>
+        <% else %>
+          <div class="profile-context">
+            <% if poll.context.size < 30 %>
+              <p><%= poll.context.capitalize %></p>
+            <% else %>
+              <p><%= poll.context.first(30).capitalize + "... " %></p>
+            <% end %>
+          </div>
+        <% end %>
+
         <div class="poll-timer">
           <div id="timer<%= poll.id %>" class ="text-center">
             <% if  poll.ends_at >  Time.zone.now %>
