@@ -4,29 +4,24 @@
   width: 90px;
   position: relative;
   object-fit: cover;
+  border-right: 1px solid $blue;
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
 }
 
-.anonym {
+.poll-background {
+  background-color: $light-gray;
 }
 
 .poll-timer{
-  margin: 2px;
-  color: black;
+  border-radius: 0px 10px 10px 0px;
+  color: white;
+  font-weight: bold;
+  height: 120px;
+  width: 70px;
+  background: $light-blue;
   .text-center {
-    opacity: 0.8;
-  }
-}
-
-.rappel-context {
-  font-size: 13px;
-  color: $mid-gray;
-  margin-top: 2px;
-  font-style: italic;
-  height: 20px;
-  p {
-    margin: 0px;
-    color: $blue;
+    opacity: 0.9;
+    margin: 10px;
   }
 }
 
@@ -34,11 +29,12 @@
   width: 97%;
   margin: 4px;
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   position: relative;
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
 }
 
 .poll-results {
