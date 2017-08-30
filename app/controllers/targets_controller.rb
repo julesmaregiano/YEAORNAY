@@ -3,10 +3,10 @@ class TargetsController < ApplicationController
     @poll = Poll.find(params[:poll_id])
 
     if params.dig(:search, :search).blank?
-      @groups = current_user.groups
+      @groups = current_user.groups.not_alone.by_yayers
     else
-      groups = current_user.groups.search_by_name(search_params["search"])
-      @groups = groups
+      groups = current_user.groups.not_alone.search_by_name(search_params["search"])
+      @groups = groups.by_yayers
     end
     respond_to do |format|
       format.html { render :new }

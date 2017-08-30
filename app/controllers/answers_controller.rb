@@ -12,6 +12,11 @@ class AnswersController < ApplicationController
 
     if @answer.save!
 
+      ActionCable.server.broadcast("poll_#{@poll.id}", {
+        status: @answer.value,
+        poll_id: @poll.id
+      })
+
       if last_answer?
         @polls = Poll.answerable(current_user)
       else

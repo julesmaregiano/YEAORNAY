@@ -1,6 +1,6 @@
 <% @polls.each do |poll| %>
 
-<div class="container">
+<div class="container" id="poll-<%= poll.id %>">
   <div class="row">
 
     <div class="col-xs-3">
@@ -40,12 +40,12 @@
 
       <div class="smileys-yn">
          <div class="nay-smiley">
-         <p><%= poll.nays_count %></p>
-          <%= image_tag "nay-profile.png" %>
+         <p class="counter"><%= poll.nays_count %></p>
+          <%= image_tag "nay-profile.png", class: "icon-smiley" %>
         </div>
         <div class="yay-smiley">
-          <p><%= poll.yays_count %></p>
-          <%= image_tag "yay-profile.png" %>
+          <p class="counter"><%= poll.yays_count %></p>
+          <%= image_tag "yay-profile.png", class: "icon-smiley" %>
         </div>
       </div>
     </div>
@@ -88,7 +88,32 @@
         }
       }, 1000);
     </script>
-  <% end %>
+    <script>
+    App.cable.subscriptions.create({
+      channel: "PollChannel",
+      poll_id: "<%= poll.id %>",
+    },
+    {
+      connected: function() {
+        console.log("[CONNECTED to poll_<%= poll.id %>]");
+      },
+      received: function(data) {
+        console.log("[RECEIVED]");
+        var icon = data.status == 1 ? "yay" : "nay";
+        var $iconWrapper = $('#poll-' + data.poll_id).find("." + icon + "-smiley");
 
+        var $counter = $iconWrapper.find(".counter");
+        var newCounterValue = parseInt($counter.text()) + 1;
+        $counter.text(newCounterValue);
+
+        var $icon = $iconWrapper.find(".icon-smiley");
+        $icon.addClass('bump');
+        setTimeout(function() {
+          $icon.removeClass('bump');
+        }, 100);
+      }
+    });
+  </script>
+  <% end %>
 <% end %>
 
