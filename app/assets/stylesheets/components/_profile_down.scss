@@ -12,7 +12,7 @@
 
 .context-anonyme {
   display: flex;
-  justify-content: space-around;
+  margin-left: 4%;
 }
 
 .smileys-yn {
@@ -44,13 +44,14 @@
 }
 
 .profile-context {
-  padding: 5px;
+  padding: 1% 5%;
   border-radius: 10px;
   background: linear-gradient(0deg, #00E6FF, $blue);
   p {
     margin: 0;
     color: white;
   }
+  margin-right: 4%;
 }
 
 .poll-timer {

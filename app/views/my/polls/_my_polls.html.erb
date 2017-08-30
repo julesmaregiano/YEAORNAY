@@ -14,9 +14,9 @@
       <div class="context-anonyme">
         <div class="profile-context">
           <% if poll.context.size < 30 %>
-            <p><%= poll.context %></p>
+            <p><%= poll.context.capitalize %></p>
           <% else %>
-            <p><%= poll.context.first(30) + "... " %></p>
+            <p><%= poll.context.first(30).capitalize + "... " %></p>
           <% end %>
         </div>
         <div class="profile-anonym">
