@@ -1,0 +1,12 @@
+console.log('coucou');
+
+<% unless @message.errors.any? %>
+  var messagesContainer = $(".messages");
+  messagesContainer.append('<%= j render "message", message: @message, user_is_messages_author: true %>');
+  $('#message_content').val('').blur();
+  // const messagesContainer = document.querySelector('.messages');
+  // messagesContainer.insertAdjacentHTML('beforeend', '<%= j render "message", message: @message, user_is_messages_author: true%>');
+  // const input = document.querySelector('#message_content');
+  // input.value = '';
+  // input.blur();
+<% end %>

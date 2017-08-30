@@ -6,9 +6,9 @@ class MessagesController < ApplicationController
     @message.poll = @poll
     @message.user = current_user
     if @message.save
-      ActionCable.server.broadcast("poll_#{@poll.id}", {
-          message_partial: render(partial: "messages/message", locals: { message: @message, user_is_messages_author: false})
-        })
+      # ActionCable.server.broadcast("poll_#{@poll.id}", {
+      #     message_partial: render(partial: "messages/message", locals: { message: @message, user_is_messages_author: false})
+      #   })
       respond_to do |format|
         format.html {redirect_to poll_path(@poll)}
         format.js

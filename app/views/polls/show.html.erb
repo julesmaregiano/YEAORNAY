@@ -7,7 +7,7 @@
         </h4>
       </div>
       <div class="messages">
-        <% @poll.messages.each do %>
+        <% @poll.messages.each do |message| %>
           <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
         <% end %>
       </div>
