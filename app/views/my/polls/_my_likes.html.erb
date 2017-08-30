@@ -9,7 +9,7 @@
       <% end %>
     </div>
 
-    <div class="col-xs-7">
+    <div class="col-xs-9">
       <div class="context-anonyme">
         <div class="profile-context">
           <% if favourite.poll.context.size < 30 %>
@@ -18,12 +18,23 @@
             <p><%= favourite.poll.context.first(30).capitalize + "... " %></p>
           <% end %>
         </div>
-        <div class="profile-anonym">
+      <!--   <div class="profile-anonym">
           <% if favourite.poll.anonym %>
             <%= image_tag "anonym.png", height: 25 %>
           <% else %>
             <%= image_tag "monkey.png", height: 25 %>
           <% end %>
+        </div> -->
+        <div class="poll-timer">
+          <div id="timer<%= favourite.poll.id %>" class ="text-center">
+            <% if  favourite.poll.ends_at >  Time.zone.now %>
+              <p><span id="timer-val"><%= ((favourite.poll.ends_at - Time.zone.now) / 60).to_i %></span> min.</p>
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+            <% else %>
+              <p>Over</p>
+            <% end %>
+          </div>
+          <%= image_tag "sablier.png", height: 20 %>
         </div>
       </div>
 
@@ -34,22 +45,8 @@
         </div>
         <div class="yay-smiley">
           <p><%= favourite.poll.yays_count %></p>
-          <%= image_tag "yay-profile.png"%>
+          <%= image_tag "yay-profile.png" %>
         </div>
-      </div>
-    </div>
-
-    <div class="col-xs-2">
-      <div class="poll-timer text-center">
-        <div id="timer<%= favourite.poll.id %>" class ="text-center">
-          <% if  favourite.poll.ends_at >  Time.zone.now %>
-            <p><span id="timer-val"><%= ((favourite.poll.ends_at - Time.zone.now) / 60).to_i %></span> min.</p>
-            <i class="fa fa-clock-o" aria-hidden="true"></i>
-          <% else %>
-            <p>Over</p>
-          <% end %>
-        </div>
-        <%= image_tag "sablier.png", height: 20 %>
       </div>
     </div>
 
@@ -94,4 +91,5 @@
   <% end %>
 
 <% end %>
+
 
