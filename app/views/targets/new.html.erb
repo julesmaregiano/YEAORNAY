@@ -1,28 +1,30 @@
-<div class= "check-box-title">
-<h4 class= "text-center">Choisis tes cibles</h4>
-</div>
+<% content_for(:body_class, "full-page-scrollable") %>
+<div class="target-new-page">
+  <div class= "check-box-title">
+  <h4 class= "text-center">Choisis tes cibles</h4>
+  </div>
 
-<div class="text-center form-inline">
-  <%= simple_form_for(:search, :url => new_poll_target_url, :method => :get, :remote => true) do |f| %>
-    <%= f.input :search, label: false %>
-    <%= f.button :submit, class: "btn btn-primary search-btn", value: "Rechercher" %>
-  <% end %>
-</div>
-
-<div class= "container">
-  <div class="selected-targets">
-    <h5 class= "text-center">Tes cibles actuelles:</h4>
-    <%= simple_form_for @poll, url: poll_targets_path(@poll), method: :post do |f| %>
-    <div class="collection-check-boxes" id="collection-selected">
-    </div>
-      <%= f.button :submit, class: "btn btn-primary btn-block", value: "Envoyer" %>
+  <div class="text-center form-inline">
+    <%= simple_form_for(:search, :url => new_poll_target_url, :method => :get, :remote => true) do |f| %>
+      <%= f.input :search, label: false %>
+      <%= f.button :submit, class: "btn btn-primary search-btn", value: "Rechercher" %>
     <% end %>
+  </div>
+
+  <div class= "container">
+    <div class="selected-targets">
+      <h5 class= "text-center">Tes cibles actuelles:</h4>
+      <%= simple_form_for @poll, url: poll_targets_path(@poll), method: :post do |f| %>
+      <div class="collection-check-boxes" id="collection-selected">
+      </div>
+        <%= f.button :submit, class: "btn btn-primary btn-block", value: "Envoyer" %>
+      <% end %>
+      </div>
+    <div class="targets" id="search-results">
+      <%= render "search_results" %>
     </div>
-  <div class="targets" id="search-results">
-    <%= render "search_results" %>
   </div>
 </div>
-
 <% content_for(:after_js) do %>
   <script>
   $(function(){

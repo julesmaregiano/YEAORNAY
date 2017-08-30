@@ -1,2 +1,5 @@
-<%= render "profile_infos" %>
-<%= render "profile_tabs" %>
+<% content_for(:body_class, "full-page-scrollable") %>
+<div class="profile-page">
+  <%= render "profile_infos" %>
+  <%= render "profile_tabs" %>
+</div>
