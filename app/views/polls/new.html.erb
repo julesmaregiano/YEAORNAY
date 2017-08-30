@@ -1,47 +1,48 @@
 <% content_for(:body_class, "full-page") %>
-
-<%= simple_form_for @poll, class: "add_photo" do |f| %>
-  <div class="background-message">
-    <label>
-      <div class="wrapper-blue text-center">
-        <div class="links">
-          <%= link_to polls_path do %>
-            <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
-          <% end %>
-          <%= link_to my_polls_path do %>
-            <i class="fa fa-user" aria-hidden="true"></i>
-          <% end %>
-        </div>
-        <div class="background-picture" id="background-new-poll">
-          <%= image_tag "camera.png" %>
-          <h1>Prenez une photo</h1>
-        </div>
-        <%= f.input_field :photo, as: :attachinary, label: false %>
-        <%= f.button :submit, class: "submit-photo" %>
-      </div>
-    </label>
-  </div>
-
-  <div class="poll">
-    <div class="image-upload">
-    </div>
-    <div class="poll-text">
-      <%= f.text_field :context, class: "context-zone" %>
-      <%= f.hidden_field :context_y %>
-    </div>
-    <div class="poll-anonym">
+<div class="new-poll-page">
+  <%= simple_form_for @poll, class: "add_photo" do |f| %>
+    <div class="background-message">
       <label>
-        <%= f.input :anonym, label: false %>
-        <div class="img-anonym">
-          <%= image_tag "monkey.png", id: "anonym-emoji" %>
+        <div class="text-center">
+          <div class="links">
+            <%= link_to polls_path do %>
+              <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+            <% end %>
+            <%= link_to my_polls_path do %>
+              <i class="fa fa-user" aria-hidden="true"></i>
+            <% end %>
+          </div>
+          <div class="background-picture" id="background-new-poll">
+            <%= image_tag "camera.png" %>
+            <h1>Prenez une photo</h1>
+          </div>
+          <%= f.input_field :photo, as: :attachinary, label: false %>
+          <%= f.button :submit, class: "submit-photo" %>
         </div>
       </label>
     </div>
-    <div class="poll-button">
-      <%= f.button :submit, value: "Envoyer", class: "submit-new-poll" %>
+
+    <div class="poll">
+      <div class="image-upload">
+      </div>
+      <div class="poll-text">
+        <%= f.text_field :context, class: "context-zone" %>
+        <%= f.hidden_field :context_y %>
+      </div>
+      <div class="poll-anonym">
+        <label>
+          <%= f.input :anonym, label: false %>
+          <div class="img-anonym">
+            <%= image_tag "monkey.png", id: "anonym-emoji" %>
+          </div>
+        </label>
+      </div>
+      <div class="poll-button">
+        <%= f.button :submit, value: "Envoyer", class: "submit-new-poll" %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 <% content_for(:after_js) do %>
   <script>
@@ -57,6 +58,7 @@
         $(".image-upload").append("<img class='poll-photo' src='" + $url + "'/>");
         $(".poll").show();
         $(".insert-image").hide();
+        $(".submit-photo").hide();
         var $pollText = $(".poll-text");
         var $height = $('.poll-photo')[0].height;
         $pollText.hide()
@@ -87,14 +89,3 @@
     });
   </script>
 <% end %>
-
-
-
-
-
-
-
-
-
-
-

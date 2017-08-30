@@ -1,25 +1,26 @@
 <% content_for(:body_class, "full-page") %>
+<div class="index-poll-page">
+  <%= notice %>
+  <%= link_to "", my_polls_path, class: "button-nav-right fa fa-user" %>
+  <%= link_to "", new_poll_path, class: "button-nav-left fa fa-camera" %>
 
-<%= notice %>
+  <div class="polls">
+    <%= render "poll", poll: @polls.last, last: true unless @polls.empty? %>
+    <% @polls[0..-2].each do |poll| %>
+      <%= render "poll", poll: poll  %>
+    <% end %>
+  </div>
 
-<%= link_to "", my_polls_path, class: "button-nav-right fa fa-user" %>
-<%= link_to "", new_poll_path, class: "button-nav-left fa fa-camera" %>
-
-<div class="polls">
-  <%= render "poll", poll: @polls.last, last: true unless @polls.empty? %>
-  <% @polls[0..-2].each do |poll| %>
-    <%= render "poll", poll: poll  %>
-  <% end %>
-</div>
-
-<div class="background-message">
-  <div class="wrapper-blue text-center">
-    <div class="index-poll-refresh background-picture">
-      <%= link_to image_tag("loudly-crying-face.png"), polls_path, method: :get, remote: true %>
-      <h1> Nothing to yay or nay!!</h1>
+  <div class="background-message">
+    <div class="wrapper-blue text-center">
+      <div class="index-poll-refresh background-picture">
+        <%= link_to image_tag("loudly-crying-face.png"), polls_path, method: :get, remote: true %>
+        <h1> Nothing to yay or nay!!</h1>
+      </div>
     </div>
   </div>
 </div>
+
 <% content_for(:after_js) do %>
   <script>
     $(function(){
