@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="chat-header">
+        <h4>
+          <%= @poll.id %>
+        </h4>
+      </div>
+      <div class="messages">
+        <% @poll.messages.each do %>
+          <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
+        <% end %>
+      </div>
+      <div class="create-message">
+        <%= simple_form_for [@poll, Message.new], remote: true do |f| %>
+          <%= f.input :content, label: false %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :after_js do %>
+  <script>
+    App['poll_<%= @poll.id %>'] = App.cable.subscriptions.create(
+      { channel: 'PollsChannel', poll_id: <%= @poll.id %> },
+      { received: (data) => {
+        if (data.current_user_id !== <%= current_user.id %>) {
+        const messagesContainer = document.querySelector('.messages');
+        messagesContainer.insertAdjacentHTML('beforeend', data.message_partial)
+        }
+       }
+    })
+  </script>
+<% end %>

@@ -1,5 +1,6 @@
 class Poll < ApplicationRecord
   belongs_to :user
+  has_many :messages
   has_many :answers, dependent: :destroy
   has_many :targets
   has_many :groups, through: :targets

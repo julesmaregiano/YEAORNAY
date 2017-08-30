@@ -1,4 +1,4 @@
-$('#poll-<%= @poll.id %>').addClass('animate-<%= @answer.value == 0 ? "nay" : "yay" %>');
+  $('#poll-<%= @poll.id %>').addClass('animate-<%= @answer.value == 0 ? "nay" : "yay" %>');
 
 <% if @polls.size > 1 %>
   <% @polls[0..-2].each do |poll| %>
@@ -8,4 +8,14 @@ $('#poll-<%= @poll.id %>').addClass('animate-<%= @answer.value == 0 ? "nay" : "y
 
 <% if @polls.last %>
   $('.polls').prepend('<%= j render "polls/poll", poll: @polls.last, last: true unless @polls.empty? %>');
+<% end %>
+
+
+<% if @message.errors.any? %>
+<% else %>
+  const messagesContainer = document.querySelector('.messages');
+  messagesContainer.insertAdjacentHTML('beforeend', '<%= j render "message", message: @message, user_is_messages_author: true%>');
+  const input = document.querySelector('#message_content');
+  input.value = '';
+  input.blur();
 <% end %>
