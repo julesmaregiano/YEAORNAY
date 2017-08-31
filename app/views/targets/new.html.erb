@@ -40,7 +40,6 @@
     $('.selected-targets').hide();
 
     $('.targets').on('click', '#collection-targets > span ', function(event) {
-      console.log("tu me rajoute");
       $('.selected-targets').show();
       $(this).children().children().children().removeAttr('id');
       $(this).children().children().children().attr('id','selected');
@@ -54,7 +53,6 @@
 
 
     $('.selected-targets').on('click', '#collection-selected > span', function(event) {
-      console.log("tu me vire");
       $(this).children().children().children().removeAttr('id');
       $(this).children().children().children().attr('id','target');
 
