@@ -31,7 +31,6 @@
     $(function(){
       var $pollShow = false;
       $('.polls').on('touchstart', '.poll > img', function(event) {
-        console.log("Tu me touche depuis l'index");
         if ($pollShow == false) {
           $(".poll-info").removeClass('hide-info');
           $(".poll-info").addClass('show-info');
