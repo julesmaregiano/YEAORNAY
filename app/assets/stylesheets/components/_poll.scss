@@ -6,7 +6,7 @@
   right: 0;
   transition: transform 600ms ease;
   overflow: hidden;
-  background: $pink;
+  background: $blue;
 
   &.animate-yay {
     transform: rotate(10deg) translateX(200%);
