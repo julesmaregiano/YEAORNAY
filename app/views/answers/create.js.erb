@@ -1,4 +1,4 @@
-$('#poll-<%= @poll.id %>').addClass('animate-<%= @answer.value == 0 ? "nay" : "yay" %>');
+  $('#poll-<%= @poll.id %>').addClass('animate-<%= @answer.value == 0 ? "nay" : "yay" %>');
 
 <% if @polls.size > 1 %>
   <% @polls[0..-2].each do |poll| %>

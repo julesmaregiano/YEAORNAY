@@ -49,12 +49,6 @@
    width: 100%;
 }
 
-.poll_photo-info {
-  width: 100%;
-  height: 70vh;
-  object-fit: cover;
-}
-
 .poll-button-yay {
   img {
     width: 80px;
@@ -96,21 +90,6 @@
   padding-bottom: 4px;
 }
 
-.poll-info{
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  width: 100%;
-  height: 50%;
-  position: absolute;
-  transition: transform 800ms ease;
-  &.hide-info {
-    transform: translatey(100%);
-  }
-  &.show-info {
-    transform: translatey(-100%);
-  }
-}
-
 .poll-author {
   margin-top: 10px;
   img {
@@ -122,11 +101,6 @@
   margin-right: 2vh;
 }
 
-.poll-smiley {
-  width: 10vh;
-  margin: 0px 2vh;
-  top: 10vh;
-}
 
 a.poll-button-yay > img:active {
     transition: transform ease 200ms;

@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
-  resources :polls, only: [:new, :index, :create] do
+  resources :polls, only: [:new, :index, :create, :show] do
+    resources :messages, only: [:create]
     resources :targets, only: [:new, :create]
     resources :answers, only: [:new, :create]
     resources :favourites, only: [:create]

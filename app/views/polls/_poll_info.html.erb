@@ -1,32 +1,74 @@
-<div class="poll-info hide-info" id="poll-info-<%= poll.id %>">
-
-  <div>
-    <p class= "poll_context_info text-center"> <%= poll.context %> </p>
-  </div>
-  <div class="poll-target">
-    <% poll.targets.each do |target| %>
-      <span><%= image_tag target.group.url ,  height: 25 %> <%= target.group.name %></span>
-    <% end %>
-  </div>
-
-  <div class= "poll-author">
-    <% if poll.anonym? %>
-      <p><%= image_tag "anonym.png",  height: 25 %> Anonyme !</p>
-    <% else %>
-      <% user = poll.user %>
-    <p><%= cl_image_tag user[:facebook_picture_url], class: "avatar-bordered"  %> <%= user[:first_name] %> <%= user[:last_name] %> </p>
-    <%end%>
-  </div>
-
-
-  <div class="row">
-    <div class="col-xs-6 text-center">
-      <span id="poll-info-number"><%= poll.nays_count %></span>
-      <%= image_tag "NAYicon.png", class: "poll-smiley" %>
+  <div class="poll-info hide-info" id="poll-info-<%= poll.id %>">
+    <div>
+      <p class= "poll_context_info text-center"> <%= poll.context %> </p>
     </div>
-    <div class="col-xs-6 text-center">
-      <%= image_tag "YAYicon.png", class: "poll-smiley" %>
-      <span id="poll-info-number"><%= poll.yays_count %></span>
+
+    <div class="row">
+      <div class="infos-poll-left col-xs-6">
+        <div class="poll-target">
+          <% poll.targets.each do |target| %>
+            <span><%= image_tag target.group.url ,  height: 25 %> <%= target.group.name %></span>
+          <% end %>
+        </div>
+        <div class= "poll-author">
+          <% if poll.anonym? %>
+            <p><%= image_tag "anonym.png",  height: 25 %> Anonyme !</p>
+          <% else %>
+            <% user = poll.user %>
+          <p><%= cl_image_tag user[:facebook_picture_url], class: "avatar-bordered"  %> <%= user[:first_name] %> <%= user[:last_name] %> </p>
+          <%end%>
+        </div>
+      </div>
+
+
+      <div class="infos-poll-right col-xs-6">
+        <div class="text-center">
+          <span><%= image_tag "NAYicon.png", class: "poll-smiley" %></span>
+          <span id="poll-info-number"><%= poll.nays_count %></span>
+          <span id="poll-info-number"><%= poll.yays_count %></span>
+          <span><%= image_tag "YAYicon.png", class: "poll-smiley" %></span>
+        </div>
+      </div>
+
     </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="messages">
+          <% poll.messages.each do |message| %>
+            <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="info-messages">
+        <h3 class="text-center">Laisse un commentaire</h3>
+        <div class="col-xs-10">
+          <%= simple_form_for [poll, Message.new], remote: true do |f| %>
+          <%= f.input :content, label: false, input_html: {class: 'message-compose'} %>
+        </div>
+        <div class="col-xs-2">
+          <%= f.submit ">", input_html: {class: 'message-compose'} , id: 'create-message' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
   </div>
-</div>
+
+  <% content_for :after_js do %>
+    <script>
+      App['poll_<%= poll.id %>'] = App.cable.subscriptions.create(
+        { channel: 'PollsChannel', poll_id: <%= poll.id %> },
+        { received: (data) => {
+          if (data.current_user_id !== <%= current_user.id %>) {
+          const messagesContainer = document.querySelector('.messages');
+          messagesContainer.insertAdjacentHTML('beforeend', data.message_partial)
+          }
+         }
+      })
+    </script>
+  <% end %>
