@@ -4,8 +4,12 @@
   <div class="row">
 
     <div class="col-xs-3">
-      <%= link_to my_poll_path(favourite.poll) do %>
-        <% cl_image_tag(favourite.poll.photo.path, class: "min-photo-poll") %>
+      <% if favourite.poll.photo %>
+        <%= link_to my_poll_path(favourite.poll) do %>
+          <% cl_image_tag(favourite.poll.photo.path, class: "min-photo-poll") %>
+        <% end %>
+      <% else %>
+        <%= image_tag "noimage.png", class: "min-photo-poll" %>
       <% end %>
     </div>
 
