@@ -137,6 +137,8 @@ ActiveRecord::Schema.define(version: 20170830085821) do
   add_foreign_key "belongings", "users"
   add_foreign_key "favourites", "polls"
   add_foreign_key "favourites", "users"
+  add_foreign_key "messages", "polls"
+  add_foreign_key "messages", "users"
   add_foreign_key "polls", "users"
   add_foreign_key "targets", "groups"
   add_foreign_key "targets", "polls"
