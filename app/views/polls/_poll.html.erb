@@ -1,6 +1,6 @@
 <div class="poll" id="poll-<%= poll.id %>">
   <% if poll.photo %>
-    <%= cl_image_tag poll.photo.path, class: "poll-photo" %>
+    <%= cl_image_tag poll.photo.path, class: "poll-photo", size: '1080x1920', crop: :fit %>
   <% else %>
     <%= image_tag "noimage.png", class: "poll-photo" %>
   <% end %>
