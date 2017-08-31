@@ -4,27 +4,29 @@
   <div class="row">
 
     <div class="col-xs-3">
-      <%= link_to my_poll_path(favourite.poll) do %>
-        <% cl_image_tag(favourite.poll.photo.path, class: "min-photo-poll") %>
+      <% if favourite.poll.photo %>
+        <%= link_to my_poll_path(favourite.poll) do %>
+          <% cl_image_tag(favourite.poll.photo.path, class: "min-photo-poll") %>
+        <% end %>
+      <% else %>
+        <%= image_tag "noimage.png", class: "min-photo-poll" %>
       <% end %>
     </div>
 
     <div class="col-xs-9">
       <div class="context-anonyme">
-        <div class="profile-context">
-          <% if favourite.poll.context.size < 30 %>
-            <p><%= favourite.poll.context.capitalize %></p>
-          <% else %>
-            <p><%= favourite.poll.context.first(30).capitalize + "... " %></p>
-          <% end %>
-        </div>
-      <!--   <div class="profile-anonym">
-          <% if favourite.poll.anonym %>
-            <%= image_tag "anonym.png", height: 25 %>
-          <% else %>
-            <%= image_tag "monkey.png", height: 25 %>
-          <% end %>
-        </div> -->
+        <% if favourite.poll.context == "" %>
+         <div class="profile-context-nil"></div>
+        <% else %>
+          <div class="profile-context">
+            <% if favourite.poll.context.size < 30 %>
+              <p><%= favourite.poll.context.capitalize %></p>
+            <% else %>
+              <p><%= favourite.poll.context.first(30).capitalize + "... " %></p>
+            <% end %>
+          </div>
+        <% end %>
+
         <div class="poll-timer">
           <div id="timer<%= favourite.poll.id %>" class ="text-center">
             <% if  favourite.poll.ends_at >  Time.zone.now %>

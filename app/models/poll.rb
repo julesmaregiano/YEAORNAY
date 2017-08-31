@@ -5,7 +5,7 @@ class Poll < ApplicationRecord
   has_many :groups, through: :targets
   has_many :favourites
   validates_associated :user, presence: true
-  has_attachment :photo
+  has_attachment :photo, accept: [:jpg, :jpeg, :png, :gif]
 
   scope :from_me, -> (user) { where(user: user) }
   scope :latest_to_old, -> { order(ends_at: :desc)}

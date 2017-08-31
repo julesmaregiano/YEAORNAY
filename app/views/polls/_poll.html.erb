@@ -1,6 +1,8 @@
 <div class="poll" id="poll-<%= poll.id %>">
-  <% unless poll.photo.nil? %>
+  <% if poll.photo %>
     <%= cl_image_tag poll.photo.path, class: "poll-photo" %>
+  <% else %>
+    <%= image_tag "noimage.png", class: "poll-photo" %>
   <% end %>
   <% unless poll.context.empty? %>
     <div class="poll-text" style= "top: <%= poll.context_y %>%">
@@ -15,6 +17,7 @@
 
   <%= link_to (image_tag("YAYicon.png")), poll_answers_path(poll, "answer" => {"value" => 1, "last" => local_assigns[:last] } ), class: "poll-button-yay", method: :post, remote: true %>
 </div>
-
-  <%= render "polls/poll_info", poll: poll  %>
+  <% if poll.photo %>
+    <%= render "polls/poll_info", poll: poll  %>
+  <% end %>
 </div>
