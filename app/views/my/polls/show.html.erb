@@ -1,15 +1,18 @@
 <% content_for(:body_class, "full-page") %>
-<div class="poll" id="poll-<%= @poll.id %>">
-  <%= cl_image_tag @poll.photo.path, class: "poll-photo" %>
-  <% unless @poll.context.empty? %>
-    <div class="poll-text" style= "top: <%= @poll.context_y %>%">
-        <%=@poll.context%>
-    </div>
-  <% end %>
-  <%= render "poll_info", poll: @poll %>
+<div class="my-poll-show">
+  <%= link_to "", my_polls_path, class: "button-nav-left fa fa-user" %>
+  <%= link_to "", new_poll_path, class: "button-nav-right fa fa-camera" %>
+  <div class="poll" id="poll-<%= @poll.id %>">
+    <%= cl_image_tag @poll.photo.path, class: "poll-photo" %>
+    <% unless @poll.context.empty? %>
+      <div class="poll-text" style= "top: <%= @poll.context_y %>%">
+          <%=@poll.context%>
+      </div>
+    <% end %>
+    <%= render "poll_info", poll: @poll %>
+  </div>
 </div>
-<%= link_to "", my_polls_path, class: "button-nav-left fa fa-user" %>
-<%= link_to "", new_poll_path, class: "button-nav-right fa fa-camera" %>
+
 <% content_for(:after_js) do %>
   <script>
  $(function(){

@@ -18,5 +18,8 @@ Rails.application.routes.draw do
   namespace :my do
     resources :polls, only: [:index, :show, :destroy]
   end
+
+  get "fake-answers" => "pages#fake_answers"
+  post "send-fake-answer" => "pages#send_fake_answer"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

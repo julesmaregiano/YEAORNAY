@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20170830085821) do
     t.bigint "facebook_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "facebook_picture_url"
     t.text "url"
   end
 

@@ -1,35 +1,61 @@
-<div class="poll-background">
-  <% @polls.each do |poll| %>
-    <div class="poll-profile-informations">
-      <div class="poll-pic">
-        <%= link_to my_poll_path(poll) do %>
-          <% cl_image_tag(poll.photo.path, class: "min-photo-poll") %>
-        <% end %>
-      </div>
+<% @polls.each do |poll| %>
 
-      <div class="poll-answers">
-        <h4 class="flex-child">
-          <%= image_tag "smiley-coeur.png", class: "flex-child", height: 20 %>
-          <%= poll.yays_count%>
-        </h4>
-        <h4 class="flex-child">
-          <%= image_tag "pile-of-poo.png", class: "flex-child", height: 20 %>
-          <%= poll.nays_count%>
-        </h4>
-      </div>
+<div class="container" id="poll-<%= poll.id %>">
+  <div class="row">
 
-      <div class="poll-timer">
-        <div id="timer<%= poll.id %>" class ="text-center">
-          <% if  poll.ends_at >  Time.zone.now %>
-            <p><span id="timer-val"><%= ((poll.ends_at - Time.zone.now) / 60).to_i %></span> min.</p>
-            <i class="fa fa-clock-o" aria-hidden="true"></i>
+    <div class="col-xs-3">
+      <%= link_to my_poll_path(poll) do %>
+        <% cl_image_tag(poll.photo.path, class: "min-photo-poll") %>
+      <% end %>
+    </div>
+
+    <div class="col-xs-9">
+      <div class="context-anonyme">
+        <div class="profile-context">
+          <% if poll.context.size < 30 %>
+            <p><%= poll.context.capitalize %></p>
           <% else %>
-            <p>Over</p>
+            <p><%= poll.context.first(30).capitalize + "... " %></p>
           <% end %>
+        </div>
+      <!--   <div class="profile-anonym">
+          <% if poll.anonym %>
+            <%= image_tag "anonym.png", height: 25 %>
+          <% else %>
+            <%= image_tag "monkey.png", height: 25 %>
+          <% end %>
+        </div> -->
+        <div class="poll-timer">
+          <div id="timer<%= poll.id %>" class ="text-center">
+            <% if  poll.ends_at >  Time.zone.now %>
+              <p><span id="timer-val"><%= ((poll.ends_at - Time.zone.now) / 60).to_i %></span> min.</p>
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+            <% else %>
+              <p>Over</p>
+            <% end %>
+          </div>
+          <%= image_tag "sablier.png", height: 20 %>
+        </div>
+      </div>
+
+      <div class="smileys-yn">
+         <div class="nay-smiley">
+         <p class="counter"><%= poll.nays_count %></p>
+          <%= image_tag "nay-profile.png", class: "icon-smiley" %>
+        </div>
+        <div class="yay-smiley">
+          <p class="counter"><%= poll.yays_count %></p>
+          <%= image_tag "yay-profile.png", class: "icon-smiley" %>
         </div>
       </div>
     </div>
+
+
   </div>
+</div>
+
+<div class="border-blue"></div>
+
 
 <% content_for(:after_js) do %>
     <script>
@@ -62,7 +88,32 @@
         }
       }, 1000);
     </script>
+    <script>
+    App.cable.subscriptions.create({
+      channel: "PollChannel",
+      poll_id: "<%= poll.id %>",
+    },
+    {
+      connected: function() {
+        console.log("[CONNECTED to poll_<%= poll.id %>]");
+      },
+      received: function(data) {
+        console.log("[RECEIVED]");
+        var icon = data.status == 1 ? "yay" : "nay";
+        var $iconWrapper = $('#poll-' + data.poll_id).find("." + icon + "-smiley");
 
+        var $counter = $iconWrapper.find(".counter");
+        var newCounterValue = parseInt($counter.text()) + 1;
+        $counter.text(newCounterValue);
+
+        var $icon = $iconWrapper.find(".icon-smiley");
+        $icon.addClass('bump');
+        setTimeout(function() {
+          $icon.removeClass('bump');
+        }, 100);
+      }
+    });
+  </script>
   <% end %>
 <% end %>
-</div>
+

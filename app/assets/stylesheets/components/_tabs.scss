@@ -1,50 +1,23 @@
 // Override bootstrap
-a {
-  text-decoration: none;
-}
-
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus, .nav-tabs > a {
-  border: 0px;
-}
-.nav > li > a {
-  padding: 0px;
-  margin: 0px;
-  border-bottom: 0px;
-}
-
 .tabs {
-  display: flex;
-  text-align: center;
-  align-items: center;
-  margin: 0px 50px;
-  a:hover {
+  a {
+    color: $mid-gray;
     text-decoration: none;
   }
-  h3 {
-    font-size: 15px;
+  a:hover, a:focus {
+    color: $mid-gray;
     font-weight: bold;
-  }
-  p {
-    opacity: 0.5;
+    text-decoration: underline;
   }
 }
 
-.nav > li {
-  width: 20vh;
-  border-bottom: 0px;
-  text-decoration: none;
+#nav-home-tab {
+  margin-right: 5%;
+  margin-left: 1%;
 }
 
-.nav-tabs > li.active > a {
-  color: $mid-gray;
-  font-weight: bold;
-  border-top: 3px solid $pink;
-  text-decoration: none;
+.nav-tabs {
+  border-bottom: none;
+  margin: 4% 0px;
 }
 
-.nav-tabs > li > a {
-  color: $mid-gray;
-  border-top: 3px solid $light-gray;
-  border-bottom: 0px;
-  text-decoration: none !important;
-}

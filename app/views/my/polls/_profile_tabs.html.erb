@@ -1,10 +1,20 @@
-<div class="tabs text-center">
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#profile-poll" aria-controls="home" role="tab" data-toggle="tab">My polls</a></li>
-    <li role="presentation"><a href="#profile-favorites" aria-controls="profile" role="tab" data-toggle="tab">My likes</a></li>
-  </ul>
+<div class="tabs">
+  <nav class="nav nav-tabs" id="myTab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-expanded="true">Mes yays</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile">Mes favoris</a>
+  </nav>
 </div>
-<div class="tab-content">
-  <div role="tabpanel" class="tab-panel active" id="profile-poll"> <%= render "my_polls" %> </div>
-  <div role="tabpanel" class="tab-panel" id="profile-favorites"> <%= render "my_likes" %> </div>
+
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+    <%= render "my_polls" %>
+  </div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <%= render "my_likes" %>
+  </div>
+
 </div>
+
+
+
+
