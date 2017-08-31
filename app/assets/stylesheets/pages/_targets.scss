@@ -1,4 +1,4 @@
-.target-new-page{
+.target-new-page {
   height: 100%;
   width: 100%;
 }
@@ -8,46 +8,45 @@
   top: -59px;
 }
 
-#target-search-btn-div{
+#target-search-btn-div {
   position: relative;
   top: -20px;
   left: 45%;
   z-index: 2;
 }
 
-#target-search-btn-div input{
+#target-search-btn-div input {
   padding-left: 40px;
   background-color: white;
 }
 
-.target-container{
+.target-container {
   position: absolute;
   width: 100%;
   height: 10px;
 }
 
-.target-wrap{
+.target-wrap {
   margin-bottom: 80px;
-
 }
 
-.form-control{
+.form-control {
   height: 55px;
 }
 
-.target-search-icon{
+.target-search-icon {
   position: absolute;
   font-size: 35px;
   left: 165px;
   top: -5px;
-  color: $blue
+  color: #CCC;
 }
 
-.target-select-targets{
-  color: $red;
+.target-select-targets {
+  color: #4A4A4A;
 }
 
-.target-btn-targets{
+.target-btn-targets {
   background-color: white;
   border-color: white;
 }
@@ -59,7 +58,7 @@
   box-shadow: none;
 }
 
-.target-btn-envoyer{
+.target-btn-envoyer {
   width: 100%;
   position: fixed;
   bottom: 0px;
@@ -68,3 +67,4 @@
   padding-bottom: 12px;
   font-size: 20px;
 }
+
