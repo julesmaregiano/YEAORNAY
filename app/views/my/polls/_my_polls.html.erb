@@ -97,10 +97,8 @@
     },
     {
       connected: function() {
-        console.log("[CONNECTED to poll_<%= poll.id %>]");
       },
       received: function(data) {
-        console.log("[RECEIVED]");
         var icon = data.status == 1 ? "yay" : "nay";
         var $iconWrapper = $('#poll-' + data.poll_id).find("." + icon + "-smiley");
 
@@ -118,4 +116,3 @@
   </script>
   <% end %>
 <% end %>
-

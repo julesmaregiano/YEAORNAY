@@ -2,7 +2,6 @@
 
 <div class="container">
   <div class="row">
-
     <div class="col-xs-3">
       <% if favourite.poll.photo %>
         <%= link_to my_poll_path(favourite.poll) do %>
@@ -12,7 +11,6 @@
         <%= image_tag "noimage.png", class: "min-photo-poll" %>
       <% end %>
     </div>
-
     <div class="col-xs-9">
       <div class="context-anonyme">
         <% if favourite.poll.context == "" %>
@@ -26,7 +24,6 @@
             <% end %>
           </div>
         <% end %>
-
         <div class="poll-timer">
           <div id="timer<%= favourite.poll.id %>" class ="text-center">
             <% if  favourite.poll.ends_at >  Time.zone.now %>
@@ -39,7 +36,6 @@
           <%= image_tag "sablier.png", height: 20 %>
         </div>
       </div>
-
       <div class="smileys-yn">
          <div class="nay-smiley">
          <p><%= favourite.poll.nays_count %></p>
@@ -51,13 +47,9 @@
         </div>
       </div>
     </div>
-
-
   </div>
 </div>
-
 <div class="border-blue"></div>
-
 
 <% content_for(:after_js) do %>
     <script>
@@ -91,7 +83,4 @@
       }, 1000);
     </script>
   <% end %>
-
 <% end %>
-
-
