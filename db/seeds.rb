@@ -46,7 +46,7 @@ photos = ["http://res.cloudinary.com/zanzibar/image/upload/v1504261382/man_gjr4v
   value = [true, false].sample
   poll = Poll.create(context: context[i], ends_at: Time.now + 7200, user: User.first, photo_url: photos[i], context_y: context_y.sample, anonym: true)
   target = Target.create(poll_id: poll.id, group_id: yon.id)
-  p
+  p poll
 end
 #
 # User.all.each do |user|
