@@ -1,0 +1,26 @@
+{
+  "short_name": "YoN",
+  "name": "Yay or Nay - Come Yay with us !",
+  "icons": [
+    {
+      "src": "YON48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "YON96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "YON192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/polls",
+  "background_color": "#FAFAFA",
+  "theme_color": "#00C8FF",
+  "display": "standalone",
+  "orientation": "portrait"
+}

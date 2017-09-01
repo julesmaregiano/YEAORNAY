@@ -1,4 +1,4 @@
-<% content_for(:body_class, "full-page-scrollable") %>
+<% content_for(:body_class, "full-page-scrollable white-body") %>
 <div class="target-new-page">
   <div class= "check-box-title">
     <h4 class= "text-center">Choisis tes cibles</h4>
@@ -13,15 +13,14 @@
         <% end %>
       </div>
       <div id= "target-search-bar-div">
-        <%= f.input :search, input_html: {class: "target-search-bar"}, label: false %>
+        <%= f.input :search, input_html: {class: "target-search-bar"}, label: false, placeholder: "Rechercher" %>
       </div>
     </div>
     <% end %>
   </div>
 
-  <div class= "container">
+
     <div class="selected-targets">
-      <h5 class= "text-center target-select-targets"><strong>Tes cibles: </strong></h5>
       <%= simple_form_for @poll, url: poll_targets_path(@poll), method: :post do |f| %>
       <div class="collection-check-boxes" id="collection-selected">
       </div>
@@ -31,7 +30,7 @@
     <div class="targets" id="search-results">
       <%= render "search_results" %>
     </div>
-  </div>
+
 
 </div>
 
@@ -41,7 +40,6 @@
     $('.selected-targets').hide();
 
     $('.targets').on('click', '#collection-targets > span ', function(event) {
-      console.log("tu me rajoute");
       $('.selected-targets').show();
       $(this).children().children().children().removeAttr('id');
       $(this).children().children().children().attr('id','selected');
@@ -55,7 +53,6 @@
 
 
     $('.selected-targets').on('click', '#collection-selected > span', function(event) {
-      console.log("tu me vire");
       $(this).children().children().children().removeAttr('id');
       $(this).children().children().children().attr('id','target');
 

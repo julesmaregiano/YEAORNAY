@@ -6,7 +6,7 @@
   right: 0;
   transition: transform 600ms ease;
   overflow: hidden;
-  background: $pink;
+  background: $blue;
 
   &.animate-yay {
     transform: rotate(10deg) translateX(200%);
@@ -71,6 +71,14 @@
     padding: 5px;
   }
 }
+
+.poll-button-img-favourite {
+  width: 50px;
+  background-color: $transparent50;
+  border-radius: 50px;
+  padding: 5px;
+}
+
 
 #poll_context {
   width: 100%;

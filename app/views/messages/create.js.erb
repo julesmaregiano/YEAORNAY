@@ -1,5 +1,3 @@
-console.log('coucou');
-
 <% unless @message.errors.any? %>
   var messagesContainer = $(".messages");
   messagesContainer.append('<%= j render "message", message: @message, user_is_messages_author: true %>');

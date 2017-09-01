@@ -2,15 +2,26 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="shortcut icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/YON192.png" />
+    <link rel="shortcut icon" href="/YON192.png">
 
-    <title><%= yield(:title_tag).blank? ? "Yay or Nay ?" : yield(:title_tag) %></title>
+    <title><%= meta_title %></title>
+    <meta name="description" content="<%= meta_description %>">
+
+    <meta property="og:title" content="<%= meta_title %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= meta_image %>" />
+    <meta property="og:description" content="<%= meta_description %>" />
+    <meta property="og:site_name" content="<%= meta_title %>" />
+
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
+    <%= favicon_link_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body class="<%= yield(:body_class) %>">

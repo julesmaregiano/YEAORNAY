@@ -1,6 +1,8 @@
 <div class="poll" id="poll-<%= poll.id %>">
-  <% unless poll.photo.nil? %>
-    <%= cl_image_tag poll.photo.path, class: "poll-photo" %>
+  <% if poll.photo %>
+    <%= cl_image_tag poll.photo.path, class: "poll-photo", size: '1080x1920', crop: :fit %>
+  <% else %>
+    <%= image_tag "noimage.png", class: "poll-photo" %>
   <% end %>
   <% unless poll.context.empty? %>
     <div class="poll-text" style= "top: <%= poll.context_y %>%">
@@ -11,10 +13,15 @@
 <div class="poll-btn">
   <%= link_to (image_tag("NAYicon.png")), poll_answers_path(poll, "answer" => {"value" => 0, "last" => local_assigns[:last] } ), class: "poll-button-nay", method: :post, remote: true %>
 
-  <%= link_to (image_tag("star.png")), poll_favourites_path(poll, favourite: { poll_id: poll.id }), method: :post, remote: true, class: "poll-button-favourite" %>
+  <% if Favourite.find_by(user_id: current_user.id, poll_id: poll.id)  %>
+     <%= image_tag "starfav.png", class: "poll-button-img-favourite" %>
+  <% else %>
+    <%= link_to (image_tag("star.png")), poll_favourites_path(poll, favourite: { poll_id: poll.id }), method: :post, remote: true, class: "poll-button-favourite" %>
+  <% end %>
 
   <%= link_to (image_tag("YAYicon.png")), poll_answers_path(poll, "answer" => {"value" => 1, "last" => local_assigns[:last] } ), class: "poll-button-yay", method: :post, remote: true %>
 </div>
-
-  <%= render "polls/poll_info", poll: poll  %>
+  <% if poll.photo %>
+    <%= render "polls/poll_info", poll: poll  %>
+  <% end %>
 </div>

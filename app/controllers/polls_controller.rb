@@ -14,10 +14,14 @@ class PollsController < ApplicationController
   def create
     @poll = current_user.polls.build(poll_params)
     @poll.ends_at = Time.now + 86400
-    if @poll.save
-      redirect_to new_poll_target_path(@poll)
-    else
+    if @poll.photo.nil?
       render :new
+    else
+      if @poll.save
+        redirect_to new_poll_target_path(@poll)
+      else
+        render :new
+      end
     end
   end
 
