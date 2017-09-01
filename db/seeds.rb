@@ -41,12 +41,12 @@ photos = ["http://res.cloudinary.com/zanzibar/image/upload/v1504261382/man_gjr4v
          "http://res.cloudinary.com/zanzibar/image/upload/v1504260631/apero_hcggv3.jpg",
           "http://res.cloudinary.com/zanzibar/image/upload/v1504260631/tennis_zhs5la.jpg"]
   yon = Group.create(facebook_id: 1696236193750789, name: "Yay or Nay", url: "https://scontent.xx.fbcdn.net/v/t1.0-1/c31.0.50.50/p50x50/20954014_1696236387084103_5962366096731458549_n.png?oh=cc4f425e9f1ba31593391324923c8605&oe=5A2CF534")
-  puts yon
-5.times do |i|
+  p yon
+4.times do |i|
   value = [true, false].sample
   poll = Poll.create(context: context[i], ends_at: Time.now + 7200, user: User.first, photo_url: photos[i], context_y: context_y.sample, anonym: true)
   target = Target.create(poll_id: poll.id, group_id: yon.id)
-  puts "Poll, anonym: #{poll.anonym}, n°#{i+1} créé avec comme target Y"
+  p poll
 end
 #
 # User.all.each do |user|
