@@ -39,15 +39,15 @@ class User < ApplicationRecord
     @graph = Koala::Facebook::API.new(token)
 
     # Décommenter tout le gris pour redemander tous les likes à la connection.
-    likes = []
+    # likes = []
 
     feed = @graph.get_connections("me", "likes")
 
-    until feed.nil?
-      likes << feed
-      feed = feed.next_page
-    end
-    likes.flatten  # tableau de hash
+    # until feed.nil?
+    #   likes << feed
+    #   feed = feed.next_page
+    # end
+    # likes.flatten  # tableau de hash
   end
 
   def add_groups # ajoute les pages dans la DB sauf si elles existent déjà
