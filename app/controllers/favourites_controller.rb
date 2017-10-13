@@ -1,7 +1,6 @@
 class FavouritesController < ApplicationController
   def create
-    @favourite = current_user.favourites.new(favourite_params)
-    @favourite.save
+    @favourite = current_user.favourites.create(favourite_params)
     @poll = Poll.find(params[:poll_id])
 
     respond_to do |format|
