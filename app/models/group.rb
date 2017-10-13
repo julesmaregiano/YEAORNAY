@@ -15,7 +15,6 @@ class Group < ApplicationRecord
   # has_attachment :photo
 
   def self.search(search)
-    groups = Group.all
     groups = groups.where("name LIKE ?", "%#{search[:search]}%")
   end
 end
